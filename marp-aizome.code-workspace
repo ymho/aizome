@@ -6,8 +6,8 @@
   ],
   "settings": {
     "markdown.marp.themes": [
-      "./transit-tech-pdf.css"
+      "./aizome.css"
     ],
-    "markdown.marp.exportType": "pdf"
+    "markdown.marp.exportType": "html"
   }
 }

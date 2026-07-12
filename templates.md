@@ -1,16 +1,18 @@
 ---
 marp: true
-theme: transit-tech-pdf
+theme: aizome
 paginate: true
 size: 16:9
+title: aizome
+author: github.com/ymho
 ---
 <!-- _class: cover -->
 
-# Transit Tech Template
+# aizome
 
-## PDF出力優先のMarpテンプレート集
+## ブラウザで表示するMarpテンプレート集
 
-2026-07-12 / 　著者
+[github.com/ymho](https://github.com/ymho)
 
 ---
 <!-- _class: agenda -->
@@ -36,7 +38,7 @@ size: 16:9
 このテンプレートでは、タイトル位置を全スライドで上部に固定しています。本文は黒ではなく、少しだけ柔らかいダークグレーにしています。
 
 - 通常のMarkdownで書ける範囲を優先
-- PDF出力で崩れやすいHTMLレイアウトは使わない
+- ブラウザで読みやすいレイアウトを使用
 - 装飾は控えめにし、業務資料として使いやすくする
 
 > 補足・注意・前提条件は、Markdownの引用記法で表現します。
@@ -96,7 +98,7 @@ size: 16:9
 写真や図を右側に置き、左側に要点をまとめます。
 
 - Marp標準の背景画像指定を使用
-- 画像と本文の分割がPDFでも安定しやすい
+- 画像と本文をバランスよく分割
 - 画像差し替えはパスを変えるだけ
 
 ---
@@ -163,11 +165,11 @@ size: 16:9
 
 # 判断スライド
 
-今回決めたいことは、PDF出力を優先してMarp標準記法中心に寄せるかどうかです。
+今回決めたいことは、資料をどの方法で共有するかです。
 
-> 推奨：HTMLを使わず、Markdown + Marpクラス + 背景画像指定で構成する。
+> 推奨：Markdownで管理し、HTMLへ変換してGitHub Pagesで公開する。
 
-理由は、VS CodeからのPDF出力時にレイアウト差分が出にくく、他人に渡しても再現しやすいためです。
+ブラウザだけで閲覧でき、Markdownとテーマの更新を公開ページへ自動的に反映できます。
 
 ---
 
@@ -176,9 +178,9 @@ size: 16:9
 | 観点 | 方針 | 備考 |
 |---|---|---|
 | レイアウト | Marp標準を優先 | `![bg right]` などを使う |
-| 装飾 | 控えめにする | PDF化で崩れにくい |
+| 出力 | HTML | ブラウザで閲覧できる |
 | コード | Highlight.js前提 | 言語名を必ず付ける |
-| 画像 | ローカル相対パス | ZIPごと渡せる |
+| 画像 | ローカル相対パス | Pagesにも一緒に配置する |
 
 ---
 
@@ -196,7 +198,7 @@ export type TrainService = {
 
 ```yaml
 marp: true
-theme: transit-tech-pdf
+theme: aizome
 paginate: true
 ```
 
@@ -217,8 +219,8 @@ paginate: true
 | VS Code設定 | `markdown.marp.themes` にCSSを登録 | 必須 |
 | ワークスペース | フォルダ単位で開く | 必須 |
 | 制限モード | 信頼済みにする | 必須 |
-| エクスポート | Marp: Export slide deck | 推奨 |
-| Markdown PDF | 別拡張のため非推奨 | 注意 |
+| エクスポート | Marp: Export Slide Deck | 推奨 |
+| GitHub Pages | ActionsでHTMLを自動公開 | 任意 |
 
 - 文字を詰めすぎると読みづらくなるため、Appendix用途に限定します。
 - 本編では通常スライド、2カラム、画像分割、比較、判断の使い分けを推奨します。
@@ -228,4 +230,4 @@ paginate: true
 
 # Thank you
 
-必要なものだけを、安定してPDFに出すためのテンプレートです。
+MarkdownからHTMLスライドを作るためのテンプレートです。

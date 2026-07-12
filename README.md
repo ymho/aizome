@@ -1,66 +1,55 @@
-# Marp用スライドテンプレート（transit-tech）
+# aizome
 
-PDF出力を優先したMarpテンプレート集です。HTMLをMarkdown内に書かず、Marp標準記法とクラス指定だけで構成しています。
+Marp用のカスタムテーマです。
 
-## 使い方
+著者: [github.com/ymho](https://github.com/ymho)
 
-VS Codeでこのフォルダを開いてください。`sample.md` 単体ではなく、必ずフォルダまたは `.code-workspace` を開きます。
+スライドの記述例と利用できるレイアウトは [templates.md](./templates.md) を参照してください。
+
+## 必要なもの
+
+- [Visual Studio Code](https://code.visualstudio.com/)
+- VS Code拡張機能 [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)
+
+VS Codeの拡張機能ビューを開き、`Marp for VS Code` を検索してインストールしてください。
+
+## 開き方
+
+このリポジトリをクローンまたはダウンロードし、VS Codeでフォルダ全体を開きます。`templates.md` だけを単独で開くとカスタムテーマの設定が読み込まれないため、必ずフォルダ、または `marp-aizome.code-workspace` を開いてください。
+
+ワークスペースの信頼を求められた場合は、内容を確認したうえで信頼済みにします。制限モードではカスタムCSSが読み込まれないことがあります。
+
+## プレビュー
+
+1. VS Codeで `templates.md` を開きます。
+2. `Ctrl+K`、続けて `V` を押します。macOSでは `⌘+K`、続けて `V` を押します。
+
+コマンドパレットから開く場合は、`Markdown: Open Preview to the Side` を実行します。エディター右上のプレビューアイコンから開くこともできます。
+
+Marp専用のプレビューコマンドではなく、VS Code標準のMarkdownプレビューを使用します。`Marp for VS Code` がインストールされ、Markdown先頭に `marp: true` があれば、スライドとして表示されます。
+
+## HTMLへのコンパイル
+
+1. VS CodeでコンパイルするMarkdownファイルを開きます。
+2. コマンドパレットを開きます。
+3. `Marp: Export Slide Deck` を実行します。
+4. 保存先を指定します。
+
+このリポジトリでは出力形式をHTMLに設定しているため、同じディレクトリにHTMLファイルが生成されます。
+
+新しいスライドを作る場合は、`templates.md` をコピーして編集してください。先頭のFront Matterには次の指定が必要です。
 
 ```yaml
 ---
 marp: true
-theme: transit-tech-pdf
+theme: aizome
 paginate: true
 size: 16:9
 ---
 ```
 
-## VS Code設定
+## GitHub Pagesへの公開
 
-`.vscode/settings.json` でカスタムテーマを登録しています。
+`main` ブランチへ変更をpushすると、GitHub Actionsが `templates.md` を `index.html` に変換してGitHub Pagesへ公開します。
 
-```json
-{
-  "markdown.marp.themes": [
-    "./transit-tech-pdf.css"
-  ],
-  "markdown.marp.exportType": "pdf"
-}
-```
-
-ワークスペースが制限モードの場合、カスタムCSSが無効化されることがあります。フォルダを信頼済みにしてください。
-
-## PDF出力
-
-Marp拡張のメニューから出力してください。
-
-```text
-Export slide deck...
-→ PDF
-```
-
-`Markdown PDF` など別拡張からの出力では、このテーマは適用されません。
-
-## レイアウト例
-
-```markdown
-<!-- _class: cover -->
-# 表紙
-
----
-<!-- _class: section -->
-# 中間タイトル
-
----
-<!-- _class: image-right -->
-![bg right:45% cover](assets/placeholder-rail.svg)
-# 半分画像 / 半分文章
-```
-
-## 方針
-
-- Markdown内にHTMLを書かない
-- 複雑な装飾よりPDF安定性を優先する
-- 半分画像は `![bg right:45% cover]` / `![bg left:45% cover]` を使う
-- カードや2カラムはMarkdownのリストをCSSで整える
-- コードブロックは言語名を必ず付ける
+初回のみ、GitHubリポジトリの `Settings` → `Pages` → `Build and deployment` で、`Source` を `GitHub Actions` に設定してください。その後、`Actions` タブの `Deploy Marp to GitHub Pages` が完了すると公開URLへアクセスできます。

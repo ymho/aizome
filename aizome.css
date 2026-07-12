@@ -1,4 +1,5 @@
-/* @theme transit-tech-pdf */
+/* @theme aizome */
+
 @import 'default';
 
 :root {
@@ -168,7 +169,7 @@ section pre code.language-css::before { content: 'CSS'; }
 section pre code.language-bash::before { content: 'BASH'; }
 section pre code.language-sh::before { content: 'SHELL'; }
 
-/* Highlight.js: subdued, PDF-friendly colors */
+/* Highlight.js: subdued colors */
 .hljs-comment,
 .hljs-quote { color: #6b7280; }
 .hljs-keyword,
@@ -432,4 +433,48 @@ section.closing h1:first-child {
 section.closing p {
   color: #dbe6f0;
   font-size: 24px;
+}
+
+section.profile {
+  padding-right: 42%;
+}
+
+section.profile img[alt~="avatar"] {
+  position: absolute;
+  right: 95px;
+  top: 150px;
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
+}
+
+section.profile p:has(img[alt^="sns-"]) {
+  position: absolute;
+  right: 92px;
+  top: 410px;
+  width: 230px;
+  text-align: center;
+}
+
+section.profile img[alt^="sns-"] {
+  margin: 0 8px;
+  vertical-align: middle;
+  opacity: 0.86;
+}
+
+section img[alt="inline-icon"] {
+  display: inline-block;
+  width: auto;
+  height: 1em;
+  margin: 0 0.12em;
+  vertical-align: -0.12em;
+  object-fit: contain;
+}
+
+section img[alt~="center"] {
+  display: block;
+  margin-inline: auto;
 }

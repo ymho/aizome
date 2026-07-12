@@ -1,0 +1,27 @@
+@startuml
+skinparam backgroundColor transparent
+skinparam defaultFontName sans-serif
+skinparam sequenceArrowColor #2B7BBB
+skinparam participantBorderColor #667085
+skinparam participantBackgroundColor #EDF6FD
+
+actor User
+participant "solve" as Solver
+participant "rk4_step" as RK4
+participant "rhs" as Equation
+participant "exact" as Exact
+
+User -> Solver: solve(x, 0.01)
+loop x < x_end
+  Solver -> RK4: state, x, h
+  loop k1 ... k4
+    RK4 -> Equation: rhs(x, state)
+    Equation --> RK4: { y', y'' }
+  end
+  RK4 --> Solver: next_state
+end
+Solver --> User: numerical_y
+User -> Exact: exact(x)
+Exact --> User: exact_y
+User -> User: 誤差を比較
+@enduml

@@ -1,0 +1,10 @@
+flowchart TD
+    A[微分方程式] --> B[一般解の構造を証明]
+    B --> C[具体例の厳密解]
+    C --> D[LuaでRK4法を実装]
+    D --> E[数値解と厳密解を比較]
+
+    classDef theory fill:#edf6fd,stroke:#2b7bbb,color:#26364d
+    classDef code fill:#f7f9fc,stroke:#667085,color:#30343b
+    class A,B,C theory
+    class D,E code

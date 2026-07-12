@@ -26,6 +26,19 @@ section {
   font-size: 24px;
   line-height: 1.55;
   letter-spacing: 0.01em;
+  justify-content: flex-start;
+}
+
+/* Vertically center slides whose main content is a table. */
+section.table-center {
+  justify-content: center;
+}
+
+section.table-center table {
+  width: 92%;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 section::after {
@@ -161,6 +174,10 @@ section pre code::before {
 }
 
 section pre code.language-python::before { content: 'PYTHON'; }
+section pre code.language-lua::before { content: 'LUA'; }
+section pre code.language-lilypond::before { content: 'LILYPOND'; }
+section pre code.language-mermaid::before { content: 'MERMAID'; }
+section pre code.language-plantuml::before { content: 'PLANTUML'; }
 section pre code.language-javascript::before { content: 'JAVASCRIPT'; }
 section pre code.language-typescript::before { content: 'TYPESCRIPT'; }
 section pre code.language-json::before { content: 'JSON'; }

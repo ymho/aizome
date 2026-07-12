@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "markdown.marp.themes": [
+      "./transit-tech-pdf.css"
+    ],
+    "markdown.marp.exportType": "pdf"
+  }
+}

@@ -27,6 +27,28 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install LilyPond
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes lilypond
+
+      - name: Generate music notation
+        run: |
+          mkdir -p assets/generated
+          lilypond --svg -dno-point-and-click --output=assets/generated/score music/example.ly
+
+      - name: Generate diagrams
+        run: |
+          curl --fail --retry 3 \
+            --header "Content-Type: text/plain" \
+            --data-binary @diagrams/solution-flow.mmd \
+            https://kroki.io/mermaid/svg \
+            --output assets/generated/mermaid.svg
+          curl --fail --retry 3 \
+            --header "Content-Type: text/plain" \
+            --data-binary @diagrams/solver-sequence.puml \
+            https://kroki.io/plantuml/svg \
+            --output assets/generated/plantuml.svg
 
       - name: Build HTML
         run: |

@@ -539,6 +539,38 @@ Solver --> User: numerical_y
 画像そのものを主役にし、文章は短いメッセージだけに絞ります。
 
 ---
+<!-- _class: flow -->
+
+# 横並びの処理フロー
+
+1. **入力**<br>
+   元データを受け取る
+2. **変換**<br>
+   共通形式へ整える
+3. **検証**<br>
+   完全性を確認する
+4. **公開**<br>
+   利用側へ届ける
+
+---
+<!-- _class: diagram -->
+
+# 大きな構成図
+
+![center](assets/generated/mermaid.svg)
+
+---
+<!-- _class: screens -->
+
+# スクリーンショットを比較する
+
+- ![比較画像A](assets/placeholder-rail.svg)<br>
+  **変更前**<br>
+  課題を短く説明します。
+- ![比較画像B](assets/placeholder-rail.svg)<br>
+  **変更後**<br>
+  改善点を短く説明します。
+---
 <!-- _class: closing -->
 
 # Thank you

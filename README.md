@@ -4,6 +4,15 @@ Marp用のカスタムテーマです。
 
 スライドの記述例と利用できるレイアウトは [template.md](./template.md) を参照してください。
 
+## Slides
+
+- `transitforge.md`: TransitForgeの構築・運用・改善の取り組み
+- `template.md`: aizomeテーマのレイアウトサンプル
+- `aizome.css`: 共通テーマ（図版、スクリーンショット、フローを含む）
+
+GitHub Pagesのトップでは`transitforge.md`を表示し、テーマ見本は
+`template.html`として同時に出力します。
+
 ## 必要なもの
 
 - [Visual Studio Code](https://code.visualstudio.com/)
@@ -91,6 +100,6 @@ size: 16:9
 
 ## GitHub Pagesへの公開
 
-`main` ブランチへ変更をpushすると、GitHub Actionsが `template.md` を `index.html` に変換してGitHub Pagesへ公開します。
+`main` ブランチへ変更をpushすると、GitHub Actionsが `transitforge.md` を `index.html` に変換してGitHub Pagesへ公開します。テーマ見本の `template.md` も `template.html` として同時に出力します。
 
 初回のみ、GitHubリポジトリの `Settings` → `Pages` → `Build and deployment` で、`Source` を `GitHub Actions` に設定してください。その後、`Actions` タブの `Deploy Marp to GitHub Pages` が完了すると公開URLへアクセスできます。

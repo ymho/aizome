@@ -1,0 +1,29 @@
+name: Validate Marp
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build template
+        run: |
+          npx --yes @marp-team/marp-cli@4.3.0 \
+            template.md \
+            --theme-set aizome.css \
+            --output /tmp/aizome.html

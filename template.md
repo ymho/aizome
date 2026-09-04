@@ -3,544 +3,319 @@ marp: true
 theme: aizome
 paginate: true
 size: 16:9
-title: 微分方程式を理解し、コードにする
-author: 水城アオ（サンプル）
+title: Aizome — Marp presentation template
+author: Your Name
 ---
 <!-- _class: cover -->
 
-# テンプレートーAizome
+# Aizome
 
-## 一般解の証明から数値計算まで
+## 伝えたいことを、静かに強く。
 
-水城アオ
+Marp presentation template / Your Name
 
 ---
 <!-- _class: agenda -->
 
-# 本日の構成
+# このテンプレートでできること
 
-1. 解きたい問題を定義する
-2. 一般解の構造を証明する
-3. 具体的な方程式を解く
-4. 数値計算として実装・検証する
-
----
-<!-- _class: profile -->
-
-# 自己紹介
-
-![avatar w:220px](./assets/profile-placeholder.svg)
-
-## 水城アオ
-架空のプロダクトエンジニア
-
-- **経歴**：Web制作を経て、業務システムの設計・開発を担当
-
-- **趣味**：街歩き、写真、コーヒー
-
-- **最近の関心**：数式とコードをつなぐ説明
-
-> 複雑なことを、シンプルに伝える。
-
-[![sns-github w:60px](./assets/icons/GitHub_Invertocat_Black_Clearspace.svg)](https://github.com/)
+1. メッセージを一枚で立てる
+2. 情報を比較・整理する
+3. プロセスや数字を見せる
+4. 技術情報とビジュアルを扱う
 
 ---
 <!-- _class: section -->
 
-# 01. Problem
+# 01. Message
 
-## 何を理解し、何を実装するのか
+## まず、聞き手に残したい一文を決める
+
+---
+<!-- _class: statement -->
+
+# 一番伝えたいこと
+
+**資料の価値は、情報量ではなく「見え方が変わること」で決まる。**
+
+補足はこの下に短く置きます。本文を増やすより、主張を一つに絞るスライドです。
 
 ---
 
-# 今回扱う問題
+# 標準スライド
 
-区間 $I$ 上で $P,Q,R$ が連続であるとし、2階非同次線形微分方程式
+本文スライドは、タイトルとコンテンツの境界を明確にしています。
 
-$$
-y''+P(x)y'+Q(x)y=R(x)
-$$
+- 1スライド1メッセージを基本にする
+- 箇条書きは3〜5点程度に抑える
+- **重要語だけを太字**にして視線を誘導する
+- 詳細は表・図・Appendixへ逃がす
 
-を考えます。
-
-> ゴールは公式を暗記することではなく、一般解の構造を証明し、その構造をコードで確かめることです。
+> 補足や「ここだけ覚えてほしい」内容は、引用記法でコールアウトにできます。
 
 ---
 <!-- _class: cards -->
 
-# 解くための3つの問い
+# 3つの論点を並べる
 
-- **構造**
-  なぜ非同次方程式の一般解は「同次解＋特殊解」になるのか。
+- **Why**
+  なぜ今、このテーマに取り組むのか。
 
-- **導出**
-  特殊解を定数変化法でどのように求めるのか。
+- **What**
+  何を変え、何を変えないのか。
 
-- **検証**
-  数値計算で得た解が、厳密解と一致するか。
+- **How**
+  どう進め、どう確かめるのか。
+
+---
+<!-- _class: section -->
+
+# 02. Structure
+
+## 比較・整理・意思決定を一目で伝える
+
+---
+<!-- _class: compare -->
+
+# Before / After
+
+- **Before｜任せる**
+  - 選択肢は誰かが決める
+  - 理由は後から説明される
+  - レビューは正解探しになりやすい
+
+- **After｜自分で選ぶ**
+  - 自分で選ぶ
+  - 自分で説明する
+  - 自分でレビューする
+
+---
+<!-- _class: columns -->
+
+# 2カラムで整理する
+
+- **変えないもの**
+  - 安全性
+  - 信頼性
+  - 説明責任
+
+- **変えるもの**
+  - 意思決定の速度
+  - 検証の粒度
+  - 学習のサイクル
+
+---
+<!-- _class: decision -->
+
+# 意思決定を明示する
+
+背景と選択肢を説明したあと、最後に結論だけを独立させます。
+
+> **Decision:** 小さく作って検証し、成立条件が見えたものから本番へ広げる。
+
+このレイアウトは会議資料・設計レビュー・提案資料で使いやすい構成です。
 
 ---
 <!-- _class: table-center -->
 
-# 記号と役割
+# 表は比較軸を揃える
 
-| 記号 | 意味 | 満たす式 |
-|---|---|---|
-| $L$ | 線形微分作用素 | $L[y]=y''+Py'+Qy$ |
-| $y_0$ | 同次方程式の一般解 | $L[y_0]=0$ |
-| $y_1$ | 非同次方程式の特殊解 | $L[y_1]=R$ |
-| $\phi_1,\phi_2$ | 同次方程式の基本解 | $L[\phi_i]=0$ |
-| $W$ | ロンスキー行列式 | $W=\phi_1\phi_2'-\phi_1'\phi_2$ |
-
----
-<!-- _class: section -->
-
-# 02. Proof
-
-## 一般解の構造を証明する
-
----
-
-# 一般解の主張
-
-線形微分作用素を
-
-$$
-L[y]=y''+P(x)y'+Q(x)y
-$$
-
-と定めます。同次方程式の任意の解を $y_0$、非同次方程式の特殊解を一つ $y_1$ とすると、
-
-$$
-\boxed{y=y_0+y_1}
-$$
-
-が非同次方程式の一般解になります。これを両方向から示します。
-
----
-
-# 証明 1：和は非同次方程式を満たす
-
-$L$ の線形性と $L[y_0]=0$, $L[y_1]=R$ より、
-
-$$
-\begin{aligned}
-L[y_0+y_1]
-&=L[y_0]+L[y_1] \\
-&=0+R \\
-&=R.
-\end{aligned}
-$$
-
-したがって、任意の同次解 $y_0$ に特殊解 $y_1$ を加えたものは、必ず非同次方程式の解です。
-
----
-
-# 証明 2：すべての解がこの形になる
-
-非同次方程式の任意の解を $y$ とします。特殊解 $y_1$ との差を取ると、
-
-$$
-L[y-y_1]=L[y]-L[y_1]=R-R=0.
-$$
-
-よって $y-y_1$ は同次方程式の解です。これを $y_0$ と置けば、
-
-$$
-y-y_1=y_0
-\quad\Longleftrightarrow\quad
-y=y_0+y_1.
-$$
-
-以上により、非同次方程式の解は過不足なく $y_0+y_1$ と表されます。$\square$
-
----
-
-# 同次方程式の一般解
-
-線形独立な基本解を $\phi_1,\phi_2$ とすると、同次方程式の一般解は
-
-$$
-y_0=C_1\phi_1(x)+C_2\phi_2(x)
-$$
-
-です。線形独立性はロンスキー行列式で確認できます。
-
-$$
-W(x)=
-\begin{vmatrix}
-\phi_1(x) & \phi_2(x) \\
-\phi_1'(x) & \phi_2'(x)
-\end{vmatrix}
-\neq0
-$$
-
----
-
-# 特殊解：定数変化法
-
-定数 $C_1,C_2$ を関数 $u_1(x),u_2(x)$ に置き換え、
-
-$$
-y_1=u_1\phi_1+u_2\phi_2
-$$
-
-と仮定します。補助条件
-
-$$
-u_1'\phi_1+u_2'\phi_2=0
-$$
-
-を課すと、$y_1'=u_1\phi_1'+u_2\phi_2'$ となります。
-
----
-
-# 定数変化法：代入する
-
-もう一度微分して $L[y_1]=R$ に代入します。各 $\phi_i$ は同次方程式を満たすため、$u_i$ を含む項が消え、
-
-$$
-u_1'\phi_1'+u_2'\phi_2'=R
-$$
-
-だけが残ります。補助条件と合わせると、
-
-$$
-\begin{pmatrix}
-\phi_1 & \phi_2 \\
-\phi_1' & \phi_2'
-\end{pmatrix}
-\begin{pmatrix}u_1'\\u_2'\end{pmatrix}
-=\begin{pmatrix}0\\R\end{pmatrix}.
-$$
-
----
-
-# 定数変化法：連立方程式を解く
-
-$W\neq0$ なので、クラメルの公式から
-
-$$
-u_1'=-\frac{\phi_2R}{W},
-\qquad
-u_2'=\frac{\phi_1R}{W}
-$$
-
-を得ます。積分して $y_1=u_1\phi_1+u_2\phi_2$ に戻すと、
-
-$$
-y_1
-=-\phi_1\int\frac{\phi_2R}{W}\,dx
-+\phi_2\int\frac{\phi_1R}{W}\,dx.
-$$
-
-積分定数は同次解 $y_0$ に含められます。
+| 観点 | 案A | 案B | 判断 |
+|---|---|---|---|
+| 初期コスト | 小 | 中 | A |
+| 拡張性 | 中 | 大 | B |
+| 運用負荷 | 小 | 中 | A |
+| 将来性 | 中 | 大 | B |
 
 ---
 <!-- _class: section -->
 
-# 03. Example
+# 03. Flow & Metrics
 
-## 証明した構造を具体例に適用する
-
----
-
-# 解く方程式
-
-初期値問題
-
-$$
-y''+3y'+2y=e^x,
-\qquad y(0)=0,\quad y'(0)=0
-$$
-
-を解きます。対応する同次方程式の特性方程式は
-
-$$
-r^2+3r+2=(r+1)(r+2)=0
-$$
-
-なので、
-
-$$
-y_0=C_1e^{-x}+C_2e^{-2x}
-$$
-
-です。
+## 流れと数字は、文章より構造で見せる
 
 ---
+<!-- _class: process -->
 
-# 定数変化法で特殊解を求める
+# 4ステップのプロセス
 
-$\phi_1=e^{-x}$, $\phi_2=e^{-2x}$ とすると、
-
-$$
-W=\phi_1\phi_2'-\phi_1'\phi_2=-e^{-3x}.
-$$
-
-$R=e^x$ を定数変化法の式へ代入すれば、
-
-$$
-u_1'=-\frac{\phi_2R}{W}=e^{2x},
-\qquad
-u_2'=\frac{\phi_1R}{W}=-e^{3x}.
-$$
-
-したがって、特殊解の一つは
-
-$$
-y_1=\frac12e^{2x}e^{-x}-\frac13e^{3x}e^{-2x}
-=\frac16e^x
-$$
-
-です。
+1. **Observe**
+   現状を見る
+2. **Choose**
+   選択する
+3. **Build**
+   小さく作る
+4. **Learn**
+   結果から学ぶ
 
 ---
+<!-- _class: kpi -->
 
-# 厳密解を得る
+# 数字を主役にする
 
-一般解は
+- **42%**
+  *削減率*
+  手作業の削減
 
-$$
-y=C_1e^{-x}+C_2e^{-2x}+\frac{1}{6}e^x
-$$
+- **3.2x**
+  *速度*
+  検証サイクル
 
-です。$y(0)=0$, $y'(0)=0$ を代入すると、
+- **12→4**
+  *工程数*
+  承認ポイント
 
-$$
-C_1+C_2=-\frac16,
-\qquad
-C_1+2C_2=\frac16.
-$$
+- **99.9%**
+  *SLO*
+  目標可用性
 
-したがって $C_1=-\frac12$, $C_2=\frac13$ であり、
+---
+<!-- _class: roadmap -->
 
-$$
-\boxed{y(x)=-\frac12e^{-x}+\frac13e^{-2x}+\frac16e^x}
-$$
+# ロードマップ
 
-を得ます。
+1. **Explore**
+   課題と仮説を整理
+2. **Prototype**
+   最小構成で試す
+3. **Validate**
+   数字と現場で確認
+4. **Scale**
+   本番へ展開
+
+---
+<!-- _class: quote -->
+
+# 引用・キーメッセージ
+
+> 完璧な計画より、検証できる小さな一歩を増やす。
+
+— Aizome sample
 
 ---
 <!-- _class: section -->
 
-# 04. Implementation
+# 04. Technical
 
-## 同じ問題をコードで解く
-
----
-
-# 1階の連立方程式へ変換する
-
-$v=y'$ と置くと、2階方程式は
-
-$$
-\frac{d}{dx}
-\begin{pmatrix}y\\v\end{pmatrix}
-=
-\begin{pmatrix}
-v\\e^x-3v-2y
-\end{pmatrix},
-\qquad
-\begin{pmatrix}y(0)\\v(0)\end{pmatrix}
-=\begin{pmatrix}0\\0\end{pmatrix}
-$$
-
-という1階の連立方程式になります。
-
-> 証明で解の構造を理解し、実装では状態 $(y,v)$ がどう変化するかを小さな刻み幅で追跡します。
+## コード・図・画像も同じトーンで扱う
 
 ---
 
-# 方程式と厳密解をコードにする
+# コードを見せる
 
-```lua
-local function rhs(x, state)
-  local y, velocity = state[1], state[2]
+```typescript
+export async function decide(input: Context) {
+  const options = await explore(input)
+  const choice = rank(options)[0]
 
   return {
-    velocity,
-    math.exp(x) - 3 * velocity - 2 * y,
+    choice,
+    reason: explain(choice),
   }
-end
-
-local function exact(x)
-  return -0.5 * math.exp(-x)
-    + (1 / 3) * math.exp(-2 * x)
-    + (1 / 6) * math.exp(x)
-end
+}
 ```
 
-Luaのテーブルで状態 $\{y,v\}$ を表します。外部ライブラリは使用しません。
+コード面は藍色のダークサーフェスにして、本文との差を明確にしています。
 
 ---
-<!-- _class: dense -->
+<!-- _class: image-right -->
+![bg right:50% 45%](assets/generated/mermaid.svg)
 
-# 4次のRunge–Kutta法を実装する
+# 図と説明を半分ずつ
 
-```lua
-local function shifted(state, slope, scale)
-  return {
-    state[1] + scale * slope[1],
-    state[2] + scale * slope[2],
-  }
-end
+図を右、文章を左に置くレイアウトです。
 
-local function rk4_step(f, x, state, h)
-  local k1 = f(x, state)
-  local k2 = f(x + h/2, shifted(state, k1, h/2))
-  local k3 = f(x + h/2, shifted(state, k2, h/2))
-  local k4 = f(x + h, shifted(state, k3, h))
-
-  return {
-    state[1] + h * (k1[1] + 2*k2[1] + 2*k3[1] + k4[1]) / 6,
-    state[2] + h * (k1[2] + 2*k2[2] + 2*k3[2] + k4[2]) / 6,
-  }
-end
-```
-
-1ステップで傾きを4回評価し、その加重平均で状態を更新します。
+- 図の意味をタイトルで先に言い切る
+- 本文は「図の読み方」に集中する
+- `right` を `left` に変えれば左右反転できます
 
 ---
+<!-- _class: image-left -->
+![bg left:50% cover](assets/placeholder-map.svg)
 
-# 初期値から数値解を計算する
+# 画像を左に置く
 
-```lua
-local function solve(x_end, h)
-  local x = 0.0
-  local state = { 0.0, 0.0 }
+背景画像を使う場合も、文章領域へ重ならないように余白を確保しています。
 
-  while x < x_end - h/2 do
-    state = rk4_step(rhs, x, state, h)
-    x = x + h
-  end
-
-  return state[1]
-end
-
-for _, x in ipairs({ 0.5, 1.0, 1.5, 2.0 }) do
-  local numerical = solve(x, 0.01)
-  print(x, numerical, exact(x))
-end
-```
-
-同じ初期値から各点まで計算し、厳密解との差を確認します。
+> 写真・地図・UIキャプチャと相性の良いレイアウトです。
 
 ---
-<!-- _class: table-center -->
+<!-- _class: full-image -->
+![bg cover brightness:0.62](assets/placeholder-rail.svg)
 
-# 数値解を厳密解と照合する
+# ビジュアルを主役にする
 
-刻み幅を $h=0.01$ とした結果です。
-
-| $x$ | RK4による数値解 | 厳密解 | 絶対誤差 |
-|---:|---:|---:|---:|
-| $0.0$ | 0.000000000 | 0.000000000 | $0$ |
-| $0.5$ | 0.094148029 | 0.094148029 | $5.04\times10^{-11}$ |
-| $1.0$ | 0.314219012 | 0.314219012 | $9.11\times10^{-11}$ |
-| $1.5$ | 0.651978787 | 0.651978788 | $2.77\times10^{-10}$ |
-| $2.0$ | 1.169946921 | 1.169946921 | $5.21\times10^{-10}$ |
-
-数値解は、この範囲では厳密解と高い精度で一致しました。
-
----
-
-# 証明から実装までを振り返る
-
-1. 線形性から、一般解が $y=y_0+y_1$ と分解できることを証明した。
-2. 定数変化法により、特殊解を構成する手順を導いた。
-3. 具体例を解析的に解き、比較対象となる厳密解を得た。
-4. 方程式を1階化してRK4法で実装し、計算結果を検証した。
-
-> 数式は「なぜ正しいか」を説明し、コードは「実際にどう振る舞うか」を確かめる。両方をつなぐことで、理解が検証可能になります。
+文章は結論だけに絞る。
 
 ---
 <!-- _class: section -->
 
 # Appendix
 
-## テキスト記法と画像を使うレイアウト
+## 補足・注意・密度の高い情報
 
 ---
-<!-- _class: image-right -->
-![bg right:52% contain](assets/generated/score.svg)
+<!-- _class: success -->
 
-# LilyPondで楽譜を配置する
+# Success callout
 
-```lilypond
-rightHand = \relative c'' {
-  \key a \minor
-  \time 4/4
-  a4\p( c e a) | g2( e) |
-  f4( a c b) | a2.( e4) |
-  d4( f a d) | c2( a) |
-  b4( gis e gis) | a2.( e4) |
-  % ... 全16小節
-}
+> **成立条件:** 主要な利用シナリオで期待値を満たし、運用手順まで確認できた。
+
+通常の本文と区別して、確認済みの事実や完了条件を示せます。
+
+---
+<!-- _class: warning -->
+
+# Warning callout
+
+> **注意:** 外部サービスへ送信するデータに機密情報が含まれないことを確認する。
+
+注意事項は黄色系のアクセントに切り替えられます。
+
+---
+<!-- _class: dense -->
+
+# Dense / Appendix
+
+密度の高い情報は `dense` クラスへ逃がします。本文で無理に小さな文字を使わないことが重要です。
+
+| 項目 | 内容 | 備考 |
+|---|---|---|
+| Theme | `aizome` | `aizome.css` |
+| Ratio | 16:9 | 標準 |
+| Export | HTML / PDF / PPTX | Marp CLI / VS Code |
+| Layout | class指定 | HTMLを書かずに利用可能 |
+
+```yaml
+---
+marp: true
+theme: aizome
+paginate: true
+size: 16:9
+---
 ```
 
-`.ly` をSVGへ変換し、通常の画像として配置します。
-
 ---
-<!-- _class: image-right -->
-![bg right:50% 45%](assets/generated/mermaid.svg)
+<!-- _class: profile -->
 
-# Mermaidで処理フローを描く
+# Profile
 
-```mermaid
-flowchart TD
-  A[微分方程式]
-    --> B[一般解を証明]
-  B --> C[厳密解]
-  C --> D[Luaで実装]
-  D --> E[誤差を検証]
-```
+![avatar w:220px](./assets/profile-placeholder.svg)
 
-`.mmd` からSVGを生成し、説明の流れを可視化します。
+## Your Name
+Product / Engineering / Design
 
----
-<!-- _class: image-right -->
-![bg right:50% 78%](assets/generated/plantuml.svg)
+- **Role**：役割や専門領域
+- **Focus**：今取り組んでいるテーマ
+- **Message**：今日伝えたいこと
 
-# PlantUMLで処理順を描く
+> 一言で覚えてもらえる自己紹介を置きます。
 
-```plantuml
-@startuml
-User -> Solver: solve(x, h)
-loop x < x_end
-  Solver -> RK4: state, x, h
-  RK4 -> Equation: rhs(x, state)
-  Equation --> RK4: slope
-end
-Solver --> User: numerical_y
-@enduml
-```
-
-`.puml` からSVGを生成し、コードの呼び出し関係を示します。
-
----
-<!-- _class: image-right -->
-![bg right:50% cover](assets/placeholder-rail.svg)
-
-# 横半分に画像を配置する
-
-本文と画像を同じ比重で見せたい場合のレイアウトです。
-
-- 画像はスライドの右半分に配置
-- 左側には結論と短い説明を記載
-- `right` を `left` に変えると左右を反転
-
----
-<!-- _class: full-image -->
-![bg cover brightness:0.45](assets/placeholder-rail.svg)
-
-# 全画面に画像を配置する
-
-画像そのものを主役にし、文章は短いメッセージだけに絞ります。
+[![sns-github w:60px](./assets/icons/GitHub_Invertocat_Black_Clearspace.svg)](https://github.com/)
 
 ---
 <!-- _class: closing -->
 
 # Thank you
 
-証明した構造を、動くコードへ。
+伝えたいことを、静かに強く。

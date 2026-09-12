@@ -559,20 +559,13 @@ Markdownでつくるプレゼンテーション｜水城アオ
 
 ---
 
-<!-- _class: media media-right diagram -->
+<!-- _class: figure no-title -->
 
-# シーケンス図＋解説
+# シーケンス図を大きく見せる
 
-- ![計算処理のシーケンス](assets/generated/plantuml.svg)
-- **呼び出し関係を追う**
+![h:600 計算処理のシーケンス](assets/generated/plantuml.svg)
 
-  - 利用者が計算を開始する
-  - ソルバーが状態を更新する
-  - 計算結果を返す
-
-  本文と図を離し、矢印やラベルまで見渡せるようにします。
-
-  **指定**：`media media-right diagram`。左に移すときは `media-left`。
+<!-- 指定：figure no-title。タイトルと説明文を省き、図全体を中央に表示。h:600で上下60pxの余白を確保し、縦横比を維持します。 -->
 
 ---
 

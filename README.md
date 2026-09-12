@@ -249,6 +249,8 @@ GitHub・X・LinkedIn・Websiteのアイコンとラベルを用意していま�
 
 `media-frame` で余白付きの枠を追加できます。`diagram` は図の外周24px、本文との間48pxを確保し、高さ480pxの枠に収めます。SVGを再生成しても余白は維持されます。`media-wide` は画像側を3:2に広げます（両側画像とは併用しません）。
 
+図だけを1枚で大きく見せる場合は `figure no-title` と `![h:600 図の説明](画像のパス)` を使います。標準のスライドでは上下60pxの余白を残し、図全体を中央に表示します。シーケンス図の作例はこの配置です。
+
 楽譜も同じ `media media-right diagram` の画像を `assets/generated/score.svg` に差し替えて表示できます。楽譜・フロー図・シーケンス図に別々のレイアウト指定は必要ありません。
 
 通常の画像は `![w:360](...)` / `![h:240](...)` で寸法を指定できます。`media`・`ratio-*`・`image-grid` 内ではCSSでサイズを管理するので寸法指定を重ねません。通常の画像例はスライドの余白内に収め、`full-image` だけは意図的に端まで使います。
@@ -483,7 +485,7 @@ HTMLで参照先スライドへ移動できます。PDF・PowerPointやエディ
 | 30 | 縦長画像：全体表示と切り抜き | `gallery image-grid` |
 | 31 | 画像を主役にする | `full-image` |
 | 32 | フロー図＋解説 | `media media-right diagram` |
-| 33 | シーケンス図＋解説 | `media media-right diagram` |
+| 33 | シーケンス図を大きく見せる | `figure no-title` |
 | 34 | 全体＋拡大：注目してほしい箇所を見せる | `image-detail` |
 
 ### コード・数式

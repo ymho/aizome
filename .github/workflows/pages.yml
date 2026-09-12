@@ -53,7 +53,7 @@ jobs:
       - name: Build HTML
         run: |
           mkdir -p _site
-          npx --yes @marp-team/marp-cli@4.3.0 template.md --theme-set aizome.css --output _site/index.html
+          npx --yes @marp-team/marp-cli@4.3.0 template.md --theme-set aizome.css themes/*.css --output _site/index.html
 
       - name: Copy assets
         run: cp -R assets _site/assets

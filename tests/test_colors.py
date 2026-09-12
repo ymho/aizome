@@ -3,10 +3,12 @@ from pathlib import Path
 import re
 import sys
 import unittest
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from sync_colors import sync, START, END
+from check_slides import check
 
 
 def luminance(hex_value):
@@ -21,6 +23,18 @@ def contrast(a, b):
 
 
 class SharedColors(unittest.TestCase):
+    def test_deck_themes_are_registered_and_accepted(self):
+        themes = json.loads((ROOT / 'ai/themes.json').read_text())['themes']
+        settings = json.loads((ROOT / '.vscode/settings.json').read_text())
+        registered = settings['markdown.marp.themes']
+        with tempfile.TemporaryDirectory() as folder:
+            deck = Path(folder) / 'deck.md'
+            for name, theme in themes.items():
+                self.assertIn('./' + theme['css'], registered)
+                self.assertTrue((ROOT / theme['css']).is_file())
+                deck.write_text(f'---\nmarp: true\ntheme: {name}\n---\n# Title\nText\n')
+                self.assertEqual(check(deck)['errors'], 0)
+
     def test_css_is_synced_and_components_have_no_color_literals(self):
         self.assertTrue(sync(True))
         css = (ROOT / 'aizome.css').read_text()

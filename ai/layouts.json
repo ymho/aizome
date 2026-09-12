@@ -620,6 +620,7 @@
     "examples": "template.md",
     "repairs": "examples/repairs.md",
     "colors": "ai/colors.json",
-    "charts": "assets/charts/README.md"
+    "charts": "assets/charts/README.md",
+    "themes": "ai/themes.json"
   }
 }

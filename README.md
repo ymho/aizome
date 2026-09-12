@@ -25,6 +25,36 @@ python3 tools/package_slides.py presentation.html dist/presentation.zip
 
 制作中に見つかった表示の不具合や、ほかの資料にも役立つカスタマイズをぜひ還元してください。[貢献ガイド](CONTRIBUTING.md)に、AI Agentからの案内、変更の切り分け、fork・PR作成の手順をまとめています。Agentには「今回の共通部分の改善を、作者へPRしてください」と依頼できます。
 
+## 資料全体の配色テーマを選ぶ
+
+Markdown冒頭の `theme:` を1か所変更すると、全スライドの表紙・見出し・背景の淡色・カード・表・章扉・蛍光ペンの配色をまとめて切り替えられます。レイアウトや本文の書き換えは不要です。
+
+| 資料全体のテーマ | `theme:` の値 | 雰囲気 |
+|---|---|---|
+| 藍（標準） | `aizome` | 明瞭な青と白 |
+| 青鈍 | `aizome-aonibi` | 落ち着いた青緑と灰白 |
+| 紫 | `aizome-murasaki` | 紫を基調とした柔らかな配色 |
+| 琥珀 | `aizome-kohaku` | 茶金と淡い暖色 |
+| 墨 | `aizome-sumi` | 青みを帯びた墨色と灰白 |
+
+```yaml
+---
+marp: true
+theme: aizome-kohaku
+paginate: true
+---
+```
+
+各スライドの `_class: cards` や `_class: media media-right` はそのままで構いません。`palette-*` はそのスライドだけ強調色を変える指定なので、資料全体を揃える場合は省略します。`surface-dark` と `surface-tint` も選んだテーマに連動します。エラー・警告などの意味を持つ色とコードの構文色は、読み分けのため共通です。
+
+このリポジトリのVS Code設定には5テーマを登録済みです。別の作業場所へコピーする場合は `aizome.css`・`themes/`・`assets/` を持ち込み、Marpのテーマ設定にベースCSSと4つのテーマCSSを登録してください。CLIではまとめて読み込みます。
+
+```bash
+marp presentation.md --theme-set aizome.css themes/*.css --output presentation.html
+```
+
+外部の画像・SVGにはテーマのCSSが継承されません。グラフや図版の色も揃える場合は、選んだテーマの配色を素材側に使ってください。AI向けの選択肢は [ai/themes.json](ai/themes.json)、色の原本は [ai/colors.json](ai/colors.json) です。通常の編集・表示にテーマ生成処理は不要です。
+
 ## カテゴリから選ぶ
 
 [template.md](template.md) を**7カテゴリ・全47枚**に整理しました。作例は見た目・用途が異なるものに絞り、設定方法はこのREADMEに集約しています。各カテゴリの先頭に扉を置いています。2枚目が全体の目次です。

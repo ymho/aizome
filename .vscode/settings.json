@@ -1,6 +1,10 @@
 {
   "markdown.marp.themes": [
-    "./aizome.css"
+    "./aizome.css",
+    "./themes/aizome-aonibi.css",
+    "./themes/aizome-murasaki.css",
+    "./themes/aizome-kohaku.css",
+    "./themes/aizome-sumi.css"
   ],
   "markdown.marp.exportType": "html"
 }

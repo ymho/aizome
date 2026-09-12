@@ -717,7 +717,7 @@ section.code-dark pre {
 }
 section.equation { justify-content: center; }
 section.equation > p:has(mjx-container[display="true"]),
-section.equation > p:has(.katex-display) { font-size: 1.6em; margin-block: 28px; }
+section.equation > p:has(.katex-display) { font-size: 1.15em; margin-block: 24px; }
 section.references > ul { list-style: none; padding: 0; }
 section.references > ul > li { padding: 18px 0; border-bottom: 1px solid var(--line); }
 section.closing h2,

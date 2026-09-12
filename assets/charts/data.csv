@@ -1,0 +1,11 @@
+chart,label,value,unit
+bar,A,40,count
+bar,B,65,count
+bar,C,50,count
+line,04,25,count
+line,05,40,count
+line,06,35,count
+line,07,65,count
+donut,A,50,percent
+donut,B,30,percent
+donut,C,20,percent

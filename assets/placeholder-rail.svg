@@ -1,14 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="720" viewBox="0 0 900 720">
-  <defs>
-    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#dceefa"/><stop offset="1" stop-color="#f7fafc"/></linearGradient>
-    <linearGradient id="rail" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#9db6cc"/><stop offset="1" stop-color="#526173"/></linearGradient>
-  </defs>
-  <rect width="900" height="720" fill="url(#g)"/>
-  <rect x="0" y="0" width="900" height="150" fill="#ffffff" opacity="0.55"/>
-  <path d="M165 720 L415 210 H485 L735 720" fill="none" stroke="url(#rail)" stroke-width="18" opacity="0.75"/>
-  <path d="M315 720 L445 210 M585 720 L455 210" fill="none" stroke="#ffffff" stroke-width="7" opacity="0.9"/>
-  <g opacity="0.28" stroke="#6f8ea8" stroke-width="10"><path d="M40 590 H860"/><path d="M85 520 H815"/><path d="M130 450 H770"/><path d="M185 380 H715"/></g>
-  <circle cx="690" cy="150" r="72" fill="#2b8fd8" opacity="0.14"/>
-  <text x="70" y="95" font-family="Meiryo,Arial" font-size="34" font-weight="700" fill="#3a414b">Image placeholder</text>
-  <text x="70" y="135" font-family="Meiryo,Arial" font-size="20" fill="#667085">Replace with your own photo</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="720" viewBox="0 0 900 720" role="img" aria-labelledby="title desc">
+  <title id="title">Image placeholder 5:4</title>
+  <desc id="desc">Neutral gray image, 900 by 720 pixels. The border and diagonals show crop boundaries.</desc>
+  <defs><pattern id="grid" width="90.0" height="90.0" patternUnits="userSpaceOnUse"><path d="M 90.0 0 H 0 V 90.0" fill="none" stroke="#dedede" stroke-width="1.44"/></pattern></defs>
+  <rect width="900" height="720" fill="#efefef"/>
+  <rect width="900" height="720" fill="url(#grid)"/>
+  <path d="M 0 0 L 900 720 M 900 0 L 0 720" stroke="#c9c9c9" stroke-width="2.057142857142857" fill="none"/>
+  <rect x="36.0" y="36.0" width="828.0" height="648.0" fill="none" stroke="#a5a5a5" stroke-width="2.88" stroke-dasharray="12.0 12.0"/>
+  <rect x="234.0" y="266.4" width="432.0" height="187.20000000000002" rx="10.799999999999999" fill="#efefef"/>
+  <g font-family="Arial, sans-serif" fill="#555555" text-anchor="middle">
+    <text x="450.0" y="360.0" font-size="54.0" font-weight="700">5:4</text>
+    <text x="450.0" y="403.2" font-size="22.68">900 × 720 px</text>
+  </g>
 </svg>

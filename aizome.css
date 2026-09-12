@@ -2,7 +2,33 @@
 
 @import 'default';
 
-:root {
+/* Bundled full-character fonts: no network or system installation required. */
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/MPLUSRounded1c-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('assets/fonts/MPLUSRounded1c-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'M PLUS Rounded 1c';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('assets/fonts/MPLUSRounded1c-Bold.woff') format('woff');
+}
+
+
+section {
   --base: #30343b;
   --muted: #667085;
   --quiet: #8a94a6;
@@ -11,18 +37,46 @@
   --bg: #ffffff;
   --bg-soft: #f7f9fc;
   --bg-tint: #edf6fd;
-  --navy: #26364d;
-  --blue: #2b7bbb;
-  --blue-soft: #dcecf8;
+  --heading: #26364d;
+  --accent: #2b7bbb;
+  --accent-soft: #dcecf8;
   --code-bg: #f5f7fa;
   --code-border: #dfe5ee;
+  --deep: #26364d;
+  --on-deep: #ffffff;
+  --on-deep-muted: #dbe6f0;
+  --success: #237052;
+  --success-soft: #edf7f0;
+  --warning: #946014;
+  --warning-soft: #fff8eb;
+  --danger: #b43c50;
+  --danger-soft: #f7f7f8;
+
+  /* Shared rhythm: outer gutter / block spacing / panel gap / panel inset. */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --gutter: 72px;
+  --body-top: 124px;
+  --body-bottom: 60px;
+  --title-top: 36px;
+  --flow: var(--space-3);
+  --panel-gap: var(--space-3);
+  --panel-inset: var(--space-3);
+  --content-width: 64%;
+  --media-height: 300px;
 }
 
 section {
-  font-family: Meiryo, 'BIZ UDPGothic', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Arial, sans-serif;
+  font-family: 'M PLUS Rounded 1c', Meiryo, 'BIZ UDPGothic', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
   color: var(--base);
   background: var(--bg);
-  padding: 98px 72px 54px;
+  padding: var(--body-top) var(--gutter) var(--body-bottom);
   font-size: 24px;
   line-height: 1.55;
   letter-spacing: 0.01em;
@@ -48,15 +102,15 @@ section::after {
   bottom: 22px;
 }
 
-section h1:first-child {
+section h1:first-of-type {
   position: absolute;
-  top: 34px;
-  left: 72px;
-  right: 72px;
+  top: var(--title-top);
+  left: var(--gutter);
+  right: var(--gutter);
   margin: 0;
   padding: 0 0 12px;
   border-bottom: 1.5px solid var(--line);
-  color: var(--navy);
+  color: var(--heading);
   font-size: 34px;
   font-weight: 700;
   line-height: 1.2;
@@ -64,7 +118,7 @@ section h1:first-child {
 }
 
 section h2 {
-  color: var(--navy);
+  color: var(--heading);
   font-size: 28px;
   margin: 0.3em 0 0.35em;
   font-weight: 700;
@@ -84,7 +138,7 @@ section th {
 }
 
 section strong {
-  color: #273247;
+  color: var(--heading);
   font-weight: 700;
 }
 
@@ -103,13 +157,13 @@ section li {
 }
 
 section a {
-  color: var(--blue);
+  color: var(--accent);
 }
 
 section blockquote {
   margin: 22px 0 0;
   padding: 18px 22px 18px 24px;
-  border-left: 5px solid var(--blue);
+  border-left: 5px solid var(--accent);
   background: var(--bg-soft);
   color: #374151;
   border-radius: 0 10px 10px 0;
@@ -127,8 +181,8 @@ section table {
 }
 
 section th {
-  background: #f2f5f9;
-  color: #334155;
+  background: var(--bg-soft);
+  color: var(--heading);
   font-weight: 700;
 }
 
@@ -169,7 +223,7 @@ section pre code::before {
   right: 0;
   color: #7b8494;
   font-size: 12px;
-  font-family: Meiryo, Arial, sans-serif;
+  font-family: 'M PLUS Rounded 1c', Meiryo, Arial, sans-serif;
   letter-spacing: 0.04em;
 }
 
@@ -204,7 +258,7 @@ section pre code.language-sh::before { content: 'SHELL'; }
 .hljs-tag .hljs-attr { color: #b45309; }
 .hljs-attribute,
 .hljs-name,
-.hljs-tag { color: #334155; }
+.hljs-tag { color: var(--heading); }
 .hljs-built_in,
 .hljs-builtin-name { color: #0369a1; }
 .hljs-meta { color: #64748b; }
@@ -212,17 +266,17 @@ section pre code.language-sh::before { content: 'SHELL'; }
 /* Cover */
 section.cover {
   padding: 86px 86px 72px;
-  background: linear-gradient(135deg, #f7fafc 0%, #edf6fd 100%);
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg-tint) 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-section.cover h1:first-child {
+section.cover h1:first-of-type {
   position: static;
   border: 0;
   padding: 0;
-  color: var(--navy);
+  color: var(--heading);
   font-size: 54px;
   line-height: 1.16;
   max-width: 860px;
@@ -250,14 +304,14 @@ section.closing::after {
 /* Section divider */
 section.section {
   padding: 96px 88px;
-  background: #26364d;
+  background: var(--deep);
   color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-section.section h1:first-child {
+section.section h1:first-of-type {
   position: static;
   border: 0;
   padding: 0;
@@ -269,64 +323,43 @@ section.section h1:first-child {
 section.section h2,
 section.section p,
 section.section li {
-  color: #dbe4ee;
+  color: var(--on-deep-muted);
 }
 
-/* Agenda / simple list */
-section.agenda ol {
+/* Shared list for contents, takeaways and other short numbered items. */
+section.list > ol {
   list-style: decimal-leading-zero;
   padding-left: 1.55em;
   font-size: 27px;
 }
 
-section.agenda li {
+section.list > :is(ol, ul) > li {
   padding: 9px 0;
   border-bottom: 1px solid var(--line-soft);
 }
 
 /* Two or three columns via Markdown lists */
-section.columns > ul,
-section.cards > ul,
-section.compare > ul,
-section.kpi > ul {
+section.cards > ul {
   list-style: none;
   padding: 0;
   margin: 12px 0 0;
   display: grid;
-  gap: 18px;
+  gap: var(--panel-gap);
 }
-
-section.columns > ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 section.cards > ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-section.compare > ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-section.kpi > ul { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-section.columns > ul > li,
-section.cards > ul > li,
-section.compare > ul > li,
-section.kpi > ul > li {
+section.cards > ul > li {
   background: var(--bg-soft);
   border: 1px solid var(--line-soft);
   border-radius: 14px;
-  padding: 18px 20px;
+  padding: var(--panel-inset);
 }
 
-section.cards > ul > li,
-section.kpi > ul > li {
+section.cards > ul > li {
   min-height: 150px;
 }
 
-section.kpi > ul > li {
-  text-align: center;
-  padding-top: 26px;
-}
 
-section.kpi > ul > li strong {
-  display: block;
-  font-size: 36px;
-  line-height: 1.1;
-  color: var(--navy);
-}
 
 /* Roadmap via ordered list */
 section.roadmap > ol {
@@ -336,13 +369,13 @@ section.roadmap > ol {
   margin: 20px 0 0;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: var(--panel-gap);
 }
 
 section.roadmap > ol > li {
   counter-increment: step;
   position: relative;
-  padding: 48px 16px 18px;
+  padding: calc(var(--panel-inset) + 32px) var(--panel-inset) var(--panel-inset);
   border: 1px solid var(--line-soft);
   border-radius: 14px;
   background: var(--bg-soft);
@@ -352,9 +385,9 @@ section.roadmap > ol > li {
 section.roadmap > ol > li::before {
   content: counter(step, decimal-leading-zero);
   position: absolute;
-  top: 15px;
-  left: 16px;
-  color: var(--blue);
+  top: var(--panel-inset);
+  left: var(--panel-inset);
+  color: var(--accent);
   font-weight: 700;
   font-size: 18px;
 }
@@ -362,19 +395,19 @@ section.roadmap > ol > li::before {
 /* Decision slide */
 section.decision blockquote {
   margin-top: 24px;
-  background: #f2f7fb;
-  border-left-color: #3178b7;
+  background: var(--bg-tint);
+  border-left-color: var(--accent);
   font-size: 26px;
 }
 
 /* Image split slides: Marp bg left/right does most of the layout. */
 section.image-right,
 section.image-left {
-  padding-top: 104px;
+  --body-top: 124px;
 }
 
-section.image-right h1:first-child,
-section.image-left h1:first-child {
+section.image-right h1:first-of-type,
+section.image-left h1:first-of-type {
   background: rgba(255, 255, 255, 0.92);
 }
 
@@ -384,7 +417,7 @@ section.full-image {
   padding: 78px 78px 58px;
 }
 
-section.full-image h1:first-child {
+section.full-image h1:first-of-type {
   position: static;
   border: 0;
   padding: 0;
@@ -413,26 +446,32 @@ section.quote blockquote {
   margin: 28px 0 0;
   font-size: 34px;
   line-height: 1.45;
-  color: var(--navy);
+  color: var(--heading);
 }
 
 section.quote blockquote p {
-  color: var(--navy);
+  color: var(--heading);
 }
 
 /* Dense appendix */
 section.dense {
   font-size: 19px;
-  padding-top: 92px;
+  --body-top: 116px;
 }
 
-section.dense h1:first-child { font-size: 30px; }
-section.dense table { font-size: 16px; }
+section.dense h1:first-of-type { font-size: 30px; }
+section.dense table {
+  display: table;
+  width: 100%;
+  font-size: 20px;
+  line-height: 1.45;
+}
+section.dense table :is(th, td) { padding: 12px 16px; }
 section.dense pre code { font-size: 15px; }
 
 /* Closing */
 section.closing {
-  background: linear-gradient(135deg, #26364d 0%, #314d6f 100%);
+  background: linear-gradient(135deg, var(--deep) 0%, var(--accent) 160%);
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -440,7 +479,7 @@ section.closing {
   padding: 90px;
 }
 
-section.closing h1:first-child {
+section.closing h1:first-of-type {
   position: static;
   border: 0;
   color: #ffffff;
@@ -448,38 +487,8 @@ section.closing h1:first-child {
 }
 
 section.closing p {
-  color: #dbe6f0;
+  color: var(--on-deep-muted);
   font-size: 24px;
-}
-
-section.profile {
-  padding-right: 42%;
-}
-
-section.profile img[alt~="avatar"] {
-  position: absolute;
-  right: 95px;
-  top: 150px;
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 6px solid #ffffff;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16);
-}
-
-section.profile p:has(img[alt^="sns-"]) {
-  position: absolute;
-  right: 92px;
-  top: 410px;
-  width: 230px;
-  text-align: center;
-}
-
-section.profile img[alt^="sns-"] {
-  margin: 0 8px;
-  vertical-align: middle;
-  opacity: 0.86;
 }
 
 section img[alt="inline-icon"] {
@@ -494,4 +503,750 @@ section img[alt="inline-icon"] {
 section img[alt~="center"] {
   display: block;
   margin-inline: auto;
+}
+
+/* Markdown-only patterns. A top-level list item is one panel. */
+
+section.cards > ul > li,
+section.roadmap > ol > li {
+  min-width: 0;
+  margin: 0;
+}
+
+section li > p { margin: 0 0 0.65em; }
+section li > p:last-child { margin-bottom: 0; }
+section.cards > ul > li > strong,
+section.cards > ul > li > p > strong {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--heading);
+}
+
+/* Display slides retain a small title and emphasize the main message. */
+section.lead,
+section.stat { justify-content: center; }
+section.lead h2 { font-size: 46px; line-height: 1.4; }
+section.lead > p { max-width: 920px; font-size: 27px; }
+section.stat { text-align: center; }
+section.stat h2 { font-size: 112px; line-height: 1.1; color: var(--accent); margin: 0; }
+section.stat > p { margin: 16px 0 0; }
+section.stat > p > strong { font-size: 32px; }
+
+section.pros-cons > ul,
+section.gallery > ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  gap: var(--panel-gap);
+}
+section.pros-cons > ul > li {
+  border-top: 5px solid var(--accent);
+  background: var(--bg-soft);
+  padding: var(--panel-inset);
+  min-width: 0;
+}
+section.pros-cons > ul > li:last-child { border-color: var(--warning); }
+section.pros-cons > ul > li > strong { display: block; margin-bottom: 20px; }
+
+/* Ordered-list patterns: horizontal steps and a vertical timeline. */
+section.steps > ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  gap: var(--panel-gap);
+  margin-top: 28px;
+}
+section.steps > ol > li { counter-increment: step; min-width: 0; }
+section.steps > ol > li::before {
+  content: counter(step, decimal-leading-zero);
+  display: block;
+  color: var(--accent);
+  font-size: 52px;
+  font-weight: 700;
+  border-bottom: 3px solid var(--accent-soft);
+  margin-bottom: 20px;
+}
+section.checklist > ul { list-style: none; padding: 0; }
+section.checklist > ul > li {
+  position: relative;
+  padding: 20px 20px 20px 56px;
+  border-bottom: 1px solid var(--line);
+}
+section.checklist > ul > li::before {
+  content: '✓';
+  position: absolute;
+  left: 14px;
+  color: var(--accent);
+  font-weight: 700;
+}
+/* Keep each question close to its answer, and separate the next pair. */
+section.faq > h2 { font-size: 25px; margin: 0; }
+section.faq > h2::before { content: 'Q. '; color: var(--accent); }
+section.faq > p { padding-bottom: 24px; border-bottom: 1px solid var(--line-soft); font-size: 22px; }
+section.faq > h2 + p { margin: 10px 0 0; }
+section.faq > p + h2 { margin-top: 32px; }
+section.faq > p:last-child { padding-bottom: 0; border-bottom: 0; }
+
+section.matrix { justify-content: center; }
+section.matrix table { display: table; table-layout: fixed; font-size: 23px; }
+section.matrix td { height: 100px; text-align: center; }
+section.matrix tbody tr:first-child td:last-child { background: var(--accent-soft); }
+section.matrix th:first-child { width: 24%; }
+section.callout { justify-content: center; }
+section.callout blockquote { border-left-color: var(--warning); background: var(--warning-soft); padding: 32px; font-size: 30px; }
+section.callout blockquote p + p { margin-top: 12px; }
+section.summary > ul > li { counter-increment: point; position: relative; padding: 16px 0 16px 66px; border-bottom: 1px solid var(--line); }
+section.summary li > p { margin: 0; }
+section.action table { display: table; }
+section.action th:first-child { width: 54%; }
+
+/* Images remain ordinary Markdown images; split backgrounds use Marp. */
+section.figure > p { text-align: center; margin: 16px 0 0; }
+section.figure > p:last-child { font-size: 20px; color: var(--muted); }
+section.gallery > ul > li { min-width: 0; padding: var(--panel-inset); text-align: center; background: var(--bg-soft); border-radius: 12px; }
+section.gallery img { max-width: 100%; object-fit: contain; }
+section.code > pre { flex: 1; }
+section.code > pre code { font-size: 23px; }
+section.code-notes pre { margin-top: 12px; padding: 12px; }
+section.code-notes pre code { font-size: 18px; white-space: pre-wrap; overflow-wrap: anywhere; }
+section.equation { justify-content: center; }
+section.equation > p:has(mjx-container[display="true"]),
+section.equation > p:has(.katex-display) { font-size: 1.6em; margin-block: 28px; }
+section.references > ul { list-style: none; padding: 0; }
+section.references > ul > li { padding: 18px 0; border-bottom: 1px solid var(--line); }
+section.closing h2,
+section.closing a { color: var(--on-deep-muted); }
+
+/* === Reusable modules =====================================================
+   Compose one class per axis. Values live on each slide, never on the deck.
+   Kept in this theme file so VS Code and CLI need no extra CSS imports.
+   ====================================================================== */
+
+/* Palette: accent, soft highlight, tinted surface, heading and dark surface. */
+section.palette-blue,
+section.palette-catalog > ul > li:nth-child(1) { --accent: #2b7bbb; --accent-soft: #dcecf8; --bg-tint: #edf6fd; --heading: #26364d; --deep: #26364d; }
+section.palette-teal,
+section.palette-catalog > ul > li:nth-child(2) { --accent: #527780; --accent-soft: #e3ecee; --bg-tint: #f3f7f8; --heading: #344951; --deep: #303e49; }
+section.palette-violet,
+section.palette-catalog > ul > li:nth-child(3) { --accent: #7655ab; --accent-soft: #eae2f7; --bg-tint: #f6f2fb; --heading: #43345f; --deep: #362949; }
+section.palette-amber,
+section.palette-catalog > ul > li:nth-child(4) { --accent: #946014; --accent-soft: #f5e6c9; --bg-tint: #fcf7ed; --heading: #57432a; --deep: #483721; }
+section.palette-rose,
+section.palette-catalog > ul > li:nth-child(5) { --accent: #876773; --accent-soft: #ece9eb; --bg-tint: #f7f7f8; --heading: #41434b; --deep: #343840; }
+section.palette-slate,
+section.palette-catalog > ul > li:nth-child(6) { --accent: #536479; --accent-soft: #e0e6ee; --bg-tint: #f2f5f8; --heading: #303d50; --deep: #293341; }
+
+section.surface-tint { background: var(--bg-tint); }
+section.surface-dark {
+  --base: #f1f5f9;
+  --heading: #ffffff;
+  --muted: #c6d1df;
+  --line: #657182;
+  --line-soft: #536073;
+  --bg-soft: #344153;
+  --bg-tint: #3c4b60;
+  --accent: #c1e2ff;
+  --accent-soft: #455c73;
+  background: var(--deep);
+  color: var(--base);
+}
+section.surface-dark :is(h2, h3, em) { color: var(--heading); }
+section.surface-dark blockquote { color: var(--base); }
+section.surface-dark::after { color: var(--muted); }
+section.emphasis[class] strong { color: var(--accent); }
+/* Use semantic colors independently of the slide palette. */
+section.note-success > blockquote { background: var(--success-soft); border-color: var(--success); }
+section.note-warning > blockquote { background: var(--warning-soft); border-color: var(--warning); }
+section.note-danger > blockquote { background: var(--danger-soft); border-color: var(--danger); }
+section:is(.note-success, .note-warning, .note-danger) > blockquote :is(p, strong) { color: #30343b; }
+
+/* Outer spacing presets do not shrink typography. */
+section.space-compact { --gutter: 56px; --body-top: 112px; --body-bottom: 44px; --flow: 16px; --panel-gap: 16px; --panel-inset: 20px; }
+section.space-standard { --gutter: 72px; --body-top: 124px; --body-bottom: 60px; --flow: 24px; --panel-gap: 24px; --panel-inset: 24px; }
+section.space-airy { --gutter: 96px; --body-top: 140px; --body-bottom: 76px; --flow: 32px; --panel-gap: 32px; --panel-inset: 32px; }
+section.gap-sm { --panel-gap: var(--space-2); }
+section.gap-md { --panel-gap: var(--space-3); }
+section.gap-lg { --panel-gap: var(--space-5); }
+section.inset-sm { --panel-inset: var(--space-2); }
+section.inset-md { --panel-inset: var(--space-3); }
+section.inset-lg { --panel-inset: var(--space-4); }
+section.flow-sm { --flow: var(--space-2); }
+section.flow-md { --flow: var(--space-3); }
+section.flow-lg { --flow: var(--space-4); }
+
+/* Consistent top edge, title clearance and rhythm for body slides. */
+section:not(.cover, .section, .closing, .full-image) {
+  padding: var(--body-top) var(--gutter) var(--body-bottom);
+}
+section:not(.cover, .section, .closing, .full-image, .profile) > :is(p, ul, ol, pre, table, blockquote) {
+  margin-top: var(--flow);
+  margin-bottom: 0;
+}
+section:not(.cover, .section, .closing, .full-image, .profile) > h1 + :is(p, ul, ol, pre, table, blockquote, h2) { margin-top: 0; }
+section:is(.cover, .section, .closing, .full-image):is(.space-compact, .space-standard, .space-airy) { padding: var(--gutter); }
+section:is(.cards, .cards, .pros-cons, .roadmap, .steps, .media, .gallery) { justify-content: center; }
+section.align-top { justify-content: flex-start; }
+section.align-middle { justify-content: center; }
+section.align-bottom { justify-content: flex-end; }
+
+/* Narrow body area: title stays aligned with the outer gutter. */
+section:is(.content-left, .content-center, .content-right) > :not(h1, header, footer) {
+  box-sizing: border-box;
+  width: var(--content-width);
+  max-width: var(--content-width);
+  align-self: flex-start;
+  margin-inline: 0;
+}
+section.content-center > :not(h1, header, footer) { align-self: center; }
+section.content-right > :not(h1, header, footer) { align-self: flex-end; }
+
+/* Symmetric variants for two panels. Focus color is independent of ratio. */
+section:is(.cards, .gallery).wide-left > ul { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+section:is(.cards, .gallery).wide-right > ul { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+section:is(.cards, .gallery).equal > ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+section:is(.cards, .cards):is(.focus-left, .focus-right, .focus-both) > ul > li { background: var(--bg-soft); border-color: var(--line-soft); }
+section:is(.cards, .cards).focus-left > ul > li:first-child, section:is(.cards, .cards).focus-right > ul > li:last-child, section:is(.cards, .cards).focus-both > ul > li { background: var(--bg-tint); border-color: var(--accent); }
+
+/* Decorative edge rails do not consume pseudo-elements used by Marp. */
+section.rail-left { box-shadow: inset 8px 0 var(--accent); }
+section.rail-right { box-shadow: inset -8px 0 var(--accent); }
+section.rail-both { box-shadow: inset 8px 0 var(--accent), inset -8px 0 var(--accent); }
+
+/* Foreground media: ordinary list + images; the title spans the full slide.
+   left/right: first item is the image, second is the text.
+   both: left image, text, right image. No HTML wrappers or blank list items. */
+section.media > ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--panel-gap);
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+section.media > ul > li { min-width: 0; margin: 0; }
+section.media > ul > li > p { margin: 0; }
+section.media > ul > li > p + p,
+section.media > ul > li > ul { margin-top: var(--flow); }
+section.media > ul > li > p > strong { color: var(--heading); font-size: 28px; }
+section.media img { display: block; width: 100%; height: var(--media-height); object-fit: contain; }
+section.media.media-right > ul > li:first-child { grid-column: 2; grid-row: 1; }
+section.media.media-right > ul > li:nth-child(2) { grid-column: 1; grid-row: 1; }
+section.media.media-both > ul { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr); }
+section.media.media-both { --media-height: 260px; }
+section.media.media-wide > ul { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+section.media.media-wide.media-right > ul { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+section.media.media-frame img { box-sizing: border-box; background: var(--bg-soft); border: 1px solid var(--line-soft); border-radius: 16px; padding: var(--panel-inset); }
+
+/* Local vertical space: a standalone Markdown image paragraph is the spacer.
+   Adds exactly this height to the normal flow; does not replace existing gaps.
+   The transparent asset remains harmless in a plain Markdown renderer. */
+section p:has(> img[alt="vspace-xs"]) { --vspace: 8px; }
+section p:has(> img[alt="vspace-sm"]) { --vspace: 16px; }
+section p:has(> img[alt="vspace-md"]) { --vspace: 24px; }
+section p:has(> img[alt="vspace-lg"]) { --vspace: 32px; }
+section p:has(> img[alt="vspace-xl"]) { --vspace: 48px; }
+section p:has(> img[alt="vspace-2xl"]) { --vspace: 64px; }
+section p:has(> img[alt^="vspace-"][src]) {
+  display: block;
+  flex: 0 0 var(--vspace, 24px);
+  height: var(--vspace, 24px);
+  min-height: var(--vspace, 24px);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  line-height: 0;
+  font-size: 0;
+}
+section img[alt^="vspace-"] { display: none; }
+
+/* Image sizing and crop examples: preserve the source ratio by default. */
+section.gallery > ul:has(> li:nth-child(3)) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+section.image-grid > ul > li img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  background: #fafafa;
+  outline: 1px solid #c8c8c8;
+}
+section:is(.media, .image-grid).fit-cover img { object-fit: cover; }
+section:is(.media, .image-grid).fit-contain img { object-fit: contain; }
+
+/* Diagram panels: leave breathing room around the SVG, even after regeneration.
+   Use ordinary Markdown images (not bg) so padding belongs to the layout. */
+section.media.diagram {
+  --media-height: 480px;
+  --panel-gap: 48px;
+}
+section.media.diagram img {
+  box-sizing: border-box;
+  padding: var(--panel-inset);
+  border: 1px solid var(--line-soft);
+  border-radius: 12px;
+  background: #ffffff;
+  object-fit: contain;
+}
+/* Explicit spacing utilities still take precedence over diagram defaults. */
+section.media.diagram.gap-sm { --panel-gap: var(--space-2); }
+section.media.diagram.gap-md { --panel-gap: var(--space-3); }
+section.media.diagram.gap-lg { --panel-gap: var(--space-5); }
+
+/* Profile: identity header above a shared detail row and contact footer.
+   Markdown order: avatar, name, role, intro, detail list, motto, socials. */
+section.profile {
+  --profile-text: 792px;
+  --profile-photo: 176px;
+  --profile-gap: 32px;
+  --profile-copy-column: 1;
+  --profile-image-column: 2;
+  display: grid;
+  grid-template-columns: minmax(0, var(--profile-text)) var(--profile-photo);
+  column-gap: var(--profile-gap);
+  row-gap: 12px;
+  align-content: center;
+  justify-content: center;
+  font-size: 22px;
+}
+section.profile > h2 { grid-column: var(--profile-copy-column); font-size: 40px; margin: 0; align-self: end; }
+section.profile > p { grid-column: var(--profile-copy-column); margin: 0; }
+section.profile > h2 + p { color: var(--muted); font-size: 20px; }
+section.profile > p:has(img[alt~="avatar"]) {
+  grid-column: var(--profile-image-column);
+  grid-row: 1 / span 3;
+  align-self: center;
+}
+section.profile img[alt~="avatar"] {
+  display: block;
+  width: var(--profile-photo);
+  height: var(--profile-photo);
+  max-width: 100%;
+  object-fit: cover;
+  border: 0;
+  box-shadow: none;
+  border-radius: 50%;
+}
+section.profile.avatar-square img[alt~="avatar"] { border-radius: 0; }
+section.profile.avatar-rounded img[alt~="avatar"] { border-radius: 20px; }
+section.profile.avatar-circle img[alt~="avatar"] { border-radius: 50%; }
+section.profile.profile-left {
+  --profile-copy-column: 2;
+  --profile-image-column: 1;
+  grid-template-columns: var(--profile-photo) minmax(0, var(--profile-text));
+}
+section.profile > ul {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 22px 0 12px;
+  border-top: 1px solid var(--line);
+  font-size: 20px;
+}
+section.profile > ul > li { min-width: 0; margin: 0; }
+section.profile > ul > li + li { border-left: 1px solid var(--line-soft); padding-left: 24px; }
+section.profile li > p { margin: 0; }
+section.profile li > p + p { margin-top: 8px; }
+section.profile li > p:first-child > strong { font-size: 17px; color: var(--muted); }
+section.profile > blockquote {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+}
+section.profile > blockquote p { color: var(--muted); }
+section.profile > p:has(img[alt^="sns-"]) {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  font-size: 17px;
+}
+section.profile > p:has(img[alt^="sns-"]) a { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); text-decoration: none; }
+section.profile img[alt^="sns-"] { width: 24px; height: 24px; object-fit: contain; }
+
+/* Ratio presets: the image box keeps its ratio and stays inside the gutters. */
+section.ratio-1x1 { --image-ratio: 1 / 1; --image-width: 400px; }
+section.ratio-16x9 { --image-ratio: 16 / 9; --image-width: 640px; }
+section.ratio-4x3 { --image-ratio: 4 / 3; --image-width: 560px; }
+section.ratio-3x4 { --image-ratio: 3 / 4; --image-width: 315px; }
+section.ratio-9x16 { --image-ratio: 9 / 16; --image-width: 236.25px; }
+section.ratio-3x1 { --image-ratio: 3 / 1; --image-width: 1080px; }
+section:is(.media, .figure):is(.ratio-1x1, .ratio-16x9, .ratio-4x3, .ratio-3x4, .ratio-9x16, .ratio-3x1) img {
+  display: block;
+  box-sizing: border-box;
+  width: min(100%, var(--image-width));
+  height: auto;
+  aspect-ratio: var(--image-ratio);
+  margin-inline: auto;
+  object-fit: contain;
+}
+section:is(.media, .figure).fit-cover img { object-fit: cover; }
+section.figure { justify-content: center; }
+section.figure img { max-width: 100%; object-fit: contain; }
+
+/* Per-image crop settings take precedence over ratio presets. */
+section:is(.media, .image-grid) img[alt~="crop"] { object-fit: cover; }
+section:is(.media, .image-grid) img[alt~="crop-top"] { object-fit: cover; object-position: center top; }
+
+/* Card content alignment is independent of the slide's vertical alignment. */
+section:is(.cards, .cards, .pros-cons):is(.card-top, .card-middle) > ul > li {
+  display: flex;
+  flex-direction: column;
+  min-height: var(--card-height, 240px);
+  padding: var(--panel-inset);
+}
+section:is(.cards, .cards, .pros-cons).card-top > ul > li { justify-content: flex-start; }
+section:is(.cards, .cards, .pros-cons).card-middle > ul > li { justify-content: center; }
+section:is(.cards, .cards, .pros-cons):is(.card-top, .card-middle) > ul > li > :first-child { margin-top: 0; }
+section:is(.cards, .cards, .pros-cons):is(.card-top, .card-middle) > ul > li > :last-child { margin-bottom: 0; }
+section:is(.cards, .cards, .pros-cons).card-text-center > ul > li { text-align: center; }
+
+/* Screen transitions: ordered-list items contain image, label, then action. */
+section.screen-flow {
+  --screen-height: 400px;
+  --screen-gap: 56px;
+  justify-content: center;
+}
+section.screen-flow > ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--screen-gap);
+  list-style: none;
+  padding: 0;
+}
+section.screen-flow > ol > li { position: relative; min-width: 0; margin: 0; text-align: center; }
+section.screen-flow > ol > li > p { margin: 0; font-size: 19px; }
+section.screen-flow > ol > li > p + p { margin-top: 12px; }
+section.screen-flow img { display: block; width: auto; max-width: 100%; height: var(--screen-height); object-fit: contain; margin-inline: auto; border-radius: 12px; }
+section.screen-flow > ol > li:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  left: calc(100% + var(--screen-gap) / 2);
+  top: calc(var(--screen-height) / 2);
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  line-height: 1;
+  color: var(--accent);
+}
+section.screen-flow:has(> ol > li:nth-child(4)) { --screen-height: 352px; --screen-gap: 32px; }
+section.screen-flow > ol:has(> li:nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+section.screen-flow > p { font-size: 18px; color: var(--muted); text-align: center; }
+
+/* Hide the visible title, and reclaim its space with symmetric outer padding.
+   An h1 may stay in the source for indexing, or be omitted entirely. */
+section.no-title { --body-top: var(--body-bottom); }
+section.no-title > h1:first-of-type { display: none; }
+section.no-title > :first-child:not(h1) { margin-top: 0; }
+section.screen-flow.no-title { --screen-height: 440px; }
+
+/* One-page palette reference shares the actual per-slide palette definitions.
+   List order: blue, teal, violet, amber, rose, slate. */
+section.palette-catalog { justify-content: center; }
+section.palette-catalog > ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+section.palette-catalog > ul > li {
+  min-width: 0;
+  margin: 0;
+  padding: 16px 24px;
+  border: 1px solid var(--accent-soft);
+  border-top: 8px solid var(--accent);
+  border-radius: 12px;
+  background: var(--bg-tint);
+}
+section.palette-catalog li > p { margin: 0; }
+section.palette-catalog li > p + p { margin-top: 8px; }
+section.palette-catalog li strong { color: var(--accent); }
+section.palette-catalog li > p:last-child { font-size: 19px; }
+section.palette-catalog li code { font-size: 18px; }
+section.palette-catalog > p { font-size: 19px; }
+
+/* Item count, rather than a four/grid class, chooses the card grid.
+   1..3: one row; 4: 2x2; 5..6: 3x2. Keep copy short above three items. */
+section.cards > ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+section.cards > ul:has(> li:only-child) { grid-template-columns: minmax(0, 1fr); }
+section.cards > ul:has(> li:nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+section.cards > ul:has(> li:nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+section.cards:has(> ul > li:nth-child(4)) { --card-height: 180px; }
+
+/* Unified timelines: vertical by default, horizontal and split are modifiers.
+   Circles are unnumbered by default; numbered enables one continuous counter. */
+section.timeline { --timeline-gap: 64px; --timeline-row-gap: 48px; }
+section.timeline > ol {
+  --event-count: 1;
+  --event-half: 1;
+  flex: 1;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(var(--event-count), minmax(0, 1fr));
+  list-style: none;
+  padding: 0;
+  counter-reset: event;
+}
+section.timeline > ol::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  left: 16px;
+  top: 24px;
+  bottom: 24px;
+  background: var(--accent-soft);
+  pointer-events: none;
+}
+section.timeline > ol > li { position: relative; counter-increment: event; margin: 0; padding: 4px 0 4px 56px; min-width: 0; font-size: 22px; line-height: 1.45; }
+section.timeline > ol > li::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  z-index: 1;
+}
+section.timeline.numbered > ol > li::before {
+  content: counter(event, decimal-leading-zero);
+  box-sizing: border-box;
+  top: 4px;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--accent-soft);
+  background: var(--bg-tint);
+}
+section.timeline li > p { margin: 0; }
+section.timeline li > p + p { margin-top: 6px; color: var(--muted); font-size: 19px; }
+section.timeline > p { font-size: 17px; color: var(--muted); }
+section.timeline.split > ol {
+  position: static;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(var(--event-half), minmax(0, 1fr));
+  column-gap: var(--timeline-gap);
+}
+section.timeline.split > ol::before { left: calc(var(--gutter) + 16px); top: var(--body-top); bottom: 0; }
+section.timeline.split > ol::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  left: calc(50% + var(--timeline-gap) / 2 + 16px);
+  top: 0;
+  bottom: var(--body-bottom);
+  background: var(--accent-soft);
+  pointer-events: none;
+}
+section.timeline.horizontal { justify-content: center; }
+section.timeline.horizontal > ol {
+  flex: initial;
+  position: relative;
+  grid-template-columns: repeat(var(--event-count), minmax(0, 1fr));
+  grid-template-rows: auto;
+  column-gap: var(--panel-gap);
+}
+section.timeline.horizontal > ol::before { top: 16px; left: 16px; right: 0; bottom: auto; width: auto; height: 2px; }
+section.timeline.horizontal > ol > li { padding: 48px 0 0; }
+section.timeline.horizontal > ol > li::before { top: 10px; }
+section.timeline.horizontal.numbered > ol > li::before { top: 0; }
+section.timeline.horizontal.split > ol {
+  flex: 1;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(var(--event-half), minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  row-gap: var(--timeline-row-gap);
+}
+section.timeline.horizontal.split > ol::before { right: calc(-1 * var(--gutter)); }
+section.timeline.horizontal.split > ol::after {
+  width: auto;
+  height: 2px;
+  top: calc((100% - var(--timeline-row-gap)) / 2 + var(--timeline-row-gap) + 16px);
+  bottom: auto;
+  left: calc(-1 * var(--gutter));
+  right: 0;
+}
+section.timeline > ol:has(> li:nth-child(1):last-child) { --event-count: 1; --event-half: 1; }
+section.timeline > ol:has(> li:nth-child(2):last-child) { --event-count: 2; --event-half: 1; }
+section.timeline > ol:has(> li:nth-child(3):last-child) { --event-count: 3; --event-half: 2; }
+section.timeline > ol:has(> li:nth-child(4):last-child) { --event-count: 4; --event-half: 2; }
+section.timeline > ol:has(> li:nth-child(5):last-child) { --event-count: 5; --event-half: 3; }
+section.timeline > ol:has(> li:nth-child(6):last-child) { --event-count: 6; --event-half: 3; }
+section.timeline > ol:has(> li:nth-child(7):last-child) { --event-count: 7; --event-half: 4; }
+section.timeline > ol:has(> li:nth-child(8):last-child) { --event-count: 8; --event-half: 4; }
+section.timeline > ol:has(> li:nth-child(9):last-child) { --event-count: 9; --event-half: 5; }
+section.timeline > ol:has(> li:nth-child(10):last-child) { --event-count: 10; --event-half: 5; }
+
+/* A small category label above the existing 34px title, using Marp _header. */
+section.section-title { --title-top: 56px; --body-top: 148px; }
+section.section-title > header {
+  position: absolute;
+  top: 26px;
+  left: var(--gutter);
+  right: var(--gutter);
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.3;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+section.section-title > h1:first-of-type { font-size: 34px; }
+section.no-title.section-title { --body-top: var(--body-bottom); }
+section.no-title > header { display: none; }
+
+/* Marp's shortcode/Unicode emoji images stay inline in every image layout. */
+section img.emoji[data-marp-twemoji] {
+  display: inline-block;
+  box-sizing: content-box;
+  width: 1em;
+  height: 1em;
+  min-width: 0;
+  max-width: none;
+  aspect-ratio: auto;
+  margin: 0 .05em 0 .1em;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  object-fit: contain;
+  vertical-align: -.1em;
+}
+section.emoji-catalog { justify-content: center; }
+section.emoji-catalog table { display: table; width: 100%; font-size: 20px; }
+section.emoji-catalog :is(th, td):nth-child(odd) { text-align: center; width: 48px; }
+section.emoji-catalog td code { font-size: 17px; white-space: nowrap; }
+section.emoji-catalog > p { font-size: 19px; }
+
+/* Two-line titles retain the normal type size and reserve body clearance. */
+section.title-long { --body-top: 180px; }
+section.title-long.section-title { --body-top: 204px; }
+section.title-long > h1:first-of-type { overflow-wrap: anywhere; text-wrap: pretty; }
+section.title-long.no-title { --body-top: var(--body-bottom); }
+
+/* Sources use Marp's local footer; longer notes use a final Markdown quote. */
+section.with-source { --body-bottom: 112px; }
+section.with-source > footer {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 48px;
+  width: auto;
+  margin: 0;
+  padding: 12px 0 0;
+  border-top: 1px solid var(--line);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+section.with-notes { --body-bottom: 156px; }
+section.with-notes > blockquote:last-child {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: 52px;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 14px 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+}
+section.with-notes > blockquote:last-child p { margin: 0; color: var(--muted); }
+section.with-notes > blockquote:last-child p + p { margin-top: 8px; }
+
+/* A clear change in two panels; the arrow lives inside the shared gutter. */
+section.before-after { --panel-gap: 64px; }
+section.before-after > ul { position: relative; }
+section.before-after > ul::after {
+  content: '→'; position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%); color: var(--accent); font-size: 30px;
+}
+/* Put the recommendation first, middle or last without changing card count. */
+
+/* Whole image and a separate detail crop; both retain safe inner margins. */
+section.image-detail { justify-content: center; }
+section.image-detail > ul {
+  display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 48px; list-style: none; padding: 0; align-items: start;
+}
+section.image-detail > ul > li { min-width: 0; margin: 0; }
+section.image-detail > ul > li > p { margin: 0; }
+section.image-detail > ul > li > p + p { margin-top: 16px; font-size: 20px; }
+section.image-detail img:not(.emoji) {
+  display: block; width: 100%; height: 300px; object-fit: contain;
+  box-sizing: border-box; padding: 16px; background: var(--bg-soft); border-radius: 12px;
+}
+section.image-detail.detail-left > ul { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+section.image-detail.detail-left > ul > li:first-child { grid-column: 2; grid-row: 1; }
+section.image-detail.detail-left > ul > li:last-child { grid-column: 1; grid-row: 1; }
+section.risk-action { justify-content: center; }
+section.risk-action table { display: table; width: 100%; font-size: 21px; }
+section.risk-action :is(th, td) { padding: 18px 20px; vertical-align: top; }
+section.risk-action :is(th, td):first-child { width: 26%; }
+section.risk-action :is(th, td):last-child { width: 20%; }
+
+/* Comparison tables fill their intended width, with equal option columns. */
+section.comparison-table { justify-content: center; }
+section.comparison-table > table {
+  display: table; table-layout: fixed; width: 100%; align-self: center;
+  font-size: 24px; line-height: 1.45;
+}
+section.comparison-table > table :is(th, td) {
+  padding: 16px 20px; vertical-align: middle; overflow-wrap: anywhere;
+}
+section.comparison-table > table :is(th, td):first-child { width: 24%; text-align: left; }
+section.comparison-table > table :is(th, td):not(:first-child) { text-align: center; }
+section.comparison-table.table-compact > table { font-size: 21px; }
+section.comparison-table.table-compact > table :is(th, td) { padding: 12px 16px; }
+
+/* H6 captions retain Marp's built-in heading anchors for named links. */
+section.captioned > h6 {
+  flex: 0 0 auto; margin: 0; padding: 0; color: var(--muted);
+  font-size: 18px; font-weight: 500; line-height: 1.5;
+  text-align: center;
+}
+section.captioned > h6 + table { margin-top: 12px; }
+section.captioned > p:has(> img:not(.emoji)) + h6 { margin-top: 12px; }
+section.captioned > h6 + p { margin-top: 24px; }
+
+/* Shared emphasis and two-card proportions replace purpose-specific layouts. */
+section.cards.focus-center > ul > li:nth-child(2) {
+  background: var(--bg-tint); border-color: var(--accent);
+}
+section.cards.wide-left > ul:has(> li:nth-child(2):last-child) {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+section.cards.wide-right > ul:has(> li:nth-child(2):last-child) {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+}
+
+section.list > ul { padding-left: 1.55em; font-size: 27px; }
+section.list > :is(ol, ul) > li::marker { color: var(--accent); }
+section.list > :is(ol, ul) > li > p { margin: 0; }
+section.list > :is(ol, ul) > li > p + p { margin-top: 8px; font-size: 22px; }
+section.list > ol > li > a[href^="#"]:last-child {
+  float: right; margin-left: 24px; font-variant-numeric: tabular-nums;
 }

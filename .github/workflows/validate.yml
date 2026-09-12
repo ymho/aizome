@@ -30,12 +30,18 @@ jobs:
       - name: Build HTML
         run: |
           mkdir -p "$RUNNER_TEMP/aizome-output"
-          npx --yes @marp-team/marp-cli@4.3.0 template.md --theme-set aizome.css --output "$RUNNER_TEMP/aizome-output/index.html"
-          npx --yes @marp-team/marp-cli@4.3.0 examples/repairs-after.md --theme-set aizome.css --output "$RUNNER_TEMP/aizome-output/repairs.html"
+          npx --yes @marp-team/marp-cli@4.3.0 template.md --theme-set aizome.css themes/*.css --output "$RUNNER_TEMP/aizome-output/index.html"
+          npx --yes @marp-team/marp-cli@4.3.0 examples/repairs-after.md --theme-set aizome.css themes/*.css --output "$RUNNER_TEMP/aizome-output/repairs.html"
       - name: Check rendered slides
         run: |
           node tools/check-browser.cjs "$RUNNER_TEMP/aizome-output/index.html" --root . --browser "$(command -v google-chrome)" --module "$RUNNER_TEMP/aizome-tools/node_modules/puppeteer-core" --no-sandbox --output "$RUNNER_TEMP/aizome-output/catalog-report.json"
           node tools/check-browser.cjs "$RUNNER_TEMP/aizome-output/repairs.html" --root . --browser "$(command -v google-chrome)" --module "$RUNNER_TEMP/aizome-tools/node_modules/puppeteer-core" --no-sandbox --output "$RUNNER_TEMP/aizome-output/repairs-report.json" --screenshots "$RUNNER_TEMP/aizome-output/repairs-screenshots"
+      - name: Check all document color themes
+        run: |
+          for deck_theme in aizome-aonibi aizome-murasaki aizome-kohaku aizome-sumi; do
+            npx --yes @marp-team/marp-cli@4.3.0 template.md --theme "$deck_theme" --theme-set aizome.css themes/*.css --output "$RUNNER_TEMP/aizome-output/$deck_theme.html"
+            node tools/check-browser.cjs "$RUNNER_TEMP/aizome-output/$deck_theme.html" --root . --browser "$(command -v google-chrome)" --module "$RUNNER_TEMP/aizome-tools/node_modules/puppeteer-core" --no-sandbox --output "$RUNNER_TEMP/aizome-output/$deck_theme-report.json"
+          done
       - name: Verify the checker detects rendering failures
         run: |
           python3 tests/render_defects.py "$RUNNER_TEMP/aizome-output/index.html" "$RUNNER_TEMP/aizome-output/broken.html"

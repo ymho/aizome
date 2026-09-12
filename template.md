@@ -6,6 +6,7 @@ size: 16:9
 title: Aizome スライドパターン集
 author: 水城アオ（サンプル）
 ---
+<!-- 資料全体の配色は冒頭のthemeを変更：aizome / aizome-aonibi / aizome-murasaki / aizome-kohaku / aizome-sumi。 -->
 <!-- _class: cover -->
 
 # Aizome スライドパターン集

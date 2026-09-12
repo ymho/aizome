@@ -99,6 +99,8 @@ CSSに過去の部品が残っていても、新規資料はREADMEに掲載さ�
 
 ### 色・文字
 
+資料全体の配色は `ai/themes.json` から選び、Front Matterの `theme:` に設定します。標準の `aizome` に加え、`aizome-aonibi`・`aizome-murasaki`・`aizome-kohaku`・`aizome-sumi` を利用できます。各スライドに `palette-*` を繰り返す必要はありません。ユーザーが「全体のテーマ」と指定した場合、単一スライドの配色クラス追加と取り違えないでください。CLIは `--theme-set aizome.css themes/*.css` で全テーマを登録します。画像・グラフはテーマに自動追従しないため、素材の配色もテーマの原本に合わせます。
+
 本文と見出しは同梱のM PLUS Rounded 1cです。別のフォントを追加する必要はありません。コード・数式の専用フォントは維持します。
 
 配色は `palette-ai`・`palette-aonibi`・`palette-murasaki`・`palette-kohaku`・`palette-haizakura`・`palette-sumi`。資料の基本色を決め、意味のある箇所にだけ別の強調色を使います。`surface-tint` は淡い背景、`surface-dark` は濃い背景、`emphasis` は太字の強調です。赤い全面背景や強い緑を独自に追加せず、既存パレットを優先してください。色だけで推奨・注意・完了を伝えないでください。

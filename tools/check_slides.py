@@ -58,8 +58,10 @@ def check(path, catalog=None):
         issue('error', 'syntax', parse_error)
     if not re.search(r'^marp:\s*true\s*$', front, re.M):
         issue('error', 'front-matter', 'marp: true が必要です。')
-    if not re.search(r'^theme:\s*[\'"]?aizome[\'"]?\s*$', front, re.M):
-        issue('error', 'theme', 'theme: aizome を指定してください。')
+    themes = json.loads((REPO / 'ai/themes.json').read_text())['themes']
+    theme_names = '|'.join(re.escape(name) for name in themes)
+    if not re.search(r'^theme:\s*[\'"]?(?:' + theme_names + r')[\'"]?\s*$', front, re.M):
+        issue('error', 'theme', 'themeには次のいずれかを指定してください：' + ', '.join(themes))
     if re.search(r'^class:', front, re.M):
         issue('warning', 'global-class', 'Front Matterのclass継承は静的判定の対象外です。_classを推奨します。')
     headings, duplicates, links = {}, {}, []

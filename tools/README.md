@@ -101,3 +101,5 @@ python3 -m unittest discover -s tests -v
 ```
 
 PRのCIでは、静的チェック、テスト、HTML生成、表示チェック、ZIP作成、展開後の表示チェックを実施します。チェック結果と配布ZIPをActionsのartifactに保存します。スライドの元データを外部の生成サービスに送る必要はありません。
+
+全体配色の選択肢は `ai/themes.json`、対応CSSは `themes/` です。`sync_colors.py` はベースCSSの色と派生テーマCSSの両方を同期し、`--check` でも確認します。Marp CLIには `--theme-set aizome.css themes/*.css` を指定します。

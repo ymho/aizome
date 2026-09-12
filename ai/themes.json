@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "default": "aizome",
+  "themes": {
+    "aizome": {
+      "name": "藍",
+      "palette": "ai",
+      "css": "aizome.css"
+    },
+    "aizome-aonibi": {
+      "name": "青鈍",
+      "palette": "aonibi",
+      "css": "themes/aizome-aonibi.css"
+    },
+    "aizome-murasaki": {
+      "name": "紫",
+      "palette": "murasaki",
+      "css": "themes/aizome-murasaki.css"
+    },
+    "aizome-kohaku": {
+      "name": "琥珀",
+      "palette": "kohaku",
+      "css": "themes/aizome-kohaku.css"
+    },
+    "aizome-sumi": {
+      "name": "墨",
+      "palette": "sumi",
+      "css": "themes/aizome-sumi.css"
+    }
+  }
+}

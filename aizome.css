@@ -240,6 +240,25 @@ section li {
   margin: 0.15em 0;
 }
 
+/* Nested Roman numerals share a fixed column instead of protruding left. */
+section li > ol {
+  list-style: none;
+  padding-left: 0;
+}
+section li > ol > li {
+  position: relative;
+  padding-left: 2.5em;
+  text-align: left;
+}
+section li > ol > li::before {
+  content: counter(list-item, lower-roman) ".";
+  position: absolute;
+  left: 0;
+  width: 2em;
+  text-align: left;
+  color: var(--base);
+}
+
 section a {
   color: var(--accent);
 }

@@ -27,17 +27,17 @@ python3 tools/package_slides.py presentation.html dist/presentation.zip
 
 ## カテゴリから選ぶ
 
-[template.md](template.md) を**7カテゴリ・全49枚**に整理しました。作例は見た目・用途が異なるものに絞り、設定方法はこのREADMEに集約しています。各カテゴリの先頭に扉を置いています。2枚目が全体の目次です。
+[template.md](template.md) を**7カテゴリ・全47枚**に整理しました。作例は見た目・用途が異なるものに絞り、設定方法はこのREADMEに集約しています。各カテゴリの先頭に扉を置いています。2枚目が全体の目次です。
 
 | カテゴリ | スライド |
 |---|---|
 | 導入・本文 | 3〜8枚目 |
 | カード・比較・数値 | 9〜17枚目 |
-| 時系列・画面遷移 | 18〜23枚目 |
-| 画像・図版 | 24〜34枚目 |
-| コード・数式 | 35〜39枚目 |
-| 配色・余白・見出し | 40〜43枚目 |
-| 結論・補足 | 44〜49枚目 |
+| 時系列・画面遷移 | 18〜22枚目 |
+| 画像・図版 | 23〜33枚目 |
+| コード・数式 | 34〜37枚目 |
+| 配色・余白・見出し | 38〜41枚目 |
+| 結論・補足 | 42〜47枚目 |
 
 必要な1枚を `---` の区切り線と `<!-- _class: ... -->` ごとコピーしてください。Front Matterはデッキ全体に1つだけ必要です。本文に `div`・`span`・`br`・インラインCSSを書く必要はありません。
 
@@ -283,6 +283,14 @@ GitHub・X・LinkedIn・Websiteのアイコンとラベルを用意していま�
 
 配色は `palette-ai`・`palette-aonibi`・`palette-murasaki`・`palette-kohaku`・`palette-haizakura`・`palette-sumi` の6種類です。配色一覧の1枚で比較できます。`emphasis` は太字に強調色、`surface-tint` は淡い背景、`surface-dark` は濃い背景を適用します。引用には `note-success` / `note-warning` / `note-danger` も使えます。
 
+### コード欄をエディタ風にする
+
+`<!-- _class: code code-dark -->` で、コード欄だけを黒背景にできます。通常の明るい背景へ戻す場合は `code-dark` を外します。カード内でも `cards code-notes code-dark` として使えます。
+
+言語名はコード欄の左上に置き、区切り線と余白で本文から離します。コードフェンスに `python`・`javascript` などを書くと表示されます。言語指定のないブロックにはラベルを表示しません。スライド全体を濃色にする既存の `surface-dark` とも併用できます。
+
+数式は `$ ... $` が文中、`$$ ... $$` が独立した表示です。複数行の導出は `aligned` の `&` で等号の位置を揃え、`\\` で改行します。数式の作例は1枚に統合しています。
+
 ### 蛍光ペン風の強調と配色名
 
 `***重要な言葉***` で、文字の下側に蛍光ペンのような色を引けます。通常のMarkdownの「太字＋強調」を使うため、HTMLや追加の変換処理は不要です。`**太字**` は通常の太字、`*強調*` は通常の強調のままです。`==文字==` はこのテーマでは使いません。
@@ -336,7 +344,7 @@ Marp標準の絵文字コードを、本文・見出し・箇条書きにその�
 - :bulb: 改善のアイデア
 ```
 
-42枚目に、よく使う18種類とコードを1枚にまとめています。コードそのものを表示するときはバッククォートで囲みます（例：`:smile:`）。未対応のコードはそのまま文字として残ります。絵文字はMarp標準のTwemoji配信元から画像を読み込むため、表示・書き出し時にインターネット接続が必要です。
+40枚目に、よく使う18種類とコードを1枚にまとめています。コードそのものを表示するときはバッククォートで囲みます（例：`:smile:`）。未対応のコードはそのまま文字として残ります。絵文字はMarp標準のTwemoji配信元から画像を読み込むため、表示・書き出し時にインターネット接続が必要です。
 
 ### 長いタイトル
 
@@ -466,57 +474,55 @@ HTMLで参照先スライドへ移動できます。PDF・PowerPointやエディ
 | No. | パターン | クラス |
 |---|---|---|
 | 18 | 03. 時系列・画面遷移 | `section` |
-| 19 | 時系列：縦1列・番号あり | `timeline numbered` |
-| 20 | 時系列：縦2列・番号なし | `timeline split` |
-| 21 | 時系列：横1段・番号なし | `timeline horizontal` |
-| 22 | 時系列：横2段・番号あり | `timeline horizontal split numbered` |
-| 23 | スマホの画面遷移：3〜4画面を自動配置 | `screen-flow` |
+| 19 | 時系列：縦2列・番号なし | `timeline split` |
+| 20 | 時系列：横1段・番号なし | `timeline horizontal` |
+| 21 | 時系列：横2段・番号あり | `timeline horizontal split numbered` |
+| 22 | スマホの画面遷移：3〜4画面を自動配置 | `screen-flow` |
 
 ### 画像・図版
 
 | No. | パターン | クラス |
 |---|---|---|
-| 24 | 04. 画像・図版 | `section` |
-| 25 | 1:1の画像を使う | `media media-right ratio-1x1` |
-| 26 | 16:9の画像を使う | `media media-right ratio-16x9` |
-| 27 | 9:16の画像を使う | `media media-right ratio-9x16` |
-| 28 | 3:1の画像を使う | `figure ratio-3x1 captioned` |
-| 29 | 左右で異なる比率の画像 | `media media-both media-frame` |
-| 30 | 縦長画像：全体表示と切り抜き | `gallery image-grid` |
-| 31 | 画像を主役にする | `full-image` |
-| 32 | フロー図＋解説 | `media media-right diagram` |
-| 33 | シーケンス図を大きく見せる | `figure no-title` |
-| 34 | 全体＋拡大：注目してほしい箇所を見せる | `image-detail` |
+| 23 | 04. 画像・図版 | `section` |
+| 24 | 1:1の画像を使う | `media media-right ratio-1x1` |
+| 25 | 16:9の画像を使う | `media media-right ratio-16x9` |
+| 26 | 9:16の画像を使う | `media media-right ratio-9x16` |
+| 27 | 3:1の画像を使う | `figure ratio-3x1 captioned` |
+| 28 | 左右で異なる比率の画像 | `media media-both media-frame` |
+| 29 | 縦長画像：全体表示と切り抜き | `gallery image-grid` |
+| 30 | 画像を主役にする | `full-image` |
+| 31 | フロー図＋解説 | `media media-right diagram` |
+| 32 | シーケンス図を大きく見せる | `figure no-title` |
+| 33 | 全体＋拡大：注目してほしい箇所を見せる | `image-detail` |
 
 ### コード・数式
 
 | No. | パターン | クラス |
 |---|---|---|
-| 35 | 05. コード・数式 | `section` |
-| 36 | コードを大きく見せる | `code` |
-| 37 | コード＋解説 | `cards code-notes` |
-| 38 | 数式を中心に説明 | `equation` |
-| 39 | 導出・証明 | `align-middle` |
+| 34 | 05. コード・数式 | `section` |
+| 35 | コードを大きく見せる | `code code-dark` |
+| 36 | コード＋解説 | `cards code-notes` |
+| 37 | 数式を中心に説明 | `equation` |
 
 ### 配色・余白・見出し
 
 | No. | パターン | クラス |
 |---|---|---|
-| 40 | 06. 配色・余白・見出し | `section` |
-| 41 | 配色一覧：6色を見比べる | `palette-catalog` |
-| 42 | 絵文字コード：よく使う18種類 | `emoji-catalog` |
-| 43 | 小さなセクション名を添え、長いタイトルも文字を縮めずに本文と余白を分けて伝える | `title-long section-title cards` |
+| 38 | 06. 配色・余白・見出し | `section` |
+| 39 | 配色一覧：6色を見比べる | `palette-catalog` |
+| 40 | 絵文字コード：よく使う18種類 | `emoji-catalog` |
+| 41 | 小さなセクション名を添え、長いタイトルも文字を縮めずに本文と余白を分けて伝える | `title-long section-title cards` |
 
 ### 結論・補足
 
 | No. | パターン | クラス |
 |---|---|---|
-| 44 | 07. 結論・補足 | `section` |
-| 45 | 提案・意思決定 | `decision` |
-| 46 | 次のアクション | `action` |
-| 47 | 課題・対応・判断条件を1枚にまとめる | `risk-action` |
-| 48 | 参考資料・リンク | `references` |
-| 49 | Thank you | `closing` |
+| 42 | 07. 結論・補足 | `section` |
+| 43 | 提案・意思決定 | `decision` |
+| 44 | 次のアクション | `action` |
+| 45 | 課題・対応・判断条件を1枚にまとめる | `risk-action` |
+| 46 | 参考資料・リンク | `references` |
+| 47 | Thank you | `closing` |
 
 ## フォント
 

@@ -247,3 +247,5 @@ marp presentation.md --theme-set aizome.css --output presentation.html
 案内の前に、汎用サンプルへの置き換え、差分の切り分け、可能な検証、PRタイトルと本文の準備まで進めます。ユーザーがその変更のPR作成を依頼している、または改善の継続的なPR提出を許可している場合は、重ねて確認せず、認証・提出先・既存PRを確認して作成します。
 
 提出先、forkからの手順、CLIがない場合の代替、作成後の報告は [CONTRIBUTING.md](../CONTRIBUTING.md)、本文の構成は [PRテンプレート](../.github/pull_request_template.md) を使います。作者がPRを歓迎していても、利用者の非公開資料まで公開してよいことにはなりません。
+
+コード欄だけを黒背景にする場合は `code-dark` を追加します（`code`、`cards code-notes` など）。言語名はコードフェンスで指定し、ラベル用のHTMLは書きません。数式・導出はカタログの1枚にまとめた例を参照します。

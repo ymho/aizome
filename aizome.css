@@ -46,6 +46,7 @@ section {
   --iro-kage: rgba(0, 0, 0, 0.35);
   --iro-usukage: rgba(0, 0, 0, 0.3);
   --iro-sukashishiro: rgba(255, 255, 255, 0.92);
+  --iro-kuro: #111111;
   --iro-ai-accent: #2b7bbb;
   --iro-ai-soft: #dcecf8;
   --iro-ai-tint: #edf6fd;
@@ -290,32 +291,35 @@ section pre code {
   line-height: 1.45;
   background: transparent;
   color: var(--code-base);
-  padding-top: 20px;
+  padding-top: 0;
   position: relative;
 }
 
-section pre code::before {
-  position: absolute;
-  top: -4px;
-  right: 0;
+section pre::before {
+  display: block;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--code-border);
+  text-align: left;
+  white-space: normal;
   color: var(--muted);
   font-size: 12px;
   font-family: 'M PLUS Rounded 1c', Meiryo, Arial, sans-serif;
   letter-spacing: 0.04em;
 }
 
-section pre code.language-python::before { content: 'PYTHON'; }
-section pre code.language-lua::before { content: 'LUA'; }
-section pre code.language-lilypond::before { content: 'LILYPOND'; }
-section pre code.language-mermaid::before { content: 'MERMAID'; }
-section pre code.language-plantuml::before { content: 'PLANTUML'; }
-section pre code.language-javascript::before { content: 'JAVASCRIPT'; }
-section pre code.language-typescript::before { content: 'TYPESCRIPT'; }
-section pre code.language-json::before { content: 'JSON'; }
-section pre code.language-yaml::before { content: 'YAML'; }
-section pre code.language-css::before { content: 'CSS'; }
-section pre code.language-bash::before { content: 'BASH'; }
-section pre code.language-sh::before { content: 'SHELL'; }
+section pre:has(code.language-python)::before { content: 'PYTHON'; }
+section pre:has(code.language-lua)::before { content: 'LUA'; }
+section pre:has(code.language-lilypond)::before { content: 'LILYPOND'; }
+section pre:has(code.language-mermaid)::before { content: 'MERMAID'; }
+section pre:has(code.language-plantuml)::before { content: 'PLANTUML'; }
+section pre:has(code.language-javascript)::before { content: 'JAVASCRIPT'; }
+section pre:has(code.language-typescript)::before { content: 'TYPESCRIPT'; }
+section pre:has(code.language-json)::before { content: 'JSON'; }
+section pre:has(code.language-yaml)::before { content: 'YAML'; }
+section pre:has(code.language-css)::before { content: 'CSS'; }
+section pre:has(code.language-bash)::before { content: 'BASH'; }
+section pre:has(code.language-sh)::before { content: 'SHELL'; }
 
 /* Highlight.js: subdued colors */
 .hljs-comment,
@@ -689,6 +693,22 @@ section.code > pre { flex: 1; }
 section.code > pre code { font-size: 23px; }
 section.code-notes pre { margin-top: 12px; padding: 12px; }
 section.code-notes pre code { font-size: 18px; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* The editor treatment is local to code blocks, including blocks inside cards. */
+section.code-dark pre {
+  --code-bg: var(--iro-kuro);
+  --code-base: var(--iro-yoiro);
+  --code-border: var(--iro-sumi);
+  --muted: var(--iro-yoake);
+  --heading: var(--iro-yoiro);
+  --syntax-keyword: var(--iro-murasaki-soft);
+  --syntax-string: var(--iro-aonibi-soft);
+  --syntax-title: var(--iro-ai-soft);
+  --syntax-number: var(--iro-kohaku-soft);
+  --syntax-builtin: var(--iro-haizakura-soft);
+  background: var(--code-bg);
+  border-color: var(--code-border);
+}
 section.equation { justify-content: center; }
 section.equation > p:has(mjx-container[display="true"]),
 section.equation > p:has(.katex-display) { font-size: 1.6em; margin-block: 28px; }

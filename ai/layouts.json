@@ -566,7 +566,8 @@
     },
     "marker-sumi": {
       "exclusiveGroup": "marker-color"
-    }
+    },
+    "code-dark": {}
   },
   "deprecated": {
     "kpi": "cards",

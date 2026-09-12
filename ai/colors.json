@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "defaultPalette": "ai",
+  "neutral": {
+    "sumi": "#30343b",
+    "usuzumi": "#667085",
+    "kasumi": "#8a94a6",
+    "gin": "#d8dee8",
+    "usugin": "#e9edf4",
+    "shiro": "#ffffff",
+    "yukishiro": "#f7f9fc",
+    "seihaku": "#f5f7fa",
+    "hakugin": "#dfe5ee",
+    "yoiro": "#f1f5f9",
+    "yoake": "#dbe6f0",
+    "beni": "#b43c50",
+    "usubeni": "#fbf1f3",
+    "kage": "rgba(0, 0, 0, 0.35)",
+    "usukage": "rgba(0, 0, 0, 0.3)",
+    "sukashishiro": "rgba(255, 255, 255, 0.92)"
+  },
+  "palettes": {
+    "ai": {
+      "name": "藍",
+      "accent": "#2b7bbb",
+      "soft": "#dcecf8",
+      "tint": "#edf6fd",
+      "heading": "#26364d",
+      "deep": "#26364d",
+      "darkMarker": "#284e74",
+      "darkPanel": "#35455b",
+      "darkPanelTint": "#3f4f65",
+      "darkLine": "#647487"
+    },
+    "aonibi": {
+      "name": "青鈍",
+      "accent": "#527780",
+      "soft": "#e3ecee",
+      "tint": "#f3f7f8",
+      "heading": "#344951",
+      "deep": "#303e49",
+      "darkMarker": "#3c525c",
+      "darkPanel": "#3e4c56",
+      "darkPanelTint": "#495660",
+      "darkLine": "#6d7981"
+    },
+    "murasaki": {
+      "name": "紫",
+      "accent": "#7655ab",
+      "soft": "#eae2f7",
+      "tint": "#f6f2fb",
+      "heading": "#43345f",
+      "deep": "#362949",
+      "darkMarker": "#4c386b",
+      "darkPanel": "#443857",
+      "darkPanelTint": "#4f4361",
+      "darkLine": "#736884"
+    },
+    "kohaku": {
+      "name": "琥珀",
+      "accent": "#946014",
+      "soft": "#f5e6c9",
+      "tint": "#fcf7ed",
+      "heading": "#57432a",
+      "deep": "#483721",
+      "darkMarker": "#63451c",
+      "darkPanel": "#56452e",
+      "darkPanelTint": "#605039",
+      "darkLine": "#83725a"
+    },
+    "haizakura": {
+      "name": "灰桜",
+      "accent": "#876773",
+      "soft": "#ece9eb",
+      "tint": "#f7f7f8",
+      "heading": "#41434b",
+      "deep": "#343840",
+      "darkMarker": "#514852",
+      "darkPanel": "#43464e",
+      "darkPanelTint": "#4e5158",
+      "darkLine": "#73747a"
+    },
+    "sumi": {
+      "name": "墨",
+      "accent": "#536479",
+      "soft": "#e0e6ee",
+      "tint": "#f2f5f8",
+      "heading": "#303d50",
+      "deep": "#293341",
+      "darkMarker": "#384455",
+      "darkPanel": "#38414f",
+      "darkPanelTint": "#434c59",
+      "darkLine": "#67707c"
+    }
+  },
+  "highlightSyntax": "***強調する言葉***",
+  "description": "色の原本。tools/sync_colors.pyでCSSへ反映。編集・表示時の変換は不要。"
+}

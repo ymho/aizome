@@ -475,24 +475,6 @@
     "rail-both": {
       "exclusiveGroup": "rail"
     },
-    "palette-blue": {
-      "exclusiveGroup": "palette"
-    },
-    "palette-teal": {
-      "exclusiveGroup": "palette"
-    },
-    "palette-violet": {
-      "exclusiveGroup": "palette"
-    },
-    "palette-amber": {
-      "exclusiveGroup": "palette"
-    },
-    "palette-rose": {
-      "exclusiveGroup": "palette"
-    },
-    "palette-slate": {
-      "exclusiveGroup": "palette"
-    },
     "surface-tint": {
       "exclusiveGroup": "surface"
     },
@@ -548,7 +530,43 @@
       ],
       "exclusiveGroup": "notes"
     },
-    "captioned": {}
+    "captioned": {},
+    "palette-ai": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-ai": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-aonibi": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-aonibi": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-murasaki": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-murasaki": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-kohaku": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-kohaku": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-haizakura": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-haizakura": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-sumi": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-sumi": {
+      "exclusiveGroup": "marker-color"
+    }
   },
   "deprecated": {
     "kpi": "cards",
@@ -565,7 +583,13 @@
     "four": "項目数で自動配置",
     "grid": "項目数で自動配置",
     "timeline-wrap": "timeline split",
-    "timeline-horizontal": "timeline horizontal"
+    "timeline-horizontal": "timeline horizontal",
+    "palette-blue": "palette-ai",
+    "palette-teal": "palette-aonibi",
+    "palette-violet": "palette-murasaki",
+    "palette-amber": "palette-kohaku",
+    "palette-rose": "palette-haizakura",
+    "palette-slate": "palette-sumi"
   },
   "rules": {
     "titleMaxLines": 2,
@@ -574,12 +598,14 @@
     "notesMaxLines": 2,
     "rawHtml": "not supported in authored content",
     "itemCounting": "top-level list items only",
-    "maximumBaseLayouts": 1
+    "maximumBaseLayouts": 1,
+    "highlightSyntax": "***重要な言葉***"
   },
   "resources": {
     "guide": "docs/AI_SLIDE_GUIDE.md",
     "usage": "README.md",
     "examples": "template.md",
-    "repairs": "examples/repairs.md"
+    "repairs": "examples/repairs.md",
+    "colors": "ai/colors.json"
   }
 }

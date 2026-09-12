@@ -19,6 +19,7 @@ jobs:
           node-version: 22
       - name: Static checks and tool tests
         run: |
+          python3 tools/sync_colors.py --check
           python3 -m unittest discover -s tests -v
           python3 tools/check_slides.py template.md --strict --json
           python3 tools/check_slides.py examples/repairs-after.md --strict --json

@@ -690,38 +690,38 @@ $$
 
 - **藍**
 
-  `palette-blue`
+  `palette-ai`
 
-  **強調文字**と淡い背景
-- **スモークブルー**
+  ***蛍光ペン風***の強調
+- **青鈍**
 
-  `palette-teal`
+  `palette-aonibi`
 
-  **強調文字**と淡い背景
+  ***蛍光ペン風***の強調
 - **紫**
 
-  `palette-violet`
+  `palette-murasaki`
 
-  **強調文字**と淡い背景
+  ***蛍光ペン風***の強調
 - **琥珀**
 
-  `palette-amber`
+  `palette-kohaku`
 
-  **強調文字**と淡い背景
-- **ローズ**
+  ***蛍光ペン風***の強調
+- **灰桜**
 
-  `palette-rose`
+  `palette-haizakura`
 
-  **強調文字**と淡い背景
-- **スレート**
+  ***蛍光ペン風***の強調
+- **墨**
 
-  `palette-slate`
+  `palette-sumi`
 
-  **強調文字**と淡い背景
+  ***蛍光ペン風***の強調
 
-色名のクラスをレイアウトに追加します。例：`cards palette-teal`
+配色は `palette-ai` などを追加。蛍光ペン風の強調は `***重要な言葉***`。
 
-`emphasis`：太字に強調色 ／ `surface-tint`：淡い背景 ／ `surface-dark`：濃い背景
+`marker-kohaku`：線だけ琥珀色 ／ `emphasis`：太字に色 ／ `surface-tint`・`surface-dark`：背景
 
 ---
 

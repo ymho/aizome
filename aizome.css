@@ -28,29 +28,106 @@
 }
 
 
+/* BEGIN GENERATED COLORS: tools/sync_colors.py */
 section {
-  --base: #30343b;
-  --muted: #667085;
-  --quiet: #8a94a6;
-  --line: #d8dee8;
-  --line-soft: #e9edf4;
-  --bg: #ffffff;
-  --bg-soft: #f7f9fc;
-  --bg-tint: #edf6fd;
-  --heading: #26364d;
-  --accent: #2b7bbb;
-  --accent-soft: #dcecf8;
-  --code-bg: #f5f7fa;
-  --code-border: #dfe5ee;
-  --deep: #26364d;
-  --on-deep: #ffffff;
-  --on-deep-muted: #dbe6f0;
-  --success: #237052;
-  --success-soft: #edf7f0;
-  --warning: #946014;
-  --warning-soft: #fff8eb;
-  --danger: #b43c50;
-  --danger-soft: #f7f7f8;
+  --iro-sumi: #30343b;
+  --iro-usuzumi: #667085;
+  --iro-kasumi: #8a94a6;
+  --iro-gin: #d8dee8;
+  --iro-usugin: #e9edf4;
+  --iro-shiro: #ffffff;
+  --iro-yukishiro: #f7f9fc;
+  --iro-seihaku: #f5f7fa;
+  --iro-hakugin: #dfe5ee;
+  --iro-yoiro: #f1f5f9;
+  --iro-yoake: #dbe6f0;
+  --iro-beni: #b43c50;
+  --iro-usubeni: #fbf1f3;
+  --iro-kage: rgba(0, 0, 0, 0.35);
+  --iro-usukage: rgba(0, 0, 0, 0.3);
+  --iro-sukashishiro: rgba(255, 255, 255, 0.92);
+  --iro-ai-accent: #2b7bbb;
+  --iro-ai-soft: #dcecf8;
+  --iro-ai-tint: #edf6fd;
+  --iro-ai-heading: #26364d;
+  --iro-ai-deep: #26364d;
+  --iro-ai-dark-marker: #284e74;
+  --iro-ai-dark-panel: #35455b;
+  --iro-ai-dark-panel-tint: #3f4f65;
+  --iro-ai-dark-line: #647487;
+  --iro-aonibi-accent: #527780;
+  --iro-aonibi-soft: #e3ecee;
+  --iro-aonibi-tint: #f3f7f8;
+  --iro-aonibi-heading: #344951;
+  --iro-aonibi-deep: #303e49;
+  --iro-aonibi-dark-marker: #3c525c;
+  --iro-aonibi-dark-panel: #3e4c56;
+  --iro-aonibi-dark-panel-tint: #495660;
+  --iro-aonibi-dark-line: #6d7981;
+  --iro-murasaki-accent: #7655ab;
+  --iro-murasaki-soft: #eae2f7;
+  --iro-murasaki-tint: #f6f2fb;
+  --iro-murasaki-heading: #43345f;
+  --iro-murasaki-deep: #362949;
+  --iro-murasaki-dark-marker: #4c386b;
+  --iro-murasaki-dark-panel: #443857;
+  --iro-murasaki-dark-panel-tint: #4f4361;
+  --iro-murasaki-dark-line: #736884;
+  --iro-kohaku-accent: #946014;
+  --iro-kohaku-soft: #f5e6c9;
+  --iro-kohaku-tint: #fcf7ed;
+  --iro-kohaku-heading: #57432a;
+  --iro-kohaku-deep: #483721;
+  --iro-kohaku-dark-marker: #63451c;
+  --iro-kohaku-dark-panel: #56452e;
+  --iro-kohaku-dark-panel-tint: #605039;
+  --iro-kohaku-dark-line: #83725a;
+  --iro-haizakura-accent: #876773;
+  --iro-haizakura-soft: #ece9eb;
+  --iro-haizakura-tint: #f7f7f8;
+  --iro-haizakura-heading: #41434b;
+  --iro-haizakura-deep: #343840;
+  --iro-haizakura-dark-marker: #514852;
+  --iro-haizakura-dark-panel: #43464e;
+  --iro-haizakura-dark-panel-tint: #4e5158;
+  --iro-haizakura-dark-line: #73747a;
+  --iro-sumi-accent: #536479;
+  --iro-sumi-soft: #e0e6ee;
+  --iro-sumi-tint: #f2f5f8;
+  --iro-sumi-heading: #303d50;
+  --iro-sumi-deep: #293341;
+  --iro-sumi-dark-marker: #384455;
+  --iro-sumi-dark-panel: #38414f;
+  --iro-sumi-dark-panel-tint: #434c59;
+  --iro-sumi-dark-line: #67707c;
+}
+/* END GENERATED COLORS */
+
+section {
+  --base: var(--iro-sumi);
+  --muted: var(--iro-usuzumi);
+  --quiet: var(--iro-kasumi);
+  --line: var(--iro-gin);
+  --line-soft: var(--iro-usugin);
+  --bg: var(--iro-shiro);
+  --bg-soft: var(--iro-yukishiro);
+  --code-bg: var(--iro-seihaku);
+  --code-border: var(--iro-hakugin);
+  --code-base: var(--base);
+  --on-deep: var(--iro-shiro);
+  --on-deep-muted: var(--iro-yoake);
+  --success: var(--iro-aonibi-accent);
+  --success-soft: var(--iro-aonibi-tint);
+  --warning: var(--iro-kohaku-accent);
+  --warning-soft: var(--iro-kohaku-tint);
+  --danger: var(--iro-beni);
+  --danger-soft: var(--iro-usubeni);
+  --marker: var(--marker-light);
+  --syntax-keyword: var(--iro-murasaki-accent);
+  --syntax-string: var(--iro-aonibi-accent);
+  --syntax-title: var(--accent);
+  --syntax-number: var(--iro-kohaku-accent);
+  --syntax-builtin: var(--accent);
 
   /* Shared rhythm: outer gutter / block spacing / panel gap / panel inset. */
   --space-1: 8px;
@@ -96,7 +173,7 @@ section.table-center table {
 }
 
 section::after {
-  color: #9aa4b2;
+  color: var(--quiet);
   font-size: 15px;
   right: 36px;
   bottom: 22px;
@@ -125,7 +202,7 @@ section h2 {
 }
 
 section h3 {
-  color: #3b4656;
+  color: var(--heading);
   font-size: 22px;
   margin: 0.7em 0 0.2em;
 }
@@ -143,7 +220,7 @@ section strong {
 }
 
 section em {
-  color: #4e5a6c;
+  color: var(--muted);
 }
 
 section ul,
@@ -165,7 +242,7 @@ section blockquote {
   padding: 18px 22px 18px 24px;
   border-left: 5px solid var(--accent);
   background: var(--bg-soft);
-  color: #374151;
+  color: var(--base);
   border-radius: 0 10px 10px 0;
 }
 
@@ -204,7 +281,7 @@ section pre {
 
 section code {
   font-family: 'UDEV Gothic', 'Cascadia Code', 'Consolas', 'SFMono-Regular', 'Menlo', monospace;
-  color: #2f3642;
+  color: var(--code-base);
 }
 
 section pre code {
@@ -212,7 +289,7 @@ section pre code {
   font-size: 18px;
   line-height: 1.45;
   background: transparent;
-  color: #2f3642;
+  color: var(--code-base);
   padding-top: 20px;
   position: relative;
 }
@@ -221,7 +298,7 @@ section pre code::before {
   position: absolute;
   top: -4px;
   right: 0;
-  color: #7b8494;
+  color: var(--muted);
   font-size: 12px;
   font-family: 'M PLUS Rounded 1c', Meiryo, Arial, sans-serif;
   letter-spacing: 0.04em;
@@ -242,26 +319,26 @@ section pre code.language-sh::before { content: 'SHELL'; }
 
 /* Highlight.js: subdued colors */
 .hljs-comment,
-.hljs-quote { color: #6b7280; }
+.hljs-quote { color: var(--muted); }
 .hljs-keyword,
 .hljs-selector-tag,
-.hljs-subst { color: #7c3aed; }
+.hljs-subst { color: var(--syntax-keyword); }
 .hljs-string,
-.hljs-doctag { color: #0f766e; }
+.hljs-doctag { color: var(--syntax-string); }
 .hljs-title,
 .hljs-section,
-.hljs-selector-id { color: #1d4ed8; }
+.hljs-selector-id { color: var(--syntax-title); }
 .hljs-number,
 .hljs-literal,
 .hljs-variable,
 .hljs-template-variable,
-.hljs-tag .hljs-attr { color: #b45309; }
+.hljs-tag .hljs-attr { color: var(--syntax-number); }
 .hljs-attribute,
 .hljs-name,
 .hljs-tag { color: var(--heading); }
 .hljs-built_in,
-.hljs-builtin-name { color: #0369a1; }
-.hljs-meta { color: #64748b; }
+.hljs-builtin-name { color: var(--syntax-builtin); }
+.hljs-meta { color: var(--muted); }
 
 /* Cover */
 section.cover {
@@ -284,14 +361,14 @@ section.cover h1:first-of-type {
 
 section.cover h2 {
   margin-top: 18px;
-  color: #536174;
+  color: var(--muted);
   font-size: 26px;
   font-weight: 500;
 }
 
 section.cover p {
   margin-top: 48px;
-  color: #697386;
+  color: var(--muted);
   font-size: 20px;
 }
 
@@ -305,7 +382,7 @@ section.closing::after {
 section.section {
   padding: 96px 88px;
   background: var(--deep);
-  color: #ffffff;
+  color: var(--on-deep);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -315,7 +392,7 @@ section.section h1:first-of-type {
   position: static;
   border: 0;
   padding: 0;
-  color: #ffffff;
+  color: var(--on-deep);
   font-size: 48px;
   line-height: 1.2;
 }
@@ -408,12 +485,12 @@ section.image-left {
 
 section.image-right h1:first-of-type,
 section.image-left h1:first-of-type {
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--iro-sukashishiro);
 }
 
 /* Full image slide */
 section.full-image {
-  color: #ffffff;
+  color: var(--on-deep);
   padding: 78px 78px 58px;
 }
 
@@ -421,16 +498,16 @@ section.full-image h1:first-of-type {
   position: static;
   border: 0;
   padding: 0;
-  color: #ffffff;
+  color: var(--on-deep);
   font-size: 46px;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.35);
+  text-shadow: 0 1px 8px var(--iro-kage);
   max-width: 780px;
 }
 
 section.full-image p,
 section.full-image li {
-  color: #f3f7fb;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+  color: var(--on-deep-muted);
+  text-shadow: 0 1px 6px var(--iro-usukage);
   max-width: 720px;
 }
 
@@ -472,7 +549,7 @@ section.dense pre code { font-size: 15px; }
 /* Closing */
 section.closing {
   background: linear-gradient(135deg, var(--deep) 0%, var(--accent) 160%);
-  color: #ffffff;
+  color: var(--on-deep);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -482,7 +559,7 @@ section.closing {
 section.closing h1:first-of-type {
   position: static;
   border: 0;
-  color: #ffffff;
+  color: var(--on-deep);
   font-size: 50px;
 }
 
@@ -625,31 +702,117 @@ section.closing a { color: var(--on-deep-muted); }
    Kept in this theme file so VS Code and CLI need no extra CSS imports.
    ====================================================================== */
 
-/* Palette: accent, soft highlight, tinted surface, heading and dark surface. */
-section.palette-blue,
-section.palette-catalog > ul > li:nth-child(1) { --accent: #2b7bbb; --accent-soft: #dcecf8; --bg-tint: #edf6fd; --heading: #26364d; --deep: #26364d; }
-section.palette-teal,
-section.palette-catalog > ul > li:nth-child(2) { --accent: #527780; --accent-soft: #e3ecee; --bg-tint: #f3f7f8; --heading: #344951; --deep: #303e49; }
-section.palette-violet,
-section.palette-catalog > ul > li:nth-child(3) { --accent: #7655ab; --accent-soft: #eae2f7; --bg-tint: #f6f2fb; --heading: #43345f; --deep: #362949; }
-section.palette-amber,
-section.palette-catalog > ul > li:nth-child(4) { --accent: #946014; --accent-soft: #f5e6c9; --bg-tint: #fcf7ed; --heading: #57432a; --deep: #483721; }
-section.palette-rose,
-section.palette-catalog > ul > li:nth-child(5) { --accent: #876773; --accent-soft: #ece9eb; --bg-tint: #f7f7f8; --heading: #41434b; --deep: #343840; }
-section.palette-slate,
-section.palette-catalog > ul > li:nth-child(6) { --accent: #536479; --accent-soft: #e0e6ee; --bg-tint: #f2f5f8; --heading: #303d50; --deep: #293341; }
+/* BEGIN GENERATED PALETTES: tools/sync_colors.py */
+section,
+section.palette-ai,
+section.palette-catalog > ul > li:nth-child(1) {
+  --accent: var(--iro-ai-accent);
+  --accent-soft: var(--iro-ai-soft);
+  --bg-tint: var(--iro-ai-tint);
+  --heading: var(--iro-ai-heading);
+  --deep: var(--iro-ai-deep);
+  --palette-dark-panel: var(--iro-ai-dark-panel);
+  --palette-dark-tint: var(--iro-ai-dark-panel-tint);
+  --palette-dark-line: var(--iro-ai-dark-line);
+  --palette-dark-accent: var(--iro-ai-soft);
+  --marker-light: var(--iro-ai-soft);
+  --marker-dark: var(--iro-ai-dark-marker);
+}
+section.palette-aonibi,
+section.palette-catalog > ul > li:nth-child(2) {
+  --accent: var(--iro-aonibi-accent);
+  --accent-soft: var(--iro-aonibi-soft);
+  --bg-tint: var(--iro-aonibi-tint);
+  --heading: var(--iro-aonibi-heading);
+  --deep: var(--iro-aonibi-deep);
+  --palette-dark-panel: var(--iro-aonibi-dark-panel);
+  --palette-dark-tint: var(--iro-aonibi-dark-panel-tint);
+  --palette-dark-line: var(--iro-aonibi-dark-line);
+  --palette-dark-accent: var(--iro-aonibi-soft);
+  --marker-light: var(--iro-aonibi-soft);
+  --marker-dark: var(--iro-aonibi-dark-marker);
+}
+section.palette-murasaki,
+section.palette-catalog > ul > li:nth-child(3) {
+  --accent: var(--iro-murasaki-accent);
+  --accent-soft: var(--iro-murasaki-soft);
+  --bg-tint: var(--iro-murasaki-tint);
+  --heading: var(--iro-murasaki-heading);
+  --deep: var(--iro-murasaki-deep);
+  --palette-dark-panel: var(--iro-murasaki-dark-panel);
+  --palette-dark-tint: var(--iro-murasaki-dark-panel-tint);
+  --palette-dark-line: var(--iro-murasaki-dark-line);
+  --palette-dark-accent: var(--iro-murasaki-soft);
+  --marker-light: var(--iro-murasaki-soft);
+  --marker-dark: var(--iro-murasaki-dark-marker);
+}
+section.palette-kohaku,
+section.palette-catalog > ul > li:nth-child(4) {
+  --accent: var(--iro-kohaku-accent);
+  --accent-soft: var(--iro-kohaku-soft);
+  --bg-tint: var(--iro-kohaku-tint);
+  --heading: var(--iro-kohaku-heading);
+  --deep: var(--iro-kohaku-deep);
+  --palette-dark-panel: var(--iro-kohaku-dark-panel);
+  --palette-dark-tint: var(--iro-kohaku-dark-panel-tint);
+  --palette-dark-line: var(--iro-kohaku-dark-line);
+  --palette-dark-accent: var(--iro-kohaku-soft);
+  --marker-light: var(--iro-kohaku-soft);
+  --marker-dark: var(--iro-kohaku-dark-marker);
+}
+section.palette-haizakura,
+section.palette-catalog > ul > li:nth-child(5) {
+  --accent: var(--iro-haizakura-accent);
+  --accent-soft: var(--iro-haizakura-soft);
+  --bg-tint: var(--iro-haizakura-tint);
+  --heading: var(--iro-haizakura-heading);
+  --deep: var(--iro-haizakura-deep);
+  --palette-dark-panel: var(--iro-haizakura-dark-panel);
+  --palette-dark-tint: var(--iro-haizakura-dark-panel-tint);
+  --palette-dark-line: var(--iro-haizakura-dark-line);
+  --palette-dark-accent: var(--iro-haizakura-soft);
+  --marker-light: var(--iro-haizakura-soft);
+  --marker-dark: var(--iro-haizakura-dark-marker);
+}
+section.palette-sumi,
+section.palette-catalog > ul > li:nth-child(6) {
+  --accent: var(--iro-sumi-accent);
+  --accent-soft: var(--iro-sumi-soft);
+  --bg-tint: var(--iro-sumi-tint);
+  --heading: var(--iro-sumi-heading);
+  --deep: var(--iro-sumi-deep);
+  --palette-dark-panel: var(--iro-sumi-dark-panel);
+  --palette-dark-tint: var(--iro-sumi-dark-panel-tint);
+  --palette-dark-line: var(--iro-sumi-dark-line);
+  --palette-dark-accent: var(--iro-sumi-soft);
+  --marker-light: var(--iro-sumi-soft);
+  --marker-dark: var(--iro-sumi-dark-marker);
+}
+section.marker-ai { --marker-light: var(--iro-ai-soft); --marker-dark: var(--iro-ai-dark-marker); }
+section.marker-aonibi { --marker-light: var(--iro-aonibi-soft); --marker-dark: var(--iro-aonibi-dark-marker); }
+section.marker-murasaki { --marker-light: var(--iro-murasaki-soft); --marker-dark: var(--iro-murasaki-dark-marker); }
+section.marker-kohaku { --marker-light: var(--iro-kohaku-soft); --marker-dark: var(--iro-kohaku-dark-marker); }
+section.marker-haizakura { --marker-light: var(--iro-haizakura-soft); --marker-dark: var(--iro-haizakura-dark-marker); }
+section.marker-sumi { --marker-light: var(--iro-sumi-soft); --marker-dark: var(--iro-sumi-dark-marker); }
+/* END GENERATED PALETTES */
 
 section.surface-tint { background: var(--bg-tint); }
 section.surface-dark {
-  --base: #f1f5f9;
-  --heading: #ffffff;
-  --muted: #c6d1df;
-  --line: #657182;
-  --line-soft: #536073;
-  --bg-soft: #344153;
-  --bg-tint: #3c4b60;
-  --accent: #c1e2ff;
-  --accent-soft: #455c73;
+  --base: var(--iro-yoiro);
+  --heading: var(--on-deep);
+  --muted: var(--on-deep-muted);
+  --line: var(--palette-dark-line);
+  --line-soft: var(--palette-dark-line);
+  --bg-soft: var(--palette-dark-panel);
+  --bg-tint: var(--palette-dark-tint);
+  --accent: var(--palette-dark-accent);
+  --accent-soft: var(--palette-dark-tint);
+  --code-bg: var(--palette-dark-panel);
+  --code-border: var(--palette-dark-line);
+  --syntax-keyword: var(--iro-murasaki-soft);
+  --syntax-string: var(--iro-aonibi-soft);
+  --syntax-number: var(--iro-kohaku-soft);
+  --marker: var(--marker-dark);
   background: var(--deep);
   color: var(--base);
 }
@@ -661,7 +824,7 @@ section.emphasis[class] strong { color: var(--accent); }
 section.note-success > blockquote { background: var(--success-soft); border-color: var(--success); }
 section.note-warning > blockquote { background: var(--warning-soft); border-color: var(--warning); }
 section.note-danger > blockquote { background: var(--danger-soft); border-color: var(--danger); }
-section:is(.note-success, .note-warning, .note-danger) > blockquote :is(p, strong) { color: #30343b; }
+section:is(.note-success, .note-warning, .note-danger) > blockquote :is(p, strong) { color: var(--iro-sumi); }
 
 /* Outer spacing presets do not shrink typography. */
 section.space-compact { --gutter: 56px; --body-top: 112px; --body-bottom: 44px; --flow: 16px; --panel-gap: 16px; --panel-inset: 20px; }
@@ -769,8 +932,8 @@ section.image-grid > ul > li img {
   width: 100%;
   height: 260px;
   object-fit: contain;
-  background: #fafafa;
-  outline: 1px solid #c8c8c8;
+  background: var(--bg-soft);
+  outline: 1px solid var(--line);
 }
 section:is(.media, .image-grid).fit-cover img { object-fit: cover; }
 section:is(.media, .image-grid).fit-contain img { object-fit: contain; }
@@ -786,7 +949,7 @@ section.media.diagram img {
   padding: var(--panel-inset);
   border: 1px solid var(--line-soft);
   border-radius: 12px;
-  background: #ffffff;
+  background: var(--iro-shiro);
   object-fit: contain;
 }
 /* Explicit spacing utilities still take precedence over diagram defaults. */
@@ -1249,4 +1412,32 @@ section.list > :is(ol, ul) > li > p { margin: 0; }
 section.list > :is(ol, ul) > li > p + p { margin-top: 8px; font-size: 22px; }
 section.list > ol > li > a[href^="#"]:last-child {
   float: right; margin-left: 24px; font-variant-numeric: tabular-nums;
+}
+
+/* Markdown ***text*** is bold + emphasis; render it as a highlighter stroke. */
+section em:has(> strong) { font-style: normal; color: inherit; }
+section :is(em > strong, strong > em),
+section.palette-catalog[class] :is(em > strong, strong > em),
+section.emphasis[class] :is(em > strong, strong > em) {
+  display: inline;
+  font-style: normal;
+  color: var(--base);
+  padding: 0 .06em;
+  border-radius: .08em;
+  background: linear-gradient(transparent 42%, var(--marker) 42%, var(--marker) 92%, transparent 92%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+section:is(.section, .closing, .full-image) { --marker: var(--marker-dark); }
+section:is(.section, .closing, .full-image) :is(em > strong, strong > em) { color: var(--on-deep); }
+section code:not(pre code) { background-color: var(--code-bg); }
+section tr:nth-child(2n) { background-color: var(--bg-soft); }
+section tr { background-color: var(--bg); }
+section.surface-dark tr { background-color: var(--deep); }
+section.surface-dark tr:nth-child(2n) { background-color: var(--bg-soft); }
+section.palette-catalog > ul > li { --marker: var(--marker-light); }
+/* Semantic callouts keep dark text on their deliberately light surfaces. */
+section:is(.note-success, .note-warning, .note-danger) > blockquote {
+  --base: var(--iro-sumi);
+  --marker: var(--marker-light);
 }

@@ -279,7 +279,38 @@ GitHub・X・LinkedIn・Websiteのアイコンとラベルを用意していま�
 
 `vspace-xs` / `sm` / `md` / `lg` / `xl` / `2xl` で8 / 16 / 24 / 32 / 48 / 64pxを追加します。カード内ではインデントしてください。通常の段落間隔に加算されます。
 
-配色は `palette-blue`・`palette-teal`・`palette-violet`・`palette-amber`・`palette-rose`・`palette-slate` の6種類です。配色一覧の1枚で比較できます。`emphasis` は太字に強調色、`surface-tint` は淡い背景、`surface-dark` は濃い背景を適用します。引用には `note-success` / `note-warning` / `note-danger` も使えます。
+配色は `palette-ai`・`palette-aonibi`・`palette-murasaki`・`palette-kohaku`・`palette-haizakura`・`palette-sumi` の6種類です。配色一覧の1枚で比較できます。`emphasis` は太字に強調色、`surface-tint` は淡い背景、`surface-dark` は濃い背景を適用します。引用には `note-success` / `note-warning` / `note-danger` も使えます。
+
+### 蛍光ペン風の強調と配色名
+
+`***重要な言葉***` で、文字の下側に蛍光ペンのような色を引けます。通常のMarkdownの「太字＋強調」を使うため、HTMLや追加の変換処理は不要です。`**太字**` は通常の太字、`*強調*` は通常の強調のままです。`==文字==` はこのテーマでは使いません。
+
+```markdown
+<!-- _class: lead palette-ai marker-kohaku -->
+
+# 判断に必要な情報をそろえる
+
+## まずは ***対象を絞って試す***
+
+通常の文章の中でも、***重要な箇所だけ***に色を引けます。
+```
+
+標準の線色はスライドの配色と連動します。線の色だけ変える場合は `marker-*` を追加します。折り返しにも対応し、濃い背景では文字が読める濃さの線に切り替わります。短い語句に絞り、段落全体への多用は避けてください。
+
+| 表示名 | 配色のクラス | 線色だけの指定 |
+|---|---|---|
+| 藍 | `palette-ai` | `marker-ai` |
+| 青鈍 | `palette-aonibi` | `marker-aonibi` |
+| 紫 | `palette-murasaki` | `marker-murasaki` |
+| 琥珀 | `palette-kohaku` | `marker-kohaku` |
+| 灰桜 | `palette-haizakura` | `marker-haizakura` |
+| 墨 | `palette-sumi` | `marker-sumi` |
+
+見出し・本文・リンク・表・カード・コード・注釈は共通の役割別変数を使います。色の原本は [ai/colors.json](ai/colors.json) に集約し、濃い背景や蛍光ペンの色も同じ定義から作っています。図版や写真そのものの色は画像素材側の指定です。
+
+スライドごとに色を変えたい理由がなければ、同じ `palette-*` を通して使います。MarkdownのFront Matterの `class` はローカルな `_class` と単純に加算されるものではないため、各スライドの `_class` に同じ配色を明示する方法を推奨します。
+
+旧名は廃止しました：`palette-blue` → `palette-ai`、`palette-teal` → `palette-aonibi`、`palette-violet` → `palette-murasaki`、`palette-amber` → `palette-kohaku`、`palette-rose` → `palette-haizakura`、`palette-slate` → `palette-sumi`。
 
 同じ種類の指定は1つずつ選んでください。クラスを書く順番は優先順位に影響しません。独自の調整は `aizome.css` にクラスを追加してCSS変数を変更します。
 

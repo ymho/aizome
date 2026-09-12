@@ -89,6 +89,7 @@ CSSに過去の部品が残っていても、新規資料はREADMEに掲載さ�
 - **2枚の幅**：無指定で均等。主説明と補足なら `wide-left` / `wide-right`。3枚以上のカードには使わない。
 - **強調位置**：`focus-left` は先頭、`focus-right` は末尾、`focus-center` は3枚の中央、`focus-both` は全カード。単一の推奨を示すなら強調を1箇所に絞る。
 - **外側の余白**：標準は左右72px。必要なら `space-compact` / `space-standard` / `space-airy`。
+- **入れ子の番号表記**：`nested-roman`（標準）/ `nested-alpha` / `nested-kana` / `nested-decimal`。Markdownの番号は通常の `1.` のまま、表示を i / a / ア / 1 に切り替える。
 - **間隔**：`gap-*` はパネル間、`inset-*` は対応するカード・画像枠の内側、`flow-*` は段落間。それぞれ `sm` / `md` / `lg`。
 - **本文の位置**：`align-top` / `align-middle` / `align-bottom`。`content-left` / `content-center` / `content-right` は本文幅を64%に絞るため、専用の画像・時系列配置に重ねない。
 - **タイトル**：`section-title` と `_header` で小さなセクション名。`title-long` で2行領域。`no-title` はタイトルと領域を取り除く。表紙・プロフィールなどの専用配置にタイトル用の修飾を安易に重ねない。

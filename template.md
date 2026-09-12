@@ -506,7 +506,7 @@ Markdownでつくるプレゼンテーション｜水城アオ
 
 ---
 
-<!-- _class: media media-right diagram -->
+<!-- _class: media media-right diagram nested-alpha -->
 
 # フロー図＋解説
 
@@ -517,7 +517,7 @@ Markdownでつくるプレゼンテーション｜水城アオ
   2. 厳密解を求める
   3. 実装して誤差を確認する
 
-  図の外周に余白を取り、流れを追いやすくします。
+  番号は `nested-alpha` で a・b・c。`nested-kana` はア・イ・ウ、`nested-roman` は i・ii・iii。
 
   **指定**：`media media-right diagram`。図の内側24px、本文との間48pxを確保します。
 

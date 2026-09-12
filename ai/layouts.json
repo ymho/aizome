@@ -567,7 +567,19 @@
     "marker-sumi": {
       "exclusiveGroup": "marker-color"
     },
-    "code-dark": {}
+    "code-dark": {},
+    "nested-roman": {
+      "exclusiveGroup": "nested-numbering"
+    },
+    "nested-alpha": {
+      "exclusiveGroup": "nested-numbering"
+    },
+    "nested-kana": {
+      "exclusiveGroup": "nested-numbering"
+    },
+    "nested-decimal": {
+      "exclusiveGroup": "nested-numbering"
+    }
   },
   "deprecated": {
     "kpi": "cards",

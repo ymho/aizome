@@ -240,7 +240,7 @@ section li {
   margin: 0.15em 0;
 }
 
-/* Nested Roman numerals share a fixed column instead of protruding left. */
+/* Nested labels share a fixed column across numbering styles. */
 section li > ol {
   list-style: none;
   padding-left: 0;
@@ -258,6 +258,10 @@ section li > ol > li::before {
   text-align: left;
   color: var(--base);
 }
+section.nested-roman li > ol > li::before { content: counter(list-item, lower-roman) "."; }
+section.nested-alpha li > ol > li::before { content: counter(list-item, lower-alpha) "."; }
+section.nested-kana li > ol > li::before { content: counter(list-item, katakana) "."; }
+section.nested-decimal li > ol > li::before { content: counter(list-item, decimal) "."; }
 
 section a {
   color: var(--accent);

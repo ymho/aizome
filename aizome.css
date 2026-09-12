@@ -47,60 +47,66 @@ section {
   --iro-usukage: rgba(0, 0, 0, 0.3);
   --iro-sukashishiro: rgba(255, 255, 255, 0.92);
   --iro-kuro: #111111;
-  --iro-ai-accent: #2b7bbb;
+  --iro-ai-accent: #2678b5;
   --iro-ai-soft: #dcecf8;
   --iro-ai-tint: #edf6fd;
   --iro-ai-heading: #26364d;
   --iro-ai-deep: #26364d;
-  --iro-ai-dark-marker: #284e74;
-  --iro-ai-dark-panel: #35455b;
+  --iro-ai-dark-marker: #264d71;
+  --iro-ai-dark-panel: #202e41;
   --iro-ai-dark-panel-tint: #3f4f65;
   --iro-ai-dark-line: #647487;
-  --iro-aonibi-accent: #527780;
+  --iro-ai-dark-accent: #72b7e6;
+  --iro-aonibi-accent: #3f7680;
   --iro-aonibi-soft: #e3ecee;
   --iro-aonibi-tint: #f3f7f8;
   --iro-aonibi-heading: #344951;
   --iro-aonibi-deep: #303e49;
-  --iro-aonibi-dark-marker: #3c525c;
-  --iro-aonibi-dark-panel: #3e4c56;
+  --iro-aonibi-dark-marker: #35525c;
+  --iro-aonibi-dark-panel: #29353e;
   --iro-aonibi-dark-panel-tint: #495660;
   --iro-aonibi-dark-line: #6d7981;
-  --iro-murasaki-accent: #7655ab;
+  --iro-aonibi-dark-accent: #83c3bf;
+  --iro-murasaki-accent: #7550a6;
   --iro-murasaki-soft: #eae2f7;
   --iro-murasaki-tint: #f6f2fb;
   --iro-murasaki-heading: #43345f;
   --iro-murasaki-deep: #362949;
-  --iro-murasaki-dark-marker: #4c386b;
-  --iro-murasaki-dark-panel: #443857;
+  --iro-murasaki-dark-marker: #4c376a;
+  --iro-murasaki-dark-panel: #2e233e;
   --iro-murasaki-dark-panel-tint: #4f4361;
   --iro-murasaki-dark-line: #736884;
-  --iro-kohaku-accent: #946014;
+  --iro-murasaki-dark-accent: #c2a0e5;
+  --iro-kohaku-accent: #996019;
   --iro-kohaku-soft: #f5e6c9;
   --iro-kohaku-tint: #fcf7ed;
   --iro-kohaku-heading: #57432a;
   --iro-kohaku-deep: #483721;
-  --iro-kohaku-dark-marker: #63451c;
-  --iro-kohaku-dark-panel: #56452e;
+  --iro-kohaku-dark-marker: #64451e;
+  --iro-kohaku-dark-panel: #3d2f1c;
   --iro-kohaku-dark-panel-tint: #605039;
   --iro-kohaku-dark-line: #83725a;
-  --iro-haizakura-accent: #876773;
+  --iro-kohaku-dark-accent: #efbb70;
+  --iro-haizakura-accent: #a35f78;
   --iro-haizakura-soft: #ece9eb;
   --iro-haizakura-tint: #f7f7f8;
   --iro-haizakura-heading: #41434b;
   --iro-haizakura-deep: #343840;
-  --iro-haizakura-dark-marker: #514852;
-  --iro-haizakura-dark-panel: #43464e;
+  --iro-haizakura-dark-marker: #5b4654;
+  --iro-haizakura-dark-panel: #2c3036;
   --iro-haizakura-dark-panel-tint: #4e5158;
   --iro-haizakura-dark-line: #73747a;
-  --iro-sumi-accent: #536479;
+  --iro-haizakura-dark-accent: #e0a0b5;
+  --iro-sumi-accent: #4e637d;
   --iro-sumi-soft: #e0e6ee;
   --iro-sumi-tint: #f2f5f8;
   --iro-sumi-heading: #303d50;
   --iro-sumi-deep: #293341;
-  --iro-sumi-dark-marker: #384455;
-  --iro-sumi-dark-panel: #38414f;
+  --iro-sumi-dark-marker: #364456;
+  --iro-sumi-dark-panel: #232b37;
   --iro-sumi-dark-panel-tint: #434c59;
   --iro-sumi-dark-line: #67707c;
+  --iro-sumi-dark-accent: #afc0d4;
 }
 /* END GENERATED COLORS */
 
@@ -128,7 +134,7 @@ section {
   --syntax-string: var(--iro-aonibi-accent);
   --syntax-title: var(--accent);
   --syntax-number: var(--iro-kohaku-accent);
-  --syntax-builtin: var(--accent);
+  --syntax-builtin: var(--iro-haizakura-accent);
 
   /* Shared rhythm: outer gutter / block spacing / panel gap / panel inset. */
   --space-1: 8px;
@@ -701,11 +707,11 @@ section.code-dark pre {
   --code-border: var(--iro-sumi);
   --muted: var(--iro-yoake);
   --heading: var(--iro-yoiro);
-  --syntax-keyword: var(--iro-murasaki-soft);
-  --syntax-string: var(--iro-aonibi-soft);
-  --syntax-title: var(--iro-ai-soft);
-  --syntax-number: var(--iro-kohaku-soft);
-  --syntax-builtin: var(--iro-haizakura-soft);
+  --syntax-keyword: var(--iro-murasaki-dark-accent);
+  --syntax-string: var(--iro-aonibi-dark-accent);
+  --syntax-title: var(--iro-ai-dark-accent);
+  --syntax-number: var(--iro-kohaku-dark-accent);
+  --syntax-builtin: var(--iro-haizakura-dark-accent);
   background: var(--code-bg);
   border-color: var(--code-border);
 }
@@ -734,7 +740,7 @@ section.palette-catalog > ul > li:nth-child(1) {
   --palette-dark-panel: var(--iro-ai-dark-panel);
   --palette-dark-tint: var(--iro-ai-dark-panel-tint);
   --palette-dark-line: var(--iro-ai-dark-line);
-  --palette-dark-accent: var(--iro-ai-soft);
+  --palette-dark-accent: var(--iro-ai-dark-accent);
   --marker-light: var(--iro-ai-soft);
   --marker-dark: var(--iro-ai-dark-marker);
 }
@@ -748,7 +754,7 @@ section.palette-catalog > ul > li:nth-child(2) {
   --palette-dark-panel: var(--iro-aonibi-dark-panel);
   --palette-dark-tint: var(--iro-aonibi-dark-panel-tint);
   --palette-dark-line: var(--iro-aonibi-dark-line);
-  --palette-dark-accent: var(--iro-aonibi-soft);
+  --palette-dark-accent: var(--iro-aonibi-dark-accent);
   --marker-light: var(--iro-aonibi-soft);
   --marker-dark: var(--iro-aonibi-dark-marker);
 }
@@ -762,7 +768,7 @@ section.palette-catalog > ul > li:nth-child(3) {
   --palette-dark-panel: var(--iro-murasaki-dark-panel);
   --palette-dark-tint: var(--iro-murasaki-dark-panel-tint);
   --palette-dark-line: var(--iro-murasaki-dark-line);
-  --palette-dark-accent: var(--iro-murasaki-soft);
+  --palette-dark-accent: var(--iro-murasaki-dark-accent);
   --marker-light: var(--iro-murasaki-soft);
   --marker-dark: var(--iro-murasaki-dark-marker);
 }
@@ -776,7 +782,7 @@ section.palette-catalog > ul > li:nth-child(4) {
   --palette-dark-panel: var(--iro-kohaku-dark-panel);
   --palette-dark-tint: var(--iro-kohaku-dark-panel-tint);
   --palette-dark-line: var(--iro-kohaku-dark-line);
-  --palette-dark-accent: var(--iro-kohaku-soft);
+  --palette-dark-accent: var(--iro-kohaku-dark-accent);
   --marker-light: var(--iro-kohaku-soft);
   --marker-dark: var(--iro-kohaku-dark-marker);
 }
@@ -790,7 +796,7 @@ section.palette-catalog > ul > li:nth-child(5) {
   --palette-dark-panel: var(--iro-haizakura-dark-panel);
   --palette-dark-tint: var(--iro-haizakura-dark-panel-tint);
   --palette-dark-line: var(--iro-haizakura-dark-line);
-  --palette-dark-accent: var(--iro-haizakura-soft);
+  --palette-dark-accent: var(--iro-haizakura-dark-accent);
   --marker-light: var(--iro-haizakura-soft);
   --marker-dark: var(--iro-haizakura-dark-marker);
 }
@@ -804,7 +810,7 @@ section.palette-catalog > ul > li:nth-child(6) {
   --palette-dark-panel: var(--iro-sumi-dark-panel);
   --palette-dark-tint: var(--iro-sumi-dark-panel-tint);
   --palette-dark-line: var(--iro-sumi-dark-line);
-  --palette-dark-accent: var(--iro-sumi-soft);
+  --palette-dark-accent: var(--iro-sumi-dark-accent);
   --marker-light: var(--iro-sumi-soft);
   --marker-dark: var(--iro-sumi-dark-marker);
 }
@@ -829,9 +835,11 @@ section.surface-dark {
   --accent-soft: var(--palette-dark-tint);
   --code-bg: var(--palette-dark-panel);
   --code-border: var(--palette-dark-line);
-  --syntax-keyword: var(--iro-murasaki-soft);
-  --syntax-string: var(--iro-aonibi-soft);
-  --syntax-number: var(--iro-kohaku-soft);
+  --syntax-keyword: var(--iro-murasaki-dark-accent);
+  --syntax-string: var(--iro-aonibi-dark-accent);
+  --syntax-number: var(--iro-kohaku-dark-accent);
+  --syntax-title: var(--iro-ai-dark-accent);
+  --syntax-builtin: var(--iro-haizakura-dark-accent);
   --marker: var(--marker-dark);
   background: var(--deep);
   color: var(--base);

@@ -34,7 +34,7 @@ def generated(data):
         lines.append(',\n'.join(selectors) + ' {')
         roles = {'accent':'accent', 'accent-soft':'soft', 'bg-tint':'tint', 'heading':'heading', 'deep':'deep',
                  'palette-dark-panel':'dark-panel', 'palette-dark-tint':'dark-panel-tint', 'palette-dark-line':'dark-line',
-                 'palette-dark-accent':'soft', 'marker-light':'soft', 'marker-dark':'dark-marker'}
+                 'palette-dark-accent':'dark-accent', 'marker-light':'soft', 'marker-dark':'dark-marker'}
         for prop, role in roles.items():
             lines.append(f'  --{prop}: var(--iro-{name}-{role});')
         lines.append('}')

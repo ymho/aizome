@@ -23,75 +23,81 @@
   "palettes": {
     "ai": {
       "name": "藍",
-      "accent": "#2b7bbb",
+      "accent": "#2678b5",
       "soft": "#dcecf8",
       "tint": "#edf6fd",
       "heading": "#26364d",
       "deep": "#26364d",
-      "darkMarker": "#284e74",
-      "darkPanel": "#35455b",
+      "darkMarker": "#264d71",
+      "darkPanel": "#202e41",
       "darkPanelTint": "#3f4f65",
-      "darkLine": "#647487"
+      "darkLine": "#647487",
+      "darkAccent": "#72b7e6"
     },
     "aonibi": {
       "name": "青鈍",
-      "accent": "#527780",
+      "accent": "#3f7680",
       "soft": "#e3ecee",
       "tint": "#f3f7f8",
       "heading": "#344951",
       "deep": "#303e49",
-      "darkMarker": "#3c525c",
-      "darkPanel": "#3e4c56",
+      "darkMarker": "#35525c",
+      "darkPanel": "#29353e",
       "darkPanelTint": "#495660",
-      "darkLine": "#6d7981"
+      "darkLine": "#6d7981",
+      "darkAccent": "#83c3bf"
     },
     "murasaki": {
       "name": "紫",
-      "accent": "#7655ab",
+      "accent": "#7550a6",
       "soft": "#eae2f7",
       "tint": "#f6f2fb",
       "heading": "#43345f",
       "deep": "#362949",
-      "darkMarker": "#4c386b",
-      "darkPanel": "#443857",
+      "darkMarker": "#4c376a",
+      "darkPanel": "#2e233e",
       "darkPanelTint": "#4f4361",
-      "darkLine": "#736884"
+      "darkLine": "#736884",
+      "darkAccent": "#c2a0e5"
     },
     "kohaku": {
       "name": "琥珀",
-      "accent": "#946014",
+      "accent": "#996019",
       "soft": "#f5e6c9",
       "tint": "#fcf7ed",
       "heading": "#57432a",
       "deep": "#483721",
-      "darkMarker": "#63451c",
-      "darkPanel": "#56452e",
+      "darkMarker": "#64451e",
+      "darkPanel": "#3d2f1c",
       "darkPanelTint": "#605039",
-      "darkLine": "#83725a"
+      "darkLine": "#83725a",
+      "darkAccent": "#efbb70"
     },
     "haizakura": {
       "name": "灰桜",
-      "accent": "#876773",
+      "accent": "#a35f78",
       "soft": "#ece9eb",
       "tint": "#f7f7f8",
       "heading": "#41434b",
       "deep": "#343840",
-      "darkMarker": "#514852",
-      "darkPanel": "#43464e",
+      "darkMarker": "#5b4654",
+      "darkPanel": "#2c3036",
       "darkPanelTint": "#4e5158",
-      "darkLine": "#73747a"
+      "darkLine": "#73747a",
+      "darkAccent": "#e0a0b5"
     },
     "sumi": {
       "name": "墨",
-      "accent": "#536479",
+      "accent": "#4e637d",
       "soft": "#e0e6ee",
       "tint": "#f2f5f8",
       "heading": "#303d50",
       "deep": "#293341",
-      "darkMarker": "#384455",
-      "darkPanel": "#38414f",
+      "darkMarker": "#364456",
+      "darkPanel": "#232b37",
       "darkPanelTint": "#434c59",
-      "darkLine": "#67707c"
+      "darkLine": "#67707c",
+      "darkAccent": "#afc0d4"
     }
   },
   "highlightSyntax": "***強調する言葉***",

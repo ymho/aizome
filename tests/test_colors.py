@@ -41,3 +41,12 @@ class SharedColors(unittest.TestCase):
         for prefix in ['palette-', 'marker-']:
             names = {name.removeprefix(prefix) for name in contract['modifiers'] if name.startswith(prefix)}
             self.assertEqual(names, set(colors))
+
+    def test_dark_foregrounds_are_readable_on_code_backgrounds(self):
+        data = json.loads((ROOT / 'ai/colors.json').read_text())
+        palettes = data['palettes'].values()
+        backgrounds = [data['neutral']['kuro']] + [p['darkPanel'] for p in palettes]
+        for palette in palettes:
+            self.assertNotEqual(palette['darkAccent'], palette['soft'])
+            for background in backgrounds:
+                self.assertGreaterEqual(contrast(palette['darkAccent'], background), 4.5)

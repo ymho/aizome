@@ -1,0 +1,625 @@
+{
+  "$schema": "./layouts.schema.json",
+  "schemaVersion": 1,
+  "theme": "aizome",
+  "version": "3.0.0",
+  "description": "AI向けの共通レイアウト契約。上限は目安で、表示確認を代替しない。",
+  "defaultLayout": {
+    "purpose": "標準の本文",
+    "structure": "h1 + paragraphs/lists"
+  },
+  "layouts": {
+    "cover": {
+      "purpose": "表紙",
+      "structure": "h1 + h2 + p"
+    },
+    "section": {
+      "purpose": "章扉",
+      "structure": "h1 + h2"
+    },
+    "closing": {
+      "purpose": "締め",
+      "structure": "h1 + h2 + p"
+    },
+    "lead": {
+      "purpose": "結論・用語・問い",
+      "structure": "h1 + h2 + p"
+    },
+    "list": {
+      "purpose": "目次・要点",
+      "structure": "h1 + ol または ul",
+      "recommendedMaxItems": 7,
+      "listType": "either"
+    },
+    "cards": {
+      "purpose": "並列・比較・数値",
+      "structure": "h1 + ul > li（空行で見出しと説明を分ける）",
+      "recommendedMaxItems": 6,
+      "listType": "unordered",
+      "itemLayouts": {
+        "1": "1 column",
+        "2": "2 columns",
+        "3": "3 columns",
+        "4": "2 x 2",
+        "5": "3 x 2",
+        "6": "3 x 2"
+      }
+    },
+    "stat": {
+      "purpose": "数字1つ",
+      "structure": "h1 + h2（数字）+ p（条件）"
+    },
+    "comparison-table": {
+      "purpose": "比較表",
+      "structure": "h1 + Markdown table"
+    },
+    "matrix": {
+      "purpose": "2軸の判断",
+      "structure": "h1 + Markdown table"
+    },
+    "dense": {
+      "purpose": "詳細表",
+      "structure": "h1 + Markdown table"
+    },
+    "timeline": {
+      "purpose": "時間・工程",
+      "structure": "h1 + ol > li",
+      "recommendedMaxItems": 6,
+      "listType": "ordered",
+      "limitVariants": [
+        {
+          "when": [
+            "split"
+          ],
+          "min": 4,
+          "max": 10
+        }
+      ]
+    },
+    "screen-flow": {
+      "purpose": "スマホ画面遷移",
+      "structure": "h1 + ol > li（画像、画面名、操作）",
+      "recommendedMaxItems": 4,
+      "listType": "ordered",
+      "recommendedMinItems": 3
+    },
+    "media": {
+      "purpose": "画像と説明",
+      "structure": "h1 + ul（画像が最初、説明が2番目）",
+      "recommendedMaxItems": 2,
+      "listType": "unordered",
+      "limitVariants": [
+        {
+          "when": [
+            "media-both"
+          ],
+          "min": 3,
+          "max": 3
+        }
+      ]
+    },
+    "gallery": {
+      "purpose": "複数画像",
+      "structure": "h1 + ul > li（画像と説明）",
+      "recommendedMaxItems": 3,
+      "listType": "unordered"
+    },
+    "figure": {
+      "purpose": "画像1つ",
+      "structure": "h1 + p > img + p"
+    },
+    "image-detail": {
+      "purpose": "全体と拡大",
+      "structure": "h1 + ul（全体画像、切り出し画像）",
+      "recommendedMaxItems": 2,
+      "listType": "unordered",
+      "recommendedMinItems": 2
+    },
+    "full-image": {
+      "purpose": "全面画像",
+      "structure": "h1 + bg image + p"
+    },
+    "profile": {
+      "purpose": "人物紹介",
+      "structure": "画像p + 名前h2 + 肩書きp + 紹介p + ul（3項目）+ 引用 + SNS"
+    },
+    "quote": {
+      "purpose": "引用",
+      "structure": "h1 + blockquote + 発言者"
+    },
+    "faq": {
+      "purpose": "質問と回答",
+      "structure": "h1 + h2（質問）+ p（回答）の繰り返し"
+    },
+    "code": {
+      "purpose": "コード中心",
+      "structure": "h1 + fenced code"
+    },
+    "equation": {
+      "purpose": "数式中心",
+      "structure": "h1 + display math"
+    },
+    "decision": {
+      "purpose": "提案と判断",
+      "structure": "h1 + blockquote + ul"
+    },
+    "action": {
+      "purpose": "次の行動",
+      "structure": "h1 + Markdown table"
+    },
+    "risk-action": {
+      "purpose": "課題・対応・確認時点",
+      "structure": "h1 + Markdown table"
+    },
+    "references": {
+      "purpose": "参考資料",
+      "structure": "h1 + ul > li（資料リンクと説明）",
+      "listType": "unordered"
+    },
+    "palette-catalog": {
+      "purpose": "配色一覧",
+      "structure": "h1 + ul（6項目）",
+      "recommendedMaxItems": 6,
+      "listType": "unordered"
+    },
+    "emoji-catalog": {
+      "purpose": "絵文字一覧",
+      "structure": "h1 + Markdown table"
+    }
+  },
+  "modifiers": {
+    "card-top": {
+      "exclusiveGroup": "card-vertical",
+      "requiresAny": [
+        "cards"
+      ]
+    },
+    "card-middle": {
+      "exclusiveGroup": "card-vertical",
+      "requiresAny": [
+        "cards"
+      ]
+    },
+    "card-text-center": {
+      "requiresAny": [
+        "cards"
+      ]
+    },
+    "wide-left": {
+      "exclusiveGroup": "column-width",
+      "requiresAny": [
+        "cards",
+        "gallery"
+      ]
+    },
+    "wide-right": {
+      "exclusiveGroup": "column-width",
+      "requiresAny": [
+        "cards",
+        "gallery"
+      ]
+    },
+    "equal": {
+      "exclusiveGroup": "column-width",
+      "requiresAny": [
+        "cards",
+        "gallery"
+      ]
+    },
+    "focus-left": {
+      "exclusiveGroup": "focus",
+      "requiresAny": [
+        "cards"
+      ]
+    },
+    "focus-center": {
+      "exclusiveGroup": "focus",
+      "requiresAny": [
+        "cards"
+      ]
+    },
+    "focus-right": {
+      "exclusiveGroup": "focus",
+      "requiresAny": [
+        "cards"
+      ]
+    },
+    "focus-both": {
+      "exclusiveGroup": "focus",
+      "requiresAny": [
+        "cards"
+      ]
+    },
+    "before-after": {
+      "requiresAny": [
+        "cards"
+      ]
+    },
+    "horizontal": {
+      "requiresAny": [
+        "timeline"
+      ]
+    },
+    "split": {
+      "requiresAny": [
+        "timeline"
+      ]
+    },
+    "numbered": {
+      "requiresAny": [
+        "timeline"
+      ]
+    },
+    "media-left": {
+      "exclusiveGroup": "media-position",
+      "requiresAny": [
+        "media"
+      ]
+    },
+    "media-right": {
+      "exclusiveGroup": "media-position",
+      "requiresAny": [
+        "media"
+      ]
+    },
+    "media-both": {
+      "exclusiveGroup": "media-position",
+      "requiresAny": [
+        "media"
+      ]
+    },
+    "media-wide": {
+      "conflicts": [
+        "media-both"
+      ],
+      "requiresAny": [
+        "media"
+      ]
+    },
+    "media-frame": {
+      "requiresAny": [
+        "media"
+      ]
+    },
+    "diagram": {
+      "requiresAny": [
+        "media"
+      ]
+    },
+    "ratio-1x1": {
+      "exclusiveGroup": "ratio",
+      "requiresAny": [
+        "media",
+        "figure"
+      ]
+    },
+    "ratio-16x9": {
+      "exclusiveGroup": "ratio",
+      "requiresAny": [
+        "media",
+        "figure"
+      ]
+    },
+    "ratio-4x3": {
+      "exclusiveGroup": "ratio",
+      "requiresAny": [
+        "media",
+        "figure"
+      ]
+    },
+    "ratio-3x4": {
+      "exclusiveGroup": "ratio",
+      "requiresAny": [
+        "media",
+        "figure"
+      ]
+    },
+    "ratio-9x16": {
+      "exclusiveGroup": "ratio",
+      "requiresAny": [
+        "media",
+        "figure"
+      ]
+    },
+    "ratio-3x1": {
+      "exclusiveGroup": "ratio",
+      "requiresAny": [
+        "media",
+        "figure"
+      ]
+    },
+    "fit-contain": {
+      "exclusiveGroup": "fit",
+      "requiresAny": [
+        "media",
+        "figure",
+        "gallery"
+      ]
+    },
+    "fit-cover": {
+      "exclusiveGroup": "fit",
+      "requiresAny": [
+        "media",
+        "figure",
+        "gallery"
+      ]
+    },
+    "image-grid": {
+      "requiresAny": [
+        "gallery"
+      ]
+    },
+    "detail-left": {
+      "requiresAny": [
+        "image-detail"
+      ]
+    },
+    "avatar-circle": {
+      "exclusiveGroup": "avatar",
+      "requiresAny": [
+        "profile"
+      ]
+    },
+    "avatar-square": {
+      "exclusiveGroup": "avatar",
+      "requiresAny": [
+        "profile"
+      ]
+    },
+    "avatar-rounded": {
+      "exclusiveGroup": "avatar",
+      "requiresAny": [
+        "profile"
+      ]
+    },
+    "profile-left": {
+      "requiresAny": [
+        "profile"
+      ]
+    },
+    "code-notes": {
+      "requiresAny": [
+        "cards"
+      ]
+    },
+    "table-compact": {
+      "requiresAny": [
+        "comparison-table"
+      ]
+    },
+    "table-center": {},
+    "space-compact": {
+      "exclusiveGroup": "outer-space"
+    },
+    "space-standard": {
+      "exclusiveGroup": "outer-space"
+    },
+    "space-airy": {
+      "exclusiveGroup": "outer-space"
+    },
+    "gap-sm": {
+      "exclusiveGroup": "gap"
+    },
+    "gap-md": {
+      "exclusiveGroup": "gap"
+    },
+    "gap-lg": {
+      "exclusiveGroup": "gap"
+    },
+    "inset-sm": {
+      "exclusiveGroup": "inset"
+    },
+    "inset-md": {
+      "exclusiveGroup": "inset"
+    },
+    "inset-lg": {
+      "exclusiveGroup": "inset"
+    },
+    "flow-sm": {
+      "exclusiveGroup": "flow"
+    },
+    "flow-md": {
+      "exclusiveGroup": "flow"
+    },
+    "flow-lg": {
+      "exclusiveGroup": "flow"
+    },
+    "align-top": {
+      "exclusiveGroup": "vertical"
+    },
+    "align-middle": {
+      "exclusiveGroup": "vertical"
+    },
+    "align-bottom": {
+      "exclusiveGroup": "vertical"
+    },
+    "content-left": {
+      "conflicts": [
+        "profile",
+        "timeline",
+        "screen-flow",
+        "media",
+        "gallery",
+        "image-detail"
+      ],
+      "exclusiveGroup": "content-position"
+    },
+    "content-center": {
+      "conflicts": [
+        "profile",
+        "timeline",
+        "screen-flow",
+        "media",
+        "gallery",
+        "image-detail"
+      ],
+      "exclusiveGroup": "content-position"
+    },
+    "content-right": {
+      "conflicts": [
+        "profile",
+        "timeline",
+        "screen-flow",
+        "media",
+        "gallery",
+        "image-detail"
+      ],
+      "exclusiveGroup": "content-position"
+    },
+    "rail-left": {
+      "exclusiveGroup": "rail"
+    },
+    "rail-right": {
+      "exclusiveGroup": "rail"
+    },
+    "rail-both": {
+      "exclusiveGroup": "rail"
+    },
+    "surface-tint": {
+      "exclusiveGroup": "surface"
+    },
+    "surface-dark": {
+      "exclusiveGroup": "surface"
+    },
+    "emphasis": {},
+    "note-success": {
+      "exclusiveGroup": "quote-color"
+    },
+    "note-warning": {
+      "exclusiveGroup": "quote-color"
+    },
+    "note-danger": {
+      "exclusiveGroup": "quote-color"
+    },
+    "title-long": {
+      "conflicts": [
+        "cover",
+        "section",
+        "closing",
+        "profile",
+        "full-image"
+      ]
+    },
+    "section-title": {
+      "conflicts": [
+        "cover",
+        "section",
+        "closing",
+        "profile",
+        "full-image"
+      ]
+    },
+    "no-title": {},
+    "with-source": {
+      "conflicts": [
+        "cover",
+        "section",
+        "closing",
+        "profile",
+        "full-image"
+      ],
+      "exclusiveGroup": "notes"
+    },
+    "with-notes": {
+      "conflicts": [
+        "cover",
+        "section",
+        "closing",
+        "profile",
+        "full-image"
+      ],
+      "exclusiveGroup": "notes"
+    },
+    "captioned": {},
+    "palette-ai": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-ai": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-aonibi": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-aonibi": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-murasaki": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-murasaki": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-kohaku": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-kohaku": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-haizakura": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-haizakura": {
+      "exclusiveGroup": "marker-color"
+    },
+    "palette-sumi": {
+      "exclusiveGroup": "palette"
+    },
+    "marker-sumi": {
+      "exclusiveGroup": "marker-color"
+    },
+    "code-dark": {},
+    "nested-roman": {
+      "exclusiveGroup": "nested-numbering"
+    },
+    "nested-alpha": {
+      "exclusiveGroup": "nested-numbering"
+    },
+    "nested-kana": {
+      "exclusiveGroup": "nested-numbering"
+    },
+    "nested-decimal": {
+      "exclusiveGroup": "nested-numbering"
+    }
+  },
+  "deprecated": {
+    "kpi": "cards",
+    "columns": "cards",
+    "compare": "cards focus-right",
+    "agenda": "list",
+    "summary": "list",
+    "definition": "lead",
+    "qa": "lead surface-tint",
+    "proof": "align-middle",
+    "recommend-first": "focus-left",
+    "recommend-middle": "focus-center",
+    "recommend-last": "focus-right",
+    "four": "項目数で自動配置",
+    "grid": "項目数で自動配置",
+    "timeline-wrap": "timeline split",
+    "timeline-horizontal": "timeline horizontal",
+    "palette-blue": "palette-ai",
+    "palette-teal": "palette-aonibi",
+    "palette-violet": "palette-murasaki",
+    "palette-amber": "palette-kohaku",
+    "palette-rose": "palette-haizakura",
+    "palette-slate": "palette-sumi"
+  },
+  "rules": {
+    "titleMaxLines": 2,
+    "referenceNumbering": "manual",
+    "sourceMaxLines": 1,
+    "notesMaxLines": 2,
+    "rawHtml": "not supported in authored content",
+    "itemCounting": "top-level list items only",
+    "maximumBaseLayouts": 1,
+    "highlightSyntax": "***重要な言葉***"
+  },
+  "resources": {
+    "guide": "docs/AI_SLIDE_GUIDE.md",
+    "usage": "README.md",
+    "examples": "template.md",
+    "repairs": "examples/repairs.md",
+    "colors": "ai/colors.json",
+    "charts": "assets/charts/README.md"
+  }
+}

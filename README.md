@@ -8,19 +8,36 @@ AI向けの入口は [AGENTS.md](AGENTS.md)、判断基準と制作手順は [AI
 
 依頼例：「AGENTS.mdとAI向け制作ガイドを読み、このテーマで○○向けの発表資料を作ってください。目的は○○、持ち時間は○分、元資料は○○です。」
 
+## v3のAI支援・配布ツール
+
+- [機械向けレイアウト定義](ai/layouts.json)：必要な構造、項目数、併用条件、旧クラスの移行先。
+- [確認・配布ツール](tools/README.md)：静的チェック、ブラウザでの表示確認、HTMLと画像・フォントのZIP化。
+- [改善例](examples/repairs.md)：修正前後のMarkdownと、修正を選んだ理由。
+
+```bash
+python3 tools/check_slides.py template.md --json
+python3 tools/package_slides.py presentation.html dist/presentation.zip
+```
+
+静的チェックとZIP作成はPython標準機能だけで動きます。編集・プレビューにPythonやNode.jsを必須にするものではありません。公開リリースのHTML配布ZIPには画像・フォント・フォントライセンスが入り、全展開して `index.html` を開けます。絵文字などの外部依存は同梱の `manifest.json` に記録されます。
+
+## 改善PRを歓迎します
+
+制作中に見つかった表示の不具合や、ほかの資料にも役立つカスタマイズをぜひ還元してください。[貢献ガイド](CONTRIBUTING.md)に、AI Agentからの案内、変更の切り分け、fork・PR作成の手順をまとめています。Agentには「今回の共通部分の改善を、作者へPRしてください」と依頼できます。
+
 ## カテゴリから選ぶ
 
-[template.md](template.md) を**7カテゴリ・全49枚**に整理しました。作例は見た目・用途が異なるものに絞り、設定方法はこのREADMEに集約しています。各カテゴリの先頭に扉を置いています。2枚目が全体の目次です。
+[template.md](template.md) を**7カテゴリ・全47枚**に整理しました。作例は見た目・用途が異なるものに絞り、設定方法はこのREADMEに集約しています。各カテゴリの先頭に扉を置いています。2枚目が全体の目次です。
 
 | カテゴリ | スライド |
 |---|---|
 | 導入・本文 | 3〜8枚目 |
 | カード・比較・数値 | 9〜17枚目 |
-| 時系列・画面遷移 | 18〜23枚目 |
-| 画像・図版 | 24〜34枚目 |
-| コード・数式 | 35〜39枚目 |
-| 配色・余白・見出し | 40〜43枚目 |
-| 結論・補足 | 44〜49枚目 |
+| 時系列・画面遷移 | 18〜22枚目 |
+| 画像・図版 | 23〜33枚目 |
+| コード・数式 | 34〜37枚目 |
+| 配色・余白・見出し | 38〜41枚目 |
+| 結論・補足 | 42〜47枚目 |
 
 必要な1枚を `---` の区切り線と `<!-- _class: ... -->` ごとコピーしてください。Front Matterはデッキ全体に1つだけ必要です。本文に `div`・`span`・`br`・インラインCSSを書く必要はありません。
 
@@ -108,6 +125,17 @@ AI向けの入口は [AGENTS.md](AGENTS.md)、判断基準と制作手順は [AI
 ```
 
 `[3枚目](#3)` で、書き出したHTMLの3枚目へ移動できます。目次ではリンクを右にそろえます。テンプレートのページ範囲は、そのカテゴリの先頭へリンクしています。ページ番号は手動なので、スライドを増減したら表示とリンク先の両方を更新してください。PDF・PowerPointでは同じ移動動作を保証しません。
+
+入れ子の番号付きリストは、次のクラスで表記を選べます。Markdownには常に `1.`・`2.`・`3.` と書き、表示だけを切り替えます。
+
+| クラス | 表示 |
+|---|---|
+| `nested-roman`（標準） | i. / ii. / iii. |
+| `nested-alpha` | a. / b. / c. |
+| `nested-kana` | ア. / イ. / ウ.（五十音順） |
+| `nested-decimal` | 1. / 2. / 3. |
+
+例えば `<!-- _class: media media-right diagram nested-alpha -->` と指定します。スライド内の入れ子の番号付きリストに適用され、最上位の番号や時系列の丸内の番号は変えません。番号欄は共通の固定幅で、本文と折り返し行の開始位置を揃えます。同時に選ぶ表記は1種類です。
 
 要点まとめは同じクラスのまま、項目と説明を差し替えます。
 
@@ -230,11 +258,41 @@ GitHub・X・LinkedIn・Websiteのアイコンとラベルを用意していま�
 
 `fit-contain` は全体表示（標準）、`fit-cover` は枠を埋めて切り抜きます。`media`・`image-grid` では画像ごとに `![crop 説明](...)` で中央、`![crop-top 説明](...)` で上端基準を指定できます。
 
+左右に画像を置く `media-both` は引き続き使えます。縦横比が異なる画像は見た目の大きさが揃いにくいため、比較では比率を揃えるか、目的に合う `ratio-*` の作例を選んでください。
+
 `media-frame` で余白付きの枠を追加できます。`diagram` は図の外周24px、本文との間48pxを確保し、高さ480pxの枠に収めます。SVGを再生成しても余白は維持されます。`media-wide` は画像側を3:2に広げます（両側画像とは併用しません）。
+
+図だけを1枚で大きく見せる場合は `figure no-title` と `![h:600 図の説明](画像のパス)` を使います。標準のスライドでは上下60pxの余白を残し、図全体を中央に表示します。シーケンス図の作例はこの配置です。
 
 楽譜も同じ `media media-right diagram` の画像を `assets/generated/score.svg` に差し替えて表示できます。楽譜・フロー図・シーケンス図に別々のレイアウト指定は必要ありません。
 
 通常の画像は `![w:360](...)` / `![h:240](...)` で寸法を指定できます。`media`・`ratio-*`・`image-grid` 内ではCSSでサイズを管理するので寸法指定を重ねません。通常の画像例はスライドの余白内に収め、`full-image` だけは意図的に端まで使います。
+
+### グラフを入れる
+
+棒・折れ線・ドーナツのSVG作例を [assets/charts/](assets/charts/) に同梱しています。画像なので、表示に追加のNode.js・プラグイン・変換処理は不要です。Markdownの表や数値を自動的にグラフ化する機能ではありません。
+
+```markdown
+<!-- _class: figure captioned -->
+
+# 項目Bの件数が最も多い
+
+![h:440 A40件、B65件、C50件](assets/charts/bar.svg)
+
+###### 図2：項目別件数（架空データ）
+```
+
+| 伝えたいこと | 同梱画像 | 使い方 |
+|---|---|---|
+| 項目間の大小 | `bar.svg` | 棒グラフ。原則として数値軸を0から始める |
+| 時間による変化 | `line.svg` | 折れ線。時間間隔・単位を揃える |
+| 全体に占める割合 | `donut.svg` | ドーナツ。少数の項目に絞り、合計100%にする |
+
+配置は既存のものを使います。`figure` で図を大きく、`figure no-title` と `h:600` でタイトルなし、`media media-right diagram` で図と解説、`gallery` で複数の図を並べられます。軸や凡例が切れるため、グラフに `fit-cover`・`crop` は使いません。発表用は1枚に1グラフを基本とし、カタログの3種類一覧は選択のための見本です。
+
+**数値を変える場合**は、普段使う表計算・作図ツールからSVGまたはPNGを書き出し、画像のパスを差し替えます。AI AgentにデータからSVGを作ってもらう場合は、[グラフ素材の説明](assets/charts/README.md)を参照します。同梱の `data.csv` は作例の元データで、CSVを書き換えてもSVGは自動更新されません。
+
+色は `ai/colors.json` の藍を主系列に、琥珀・紫を補助系列に使います。同じ系列には資料全体で同じ色を使い、値・ラベル・線種も併用します。外部画像にスライドの `palette-*` は自動反映されないため、画像側でも配色を合わせてください。
 
 ### 余白・位置・色
 
@@ -262,7 +320,48 @@ GitHub・X・LinkedIn・Websiteのアイコンとラベルを用意していま�
 
 `vspace-xs` / `sm` / `md` / `lg` / `xl` / `2xl` で8 / 16 / 24 / 32 / 48 / 64pxを追加します。カード内ではインデントしてください。通常の段落間隔に加算されます。
 
-配色は `palette-blue`・`palette-teal`・`palette-violet`・`palette-amber`・`palette-rose`・`palette-slate` の6種類です。配色一覧の1枚で比較できます。`emphasis` は太字に強調色、`surface-tint` は淡い背景、`surface-dark` は濃い背景を適用します。引用には `note-success` / `note-warning` / `note-danger` も使えます。
+配色は `palette-ai`・`palette-aonibi`・`palette-murasaki`・`palette-kohaku`・`palette-haizakura`・`palette-sumi` の6種類です。配色一覧の1枚で比較できます。`emphasis` は太字に強調色、`surface-tint` は淡い背景、`surface-dark` は濃い背景を適用します。引用には `note-success` / `note-warning` / `note-danger` も使えます。
+
+### コード欄をエディタ風にする
+
+`<!-- _class: code code-dark -->` で、コード欄だけを黒背景にできます。通常の明るい背景へ戻す場合は `code-dark` を外します。カード内でも `cards code-notes code-dark` として使えます。
+
+黒背景の構文色は、背景用の淡色とは別の `darkAccent` を使います。予約語は紫、文字列は青鈍、関数名は藍、数値は琥珀、組み込み関数は灰桜です。明るい背景と暗い背景で読みやすい濃さを使い分け、定義は `ai/colors.json` に集約しています。
+
+言語名はコード欄の左上に置き、区切り線と余白で本文から離します。コードフェンスに `python`・`javascript` などを書くと表示されます。言語指定のないブロックにはラベルを表示しません。スライド全体を濃色にする既存の `surface-dark` とも併用できます。
+
+数式は `$ ... $` が文中、`$$ ... $$` が独立した表示です。複数行の導出は `aligned` の `&` で等号の位置を揃え、`\\` で改行します。数式の作例は1枚に統合しています。
+
+### 蛍光ペン風の強調と配色名
+
+`***重要な言葉***` で、文字の下側に蛍光ペンのような色を引けます。通常のMarkdownの「太字＋強調」を使うため、HTMLや追加の変換処理は不要です。`**太字**` は通常の太字、`*強調*` は通常の強調のままです。`==文字==` はこのテーマでは使いません。
+
+```markdown
+<!-- _class: lead palette-ai marker-kohaku -->
+
+# 判断に必要な情報をそろえる
+
+## まずは ***対象を絞って試す***
+
+通常の文章の中でも、***重要な箇所だけ***に色を引けます。
+```
+
+標準の線色はスライドの配色と連動します。線の色だけ変える場合は `marker-*` を追加します。折り返しにも対応し、濃い背景では文字が読める濃さの線に切り替わります。短い語句に絞り、段落全体への多用は避けてください。
+
+| 表示名 | 配色のクラス | 線色だけの指定 |
+|---|---|---|
+| 藍 | `palette-ai` | `marker-ai` |
+| 青鈍 | `palette-aonibi` | `marker-aonibi` |
+| 紫 | `palette-murasaki` | `marker-murasaki` |
+| 琥珀 | `palette-kohaku` | `marker-kohaku` |
+| 灰桜 | `palette-haizakura` | `marker-haizakura` |
+| 墨 | `palette-sumi` | `marker-sumi` |
+
+見出し・本文・リンク・表・カード・コード・注釈は共通の役割別変数を使います。色の原本は [ai/colors.json](ai/colors.json) に集約し、濃い背景や蛍光ペンの色も同じ定義から作っています。図版や写真そのものの色は画像素材側の指定です。
+
+スライドごとに色を変えたい理由がなければ、同じ `palette-*` を通して使います。MarkdownのFront Matterの `class` はローカルな `_class` と単純に加算されるものではないため、各スライドの `_class` に同じ配色を明示する方法を推奨します。
+
+旧名は廃止しました：`palette-blue` → `palette-ai`、`palette-teal` → `palette-aonibi`、`palette-violet` → `palette-murasaki`、`palette-amber` → `palette-kohaku`、`palette-rose` → `palette-haizakura`、`palette-slate` → `palette-sumi`。
 
 同じ種類の指定は1つずつ選んでください。クラスを書く順番は優先順位に影響しません。独自の調整は `aizome.css` にクラスを追加してCSS変数を変更します。
 
@@ -286,7 +385,7 @@ Marp標準の絵文字コードを、本文・見出し・箇条書きにその�
 - :bulb: 改善のアイデア
 ```
 
-42枚目に、よく使う18種類とコードを1枚にまとめています。コードそのものを表示するときはバッククォートで囲みます（例：`:smile:`）。未対応のコードはそのまま文字として残ります。絵文字はMarp標準のTwemoji配信元から画像を読み込むため、表示・書き出し時にインターネット接続が必要です。
+40枚目に、よく使う18種類とコードを1枚にまとめています。コードそのものを表示するときはバッククォートで囲みます（例：`:smile:`）。未対応のコードはそのまま文字として残ります。絵文字はMarp標準のTwemoji配信元から画像を読み込むため、表示・書き出し時にインターネット接続が必要です。
 
 ### 長いタイトル
 
@@ -416,57 +515,55 @@ HTMLで参照先スライドへ移動できます。PDF・PowerPointやエディ
 | No. | パターン | クラス |
 |---|---|---|
 | 18 | 03. 時系列・画面遷移 | `section` |
-| 19 | 時系列：縦1列・番号あり | `timeline numbered` |
-| 20 | 時系列：縦2列・番号なし | `timeline split` |
-| 21 | 時系列：横1段・番号なし | `timeline horizontal` |
-| 22 | 時系列：横2段・番号あり | `timeline horizontal split numbered` |
-| 23 | スマホの画面遷移：3〜4画面を自動配置 | `screen-flow` |
+| 19 | 時系列：縦2列・番号なし | `timeline split` |
+| 20 | 時系列：横1段・番号なし | `timeline horizontal` |
+| 21 | 時系列：横2段・番号あり | `timeline horizontal split numbered` |
+| 22 | スマホの画面遷移：3〜4画面を自動配置 | `screen-flow` |
 
 ### 画像・図版
 
 | No. | パターン | クラス |
 |---|---|---|
-| 24 | 04. 画像・図版 | `section` |
-| 25 | 1:1の画像を使う | `media media-right ratio-1x1` |
-| 26 | 16:9の画像を使う | `media media-right ratio-16x9` |
-| 27 | 9:16の画像を使う | `media media-right ratio-9x16` |
-| 28 | 3:1の画像を使う | `figure ratio-3x1 captioned` |
-| 29 | 左右で異なる比率の画像 | `media media-both media-frame` |
-| 30 | 縦長画像：全体表示と切り抜き | `gallery image-grid` |
-| 31 | 画像を主役にする | `full-image` |
-| 32 | フロー図＋解説 | `media media-right diagram` |
-| 33 | シーケンス図＋解説 | `media media-right diagram` |
-| 34 | 全体＋拡大：注目してほしい箇所を見せる | `image-detail` |
+| 23 | 04. 画像・図版 | `section` |
+| 24 | 1:1の画像を使う | `media media-right ratio-1x1` |
+| 25 | 16:9の画像を使う | `media media-right ratio-16x9` |
+| 26 | 9:16の画像を使う | `media media-right ratio-9x16` |
+| 27 | 3:1の画像を使う | `figure ratio-3x1 captioned` |
+| 28 | 縦長画像：全体表示と切り抜き | `gallery image-grid` |
+| 29 | 画像を主役にする | `full-image` |
+| 30 | フロー図＋解説 | `media media-right diagram` |
+| 31 | シーケンス図を大きく見せる | `figure no-title` |
+| 32 | 全体＋拡大：注目してほしい箇所を見せる | `image-detail` |
+| 33 | グラフ：比較・推移・構成比 | `gallery` |
 
 ### コード・数式
 
 | No. | パターン | クラス |
 |---|---|---|
-| 35 | 05. コード・数式 | `section` |
-| 36 | コードを大きく見せる | `code` |
-| 37 | コード＋解説 | `cards code-notes` |
-| 38 | 数式を中心に説明 | `equation` |
-| 39 | 導出・証明 | `align-middle` |
+| 34 | 05. コード・数式 | `section` |
+| 35 | コードを大きく見せる | `code code-dark` |
+| 36 | コード＋解説 | `cards code-notes` |
+| 37 | 数式を中心に説明 | `equation` |
 
 ### 配色・余白・見出し
 
 | No. | パターン | クラス |
 |---|---|---|
-| 40 | 06. 配色・余白・見出し | `section` |
-| 41 | 配色一覧：6色を見比べる | `palette-catalog` |
-| 42 | 絵文字コード：よく使う18種類 | `emoji-catalog` |
-| 43 | 小さなセクション名を添え、長いタイトルも文字を縮めずに本文と余白を分けて伝える | `title-long section-title cards` |
+| 38 | 06. 配色・余白・見出し | `section` |
+| 39 | 配色一覧：6色を見比べる | `palette-catalog` |
+| 40 | 絵文字コード：よく使う18種類 | `emoji-catalog` |
+| 41 | 小さなセクション名を添え、長いタイトルも文字を縮めずに本文と余白を分けて伝える | `title-long section-title cards` |
 
 ### 結論・補足
 
 | No. | パターン | クラス |
 |---|---|---|
-| 44 | 07. 結論・補足 | `section` |
-| 45 | 提案・意思決定 | `decision` |
-| 46 | 次のアクション | `action` |
-| 47 | 課題・対応・判断条件を1枚にまとめる | `risk-action` |
-| 48 | 参考資料・リンク | `references` |
-| 49 | Thank you | `closing` |
+| 42 | 07. 結論・補足 | `section` |
+| 43 | 提案・意思決定 | `decision` |
+| 44 | 次のアクション | `action` |
+| 45 | 課題・対応・判断条件を1枚にまとめる | `risk-action` |
+| 46 | 参考資料・リンク | `references` |
+| 47 | Thank you | `closing` |
 
 ## フォント
 

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="600" viewBox="0 0 1800 600" role="img" aria-labelledby="title desc">
+  <title id="title">Image placeholder 3:1</title>
+  <desc id="desc">Neutral gray image, 1800 by 600 pixels. The border and diagonals show crop boundaries.</desc>
+  <defs><pattern id="grid" width="75.0" height="75.0" patternUnits="userSpaceOnUse"><path d="M 75.0 0 H 0 V 75.0" fill="none" stroke="#dedede" stroke-width="1.2"/></pattern></defs>
+  <rect width="1800" height="600" fill="#efefef"/>
+  <rect width="1800" height="600" fill="url(#grid)"/>
+  <path d="M 0 0 L 1800 600 M 1800 0 L 0 600" stroke="#c9c9c9" stroke-width="1.7142857142857142" fill="none"/>
+  <rect x="30.0" y="30.0" width="1740.0" height="540.0" fill="none" stroke="#a5a5a5" stroke-width="2.4" stroke-dasharray="10.0 10.0"/>
+  <rect x="720.0" y="222.0" width="360.0" height="156.0" rx="9.0" fill="#efefef"/>
+  <g font-family="Arial, sans-serif" fill="#555555" text-anchor="middle">
+    <text x="900.0" y="300.0" font-size="45.0" font-weight="700">3:1</text>
+    <text x="900.0" y="336.0" font-size="18.9">1800 × 600 px</text>
+  </g>
+</svg>

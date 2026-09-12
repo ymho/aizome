@@ -3,544 +3,830 @@ marp: true
 theme: aizome
 paginate: true
 size: 16:9
-title: 微分方程式を理解し、コードにする
+title: Aizome スライドパターン集
 author: 水城アオ（サンプル）
 ---
 <!-- _class: cover -->
 
-# テンプレートーAizome
+# Aizome スライドパターン集
 
-## 一般解の証明から数値計算まで
+## 伝えたいことから、レイアウトを選ぶ
 
-水城アオ
-
----
-<!-- _class: agenda -->
-
-# 本日の構成
-
-1. 解きたい問題を定義する
-2. 一般解の構造を証明する
-3. 具体的な方程式を解く
-4. 数値計算として実装・検証する
+Markdownでつくるプレゼンテーション｜水城アオ
 
 ---
-<!-- _class: profile -->
 
-# 自己紹介
+<!-- _class: list -->
 
-![avatar w:220px](./assets/profile-placeholder.svg)
+# 目的からテンプレートを選ぶ
+
+1. **導入・本文** [3〜8枚目](#3)
+2. **カード・比較・数値** [9〜17枚目](#9)
+3. **時系列・画面遷移** [18〜23枚目](#18)
+4. **画像・図版** [24〜34枚目](#24)
+5. **コード・数式** [35〜39枚目](#35)
+6. **配色・余白・見出し** [40〜43枚目](#40)
+7. **結論・補足** [44〜49枚目](#44)
+
+---
+
+<!-- _class: section -->
+
+# 01. 導入・本文
+
+## 要点を伝え、話し手を紹介する
+
+---
+
+# 基本の本文
+
+## 1枚につき、伝えたいことは1つ
+
+見出しで結論を示し、本文で背景を補います。
+
+- 箇条書きは3〜5項目を目安にする
+- **重要な言葉**だけを強調する
+- 詳しい情報は別のスライドに分ける
+
+> 補足や注意点は引用記法で添えられます。
+
+---
+
+<!-- _class: lead -->
+
+# キーメッセージ
+
+## 伝わる資料は、選びやすい。
+
+情報の役割に合ったレイアウトを選ぶことで、読み手の理解を助けます。
+
+---
+
+<!-- _class: quote -->
+
+# 引用・参加者の声
+
+> 必要な情報をすぐに見つけられると、
+> 次の行動に迷わなくなります。
+
+ユーザーインタビューより（架空のコメント）
+
+---
+
+<!-- _class: profile avatar-circle -->
+
+# プロフィール：右に丸形の写真
+
+![avatar](assets/profile-placeholder.svg)
 
 ## 水城アオ
-架空のプロダクトエンジニア
 
-- **経歴**：Web制作を経て、業務システムの設計・開発を担当
+**プロダクトエンジニア** ｜ 東京（サンプル）
 
-- **趣味**：街歩き、写真、コーヒー
+使う人の課題を整理し、伝わる画面と動く仕組みをつくります。
+設計から実装、使い始めたあとの改善まで担当しています。
 
-- **最近の関心**：数式とコードをつなぐ説明
+- **これまで**
 
-> 複雑なことを、シンプルに伝える。
+  Web制作から業務システム開発、プロダクト改善へ。
+- **得意なこと**
 
-[![sns-github w:60px](./assets/icons/GitHub_Invertocat_Black_Clearspace.svg)](https://github.com/)
+  UI設計・フロントエンド開発・情報の可視化。
+- **関心と好きなこと**
+
+  チームの知識共有。休日は街歩きと写真、コーヒー。
+
+> 小さくつくり、使いながら磨く。
+
+[![sns-github](assets/icons/GitHub_Invertocat_Black_Clearspace.svg) GitHub](https://github.com/) [![sns-x](assets/icons/x.svg) X](https://x.com/) [![sns-linkedin](assets/icons/linkedin.svg) LinkedIn](https://www.linkedin.com/) [![sns-web](assets/icons/website.svg) Website](https://example.com/)
 
 ---
+
+<!-- _class: faq -->
+
+# よくある質問
+
+## HTMLは必要ですか？
+
+不要です。通常のMarkdownとMarpのディレクティブで記述します。
+
+## カードの中に箇条書きを置けますか？
+
+はい。カードを表すリストの中に、インデントしてリストを書きます。
+
+## 文章が入りきらないときは？
+
+内容を分割し、必要に応じて `dense` クラスを使います。
+
+---
+
 <!-- _class: section -->
 
-# 01. Problem
+# 02. カード・比較・数値
 
-## 何を理解し、何を実装するのか
+## 情報を並べ、違いと大きさを見せる
+
+---
+
+<!-- _class: cards card-top -->
+
+# カード：項目数に合わせて並べる
+
+- **見つける**
+
+  必要な情報へたどり着く。
+- **理解する**
+
+  要点と根拠を確認する。
+- **動く**
+
+  次の行動を選ぶ。
+
+指定：`cards card-top`。項目数を数えて1〜3枚は1行、4枚は2×2、5〜6枚は3×2に配置します。
 
 ---
 
-# 今回扱う問題
+<!-- _class: cards card-middle card-text-center -->
 
-区間 $I$ 上で $P,Q,R$ が連続であるとし、2階非同次線形微分方程式
+# カード：6項目を上下中央に
 
-$$
-y''+P(x)y'+Q(x)y=R(x)
-$$
+- **目的**
 
-を考えます。
+  何を達成するか
+- **利用者**
 
-> ゴールは公式を暗記することではなく、一般解の構造を証明し、その構造をコードで確かめることです。
+  誰のためにつくるか
+- **場面**
+
+  いつ使われるか
+- **情報**
+
+  何を伝えるか
+- **操作**
+
+  何をしてもらうか
+- **評価**
+
+  どう確かめるか
+
+指定：`cards card-middle card-text-center`。`four`・`grid` の指定は不要です。
 
 ---
-<!-- _class: cards -->
 
-# 解くための3つの問い
+<!-- _class: stat with-notes -->
 
-- **構造**
-  なぜ非同次方程式の一般解は「同次解＋特殊解」になるのか。
+# ひとつの数字を強調
 
-- **導出**
-  特殊解を定数変化法でどのように求めるのか。
+## 32%
 
-- **検証**
-  数値計算で得た解が、厳密解と一致するか。
+**作業時間を短縮**
+
+改善前後の平均所要時間を比較。※1
+
+> ※1 同じ操作を対象に比較した架空データです。
+>
+> 注釈は `with-notes` と末尾の引用で配置。条件や出典を短い2行にまとめます。
 
 ---
-<!-- _class: table-center -->
 
-# 記号と役割
+<!-- _class: comparison-table captioned with-source -->
+<!-- _footer: 出典：テンプレート用の架空プラン｜`with-source` と `_footer` で1行の出典を配置 -->
 
-| 記号 | 意味 | 満たす式 |
+# 比較表
+
+###### 表1：プラン比較
+
+| 観点 | プランA | プランB | プランC |
+|---|---|---|---|
+| 導入規模 | 個人 | チーム | 全社 |
+| 設定の自由度 | 小 | 中 | 大 |
+| 運用の負担 | 小 | 中 | 大 |
+| 向いている用途 | 試用 | 部門運用 | 共通基盤 |
+
+---
+
+<!-- _class: matrix -->
+
+# 優先順位マトリクス
+
+| | 効果が小さい | 効果が大きい |
 |---|---|---|
-| $L$ | 線形微分作用素 | $L[y]=y''+Py'+Qy$ |
-| $y_0$ | 同次方程式の一般解 | $L[y_0]=0$ |
-| $y_1$ | 非同次方程式の特殊解 | $L[y_1]=R$ |
-| $\phi_1,\phi_2$ | 同次方程式の基本解 | $L[\phi_i]=0$ |
-| $W$ | ロンスキー行列式 | $W=\phi_1\phi_2'-\phi_1'\phi_2$ |
+| **負担が小さい** | 余力があれば実施 | **最初に取り組む** |
+| **負担が大きい** | 見送る | 計画して取り組む |
 
 ---
+
+<!-- _class: dense -->
+
+# 詳細表・付録
+
+| 項目 | 確認すること | 担当 | タイミング | 状態 |
+|---|---|---|---|---|
+| 目的 | 成功条件を定義 | 企画 | 開始前 | 完了 |
+| 対象 | 利用部門を選定 | 企画 | 開始前 | 完了 |
+| 画面 | 主な操作を設計 | 設計 | 試作時 | 完了 |
+| データ | 入出力を確認 | 開発 | 実装時 | 確認中 |
+| 品質 | 主要な操作を検証 | 開発 | 公開前 | 予定 |
+| 運用 | 問い合わせ先を整備 | 運用 | 公開前 | 予定 |
+| 効果 | 所要時間を測定 | 企画 | 公開後 | 予定 |
+
+`dense`：左右の余白を残して表を全幅に表示。20pxの文字で、詳細項目を読みやすく並べます。
+
+---
+
+<!-- _class: cards focus-right before-after card-middle -->
+
+# Before / After：変更による違いを伝える
+
+- **Before｜情報が分散**
+
+  申請先を探す必要がある。
+
+  進捗を個別に問い合わせる。
+- **After｜窓口をひとつに**
+
+  同じ画面から申請できる。
+
+  進捗をいつでも確認できる。
+
+指定：`cards focus-right before-after card-middle`。左右で同じ観点・順番をそろえると、変化が伝わります。
+
+---
+
+<!-- _class: cards focus-center card-top -->
+
+# 3案比較：条件と推奨理由をそろえる
+
+- **A｜現状を改善**
+
+  導入負担：小
+
+  効果：限定的
+
+  手順の見直しで対応。
+- **B｜段階的に移行（推奨）**
+
+  導入負担：中
+
+  効果：検証しながら拡大
+
+  まず1チームで試す。
+- **C｜全体を刷新**
+
+  導入負担：大
+
+  効果：全体最適を狙う
+
+  移行計画を別途用意。
+
+`cards focus-center`。強調位置は `focus-left` / `focus-center` / `focus-right`。推奨理由は文章でも示します。
+
+---
+
 <!-- _class: section -->
 
-# 02. Proof
+# 03. 時系列・画面遷移
 
-## 一般解の構造を証明する
-
----
-
-# 一般解の主張
-
-線形微分作用素を
-
-$$
-L[y]=y''+P(x)y'+Q(x)y
-$$
-
-と定めます。同次方程式の任意の解を $y_0$、非同次方程式の特殊解を一つ $y_1$ とすると、
-
-$$
-\boxed{y=y_0+y_1}
-$$
-
-が非同次方程式の一般解になります。これを両方向から示します。
+## 順序と連続性を伝える
 
 ---
 
-# 証明 1：和は非同次方程式を満たす
+<!-- _class: timeline numbered -->
 
-$L$ の線形性と $L[y_0]=0$, $L[y_1]=R$ より、
+# 時系列：縦1列・番号あり
+
+1. **4月｜調査**
+
+   課題を集める
+2. **5月｜設計**
+
+   仮説を形にする
+3. **6月｜試作**
+
+   操作を確認する
+4. **7月｜検証**
+
+   利用者の声を聞く
+5. **8月｜改善**
+
+   気づきを反映する
+
+指定：`timeline numbered`。番号を消す場合は `numbered` を外します。
+
+---
+
+<!-- _class: timeline split -->
+
+# 時系列：縦2列・番号なし
+
+1. **4月｜調査**
+
+   課題を集める
+2. **5月｜設計**
+
+   仮説を形にする
+3. **6月｜試作**
+
+   操作を確認する
+4. **7月｜検証**
+
+   利用者の声を聞く
+5. **8月｜改善**
+
+   気づきを反映する
+6. **9月｜展開**
+
+   利用を広げる
+7. **10月｜計測**
+
+   効果を確かめる
+8. **11月｜運用**
+
+   手順を整える
+
+指定：`timeline split`。左下へ抜け、右上から続きます。項目数に合わせて折り返します。
+
+---
+
+<!-- _class: timeline horizontal -->
+
+# 時系列：横1段・番号なし
+
+1. **4月｜調査**
+
+   課題を集める
+2. **5月｜設計**
+
+   仮説を形にする
+3. **6月｜試作**
+
+   操作を確認する
+4. **7月｜検証**
+
+   利用者の声を聞く
+5. **8月｜改善**
+
+   気づきを反映する
+
+指定：`timeline horizontal`。左から右へ進みます。6項目までが目安です。
+
+---
+
+<!-- _class: timeline horizontal split numbered -->
+
+# 時系列：横2段・番号あり
+
+1. **4月｜調査**
+
+   課題を集める
+2. **5月｜設計**
+
+   仮説を形にする
+3. **6月｜試作**
+
+   操作を確認する
+4. **7月｜検証**
+
+   利用者の声を聞く
+5. **8月｜改善**
+
+   気づきを反映する
+6. **9月｜展開**
+
+   利用を広げる
+7. **10月｜計測**
+
+   効果を確かめる
+8. **11月｜運用**
+
+   手順を整える
+
+指定：`timeline horizontal split numbered`。上段の右端から、下段の左端へ続きます。
+
+---
+
+<!-- _class: screen-flow -->
+
+# スマホの画面遷移：3〜4画面を自動配置
+
+1. ![一覧画面](assets/screens/browse.svg)
+
+   **01. 一覧**
+
+   商品を選ぶ
+2. ![詳細画面](assets/screens/detail.svg)
+
+   **02. 詳細**
+
+   内容を確認する
+3. ![カート画面](assets/screens/cart.svg)
+
+   **03. カート**
+
+   注文を確定する
+4. ![完了画面](assets/screens/complete.svg)
+
+   **04. 完了**
+
+   一覧へ戻る
+
+指定：`screen-flow`。3〜4画面を自動配置。`no-title` を追加するとタイトル領域を画像に使えます。
+
+---
+
+<!-- _class: section -->
+
+# 04. 画像・図版
+
+## 比率を選び、図や写真を余白の中に収める
+
+---
+
+<!-- _class: media media-right ratio-1x1 -->
+
+# 1:1の画像を使う
+
+- ![1:1の画像枠](assets/placeholders/square.svg)
+- **正方形の商品写真やジャケットに**
+
+  元画像の縦横比に合う枠を選び、全体をそのまま収めます。
+
+  **指定**：`media media-right` ＋ `ratio-1x1`
+
+  左配置は `media-left`。枠を埋めて切り抜く場合は `fit-cover` を追加します。
+
+---
+
+<!-- _class: media media-right ratio-16x9 -->
+
+# 16:9の画像を使う
+
+- ![16:9の画像枠](assets/placeholders/landscape-16x9.svg)
+- **横長の画面キャプチャや動画に**
+
+  元画像の縦横比に合う枠を選び、全体をそのまま収めます。
+
+  **指定**：`media media-right` ＋ `ratio-16x9`
+
+  4:3の画像には `ratio-4x3`。左配置は `media-left`。枠を埋めて切り抜く場合は `fit-cover` を追加します。
+
+---
+
+<!-- _class: media media-right ratio-9x16 -->
+
+# 9:16の画像を使う
+
+- ![9:16の画像枠](assets/placeholders/portrait-9x16.svg)
+- **スマートフォンの画面や縦動画に**
+
+  元画像の縦横比に合う枠を選び、全体をそのまま収めます。
+
+  **指定**：`media media-right` ＋ `ratio-9x16`
+
+  3:4の画像には `ratio-3x4`。左配置は `media-left`。枠を埋めて切り抜く場合は `fit-cover` を追加します。
+
+---
+
+<!-- _class: figure ratio-3x1 captioned -->
+
+# 3:1の画像を使う
+
+![3:1のパノラマ画像](assets/placeholders/panorama.svg)
+
+###### 図1：横長画像の配置
+
+**横に広い風景やバナーに。** 全幅を活かしながら、左右の余白を残します。
+
+**指定**：`figure ratio-3x1`。通常の画像1枚と、その下の説明文で配置します。
+
+---
+
+<!-- _class: media media-both media-frame -->
+
+# 左右で異なる比率の画像
+
+- ![縦長3:4](assets/placeholders/portrait-3x4.svg)
+- **高さを揃えて比較する**
+
+  元の縦横比が違っても、共通の枠に収められます。
+
+  **指定**：`media media-both media-frame`。切り抜かず、共通の高さに収めます。
+- ![横長16:9](assets/placeholders/landscape-16x9.svg)
+
+---
+
+<!-- _class: gallery image-grid -->
+
+# 縦長画像：全体表示と切り抜き
+
+- ![縦長・全体表示](assets/placeholders/portrait-9x16.svg)
+
+  **contain**：全体が入り、左右に余白が残る
+- ![crop 縦長・切り抜き](assets/placeholders/portrait-9x16.svg)
+
+  **cover**：枠を埋め、上下が切れる
+
+**指定**：`gallery image-grid`。全体表示は `![説明](...)`、切り抜きは `![crop 説明](...)`。上端を残す場合は `crop-top`。
+
+---
+
+<!-- _class: full-image -->
+
+# 画像を主役にする
+
+![bg cover brightness:0.45](assets/placeholder-rail.svg)
+
+メッセージを短く、印象を大きく。
+
+指定：`full-image` と `![bg cover brightness:0.45](画像のパス)`
+
+---
+
+<!-- _class: media media-right diagram -->
+
+# フロー図＋解説
+
+- ![問題から検証までのフロー](assets/generated/mermaid.svg)
+- **問題から検証まで**
+
+  1. 解の構造を理解する
+  2. 厳密解を求める
+  3. 実装して誤差を確認する
+
+  図の外周に余白を取り、流れを追いやすくします。
+
+  **指定**：`media media-right diagram`。図の内側24px、本文との間48pxを確保します。
+
+---
+
+<!-- _class: media media-right diagram -->
+
+# シーケンス図＋解説
+
+- ![計算処理のシーケンス](assets/generated/plantuml.svg)
+- **呼び出し関係を追う**
+
+  - 利用者が計算を開始する
+  - ソルバーが状態を更新する
+  - 計算結果を返す
+
+  本文と図を離し、矢印やラベルまで見渡せるようにします。
+
+  **指定**：`media media-right diagram`。左に移すときは `media-left`。
+
+---
+
+<!-- _class: image-detail -->
+
+# 全体＋拡大：注目してほしい箇所を見せる
+
+- ![全体図](assets/placeholder-map.svg)
+
+  **全体**｜中央のラベルに注目します。
+- ![中央を拡大した図](assets/placeholder-detail.svg)
+
+  **拡大**｜同じ箇所を大きく見せます。
+
+`image-detail`。画像2枚を順に書き、各画像の下に説明を添えます。
+
+拡大部分は切り出した画像を用意します。`detail-left` を追加すると左右を入れ替えられます。
+
+---
+
+<!-- _class: section -->
+
+# 05. コード・数式
+
+## 実装と根拠を読みやすく見せる
+
+---
+
+<!-- _class: code -->
+
+# コードを大きく見せる
+
+```python
+def average(values):
+    if not values:
+        raise ValueError("values must not be empty")
+    return sum(values) / len(values)
+
+
+result = average([12, 18, 24])
+print(result)  # 18.0
+```
+
+空の入力を確認してから、平均値を計算します。
+
+---
+
+<!-- _class: cards code-notes -->
+
+# コード＋解説
+
+- **実装**
+
+  ```python
+  def normalize(text):
+      return text.strip().lower()
+
+  print(normalize(" Aizome "))
+  ```
+- **処理のポイント**
+  - 前後の空白を取り除く
+  - 小文字に統一する
+  - 表記の揺れを減らす
+
+---
+
+<!-- _class: equation -->
+
+# 数式を中心に説明
+
+線形な仕組みは、部分ごとに考えられます。
+
+$$
+L[y_0 + y_1] = L[y_0] + L[y_1]
+$$
+
+- $L$：線形作用素
+- $y_0, y_1$：作用素を適用する関数
+
+> 複雑な式も、構造に注目すると整理できます。
+
+---
+
+<!-- _class: align-middle -->
+
+# 導出・証明
+
+## 和の形が解になることを示す
+
+$L[y_0]=0$、$L[y_1]=R$ とすると、線形性より
 
 $$
 \begin{aligned}
-L[y_0+y_1]
-&=L[y_0]+L[y_1] \\
-&=0+R \\
-&=R.
+L[y_0+y_1] &= L[y_0]+L[y_1] \\
+           &= 0+R \\
+           &= R.
 \end{aligned}
 $$
 
-したがって、任意の同次解 $y_0$ に特殊解 $y_1$ を加えたものは、必ず非同次方程式の解です。
+> したがって、$y_0+y_1$ は $L[y]=R$ を満たします。
 
 ---
 
-# 証明 2：すべての解がこの形になる
-
-非同次方程式の任意の解を $y$ とします。特殊解 $y_1$ との差を取ると、
-
-$$
-L[y-y_1]=L[y]-L[y_1]=R-R=0.
-$$
-
-よって $y-y_1$ は同次方程式の解です。これを $y_0$ と置けば、
-
-$$
-y-y_1=y_0
-\quad\Longleftrightarrow\quad
-y=y_0+y_1.
-$$
-
-以上により、非同次方程式の解は過不足なく $y_0+y_1$ と表されます。$\square$
-
----
-
-# 同次方程式の一般解
-
-線形独立な基本解を $\phi_1,\phi_2$ とすると、同次方程式の一般解は
-
-$$
-y_0=C_1\phi_1(x)+C_2\phi_2(x)
-$$
-
-です。線形独立性はロンスキー行列式で確認できます。
-
-$$
-W(x)=
-\begin{vmatrix}
-\phi_1(x) & \phi_2(x) \\
-\phi_1'(x) & \phi_2'(x)
-\end{vmatrix}
-\neq0
-$$
-
----
-
-# 特殊解：定数変化法
-
-定数 $C_1,C_2$ を関数 $u_1(x),u_2(x)$ に置き換え、
-
-$$
-y_1=u_1\phi_1+u_2\phi_2
-$$
-
-と仮定します。補助条件
-
-$$
-u_1'\phi_1+u_2'\phi_2=0
-$$
-
-を課すと、$y_1'=u_1\phi_1'+u_2\phi_2'$ となります。
-
----
-
-# 定数変化法：代入する
-
-もう一度微分して $L[y_1]=R$ に代入します。各 $\phi_i$ は同次方程式を満たすため、$u_i$ を含む項が消え、
-
-$$
-u_1'\phi_1'+u_2'\phi_2'=R
-$$
-
-だけが残ります。補助条件と合わせると、
-
-$$
-\begin{pmatrix}
-\phi_1 & \phi_2 \\
-\phi_1' & \phi_2'
-\end{pmatrix}
-\begin{pmatrix}u_1'\\u_2'\end{pmatrix}
-=\begin{pmatrix}0\\R\end{pmatrix}.
-$$
-
----
-
-# 定数変化法：連立方程式を解く
-
-$W\neq0$ なので、クラメルの公式から
-
-$$
-u_1'=-\frac{\phi_2R}{W},
-\qquad
-u_2'=\frac{\phi_1R}{W}
-$$
-
-を得ます。積分して $y_1=u_1\phi_1+u_2\phi_2$ に戻すと、
-
-$$
-y_1
-=-\phi_1\int\frac{\phi_2R}{W}\,dx
-+\phi_2\int\frac{\phi_1R}{W}\,dx.
-$$
-
-積分定数は同次解 $y_0$ に含められます。
-
----
 <!-- _class: section -->
 
-# 03. Example
+# 06. 配色・余白・見出し
 
-## 証明した構造を具体例に適用する
-
----
-
-# 解く方程式
-
-初期値問題
-
-$$
-y''+3y'+2y=e^x,
-\qquad y(0)=0,\quad y'(0)=0
-$$
-
-を解きます。対応する同次方程式の特性方程式は
-
-$$
-r^2+3r+2=(r+1)(r+2)=0
-$$
-
-なので、
-
-$$
-y_0=C_1e^{-x}+C_2e^{-2x}
-$$
-
-です。
+## 必要な指定を組み合わせる
 
 ---
 
-# 定数変化法で特殊解を求める
+<!-- _class: palette-catalog -->
 
-$\phi_1=e^{-x}$, $\phi_2=e^{-2x}$ とすると、
+# 配色一覧：6色を見比べる
 
-$$
-W=\phi_1\phi_2'-\phi_1'\phi_2=-e^{-3x}.
-$$
+- **藍**
 
-$R=e^x$ を定数変化法の式へ代入すれば、
+  `palette-blue`
 
-$$
-u_1'=-\frac{\phi_2R}{W}=e^{2x},
-\qquad
-u_2'=\frac{\phi_1R}{W}=-e^{3x}.
-$$
+  **強調文字**と淡い背景
+- **スモークブルー**
 
-したがって、特殊解の一つは
+  `palette-teal`
 
-$$
-y_1=\frac12e^{2x}e^{-x}-\frac13e^{3x}e^{-2x}
-=\frac16e^x
-$$
+  **強調文字**と淡い背景
+- **紫**
 
-です。
+  `palette-violet`
+
+  **強調文字**と淡い背景
+- **琥珀**
+
+  `palette-amber`
+
+  **強調文字**と淡い背景
+- **ローズ**
+
+  `palette-rose`
+
+  **強調文字**と淡い背景
+- **スレート**
+
+  `palette-slate`
+
+  **強調文字**と淡い背景
+
+色名のクラスをレイアウトに追加します。例：`cards palette-teal`
+
+`emphasis`：太字に強調色 ／ `surface-tint`：淡い背景 ／ `surface-dark`：濃い背景
+
+---
+
+<!-- _class: emoji-catalog -->
+
+# 絵文字コード：よく使う18種類
+
+| 表示 | コード | 表示 | コード | 表示 | コード |
+|---|---|---|---|---|---|
+| :smile: | `:smile:` | :thumbsup: | `:thumbsup:` | :clap: | `:clap:` |
+| :tada: | `:tada:` | :bulb: | `:bulb:` | :mag: | `:mag:` |
+| :book: | `:book:` | :memo: | `:memo:` | :rocket: | `:rocket:` |
+| :gear: | `:gear:` | :wrench: | `:wrench:` | :computer: | `:computer:` |
+| :white_check_mark: | `:white_check_mark:` | :warning: | `:warning:` | :x: | `:x:` |
+| :calendar: | `:calendar:` | :chart_with_upwards_trend: | `:chart_with_upwards_trend:` | :sparkles: | `:sparkles:` |
+
+本文や見出しに `:rocket:` と書くと :rocket: と表示されます。追加のクラス指定は不要です。
+
+コード自体を見せたいときはバッククォートで囲みます。例：`:smile:`。画像はMarp標準の配信元から読み込みます。
 
 ---
 
-# 厳密解を得る
+<!-- _class: title-long section-title cards -->
+<!-- _header: 06 / 配色・余白・見出し -->
 
-一般解は
+# 小さなセクション名を添え、長いタイトルも文字を縮めずに本文と余白を分けて伝える
 
-$$
-y=C_1e^{-x}+C_2e^{-2x}+\frac{1}{6}e^x
-$$
+- **見出しの役割**
 
-です。$y(0)=0$, $y'(0)=0$ を代入すると、
+  セクション名で資料内の位置を示し、タイトルでこの1枚の結論を伝えます。
+- **本文の役割**
 
-$$
-C_1+C_2=-\frac16,
-\qquad
-C_1+2C_2=\frac16.
-$$
+  結論を支える理由や具体例を、読みやすい長さにまとめます。
 
-したがって $C_1=-\frac12$, $C_2=\frac13$ であり、
-
-$$
-\boxed{y(x)=-\frac12e^{-x}+\frac13e^{-2x}+\frac16e^x}
-$$
-
-を得ます。
+`title-long section-title`：タイトルは34px・2行まで。短いタイトルでは `title-long` を外せます。
 
 ---
+
 <!-- _class: section -->
 
-# 04. Implementation
+# 07. 結論・補足
 
-## 同じ問題をコードで解く
-
----
-
-# 1階の連立方程式へ変換する
-
-$v=y'$ と置くと、2階方程式は
-
-$$
-\frac{d}{dx}
-\begin{pmatrix}y\\v\end{pmatrix}
-=
-\begin{pmatrix}
-v\\e^x-3v-2y
-\end{pmatrix},
-\qquad
-\begin{pmatrix}y(0)\\v(0)\end{pmatrix}
-=\begin{pmatrix}0\\0\end{pmatrix}
-$$
-
-という1階の連立方程式になります。
-
-> 証明で解の構造を理解し、実装では状態 $(y,v)$ がどう変化するかを小さな刻み幅で追跡します。
+## 判断と次の行動につなげる
 
 ---
 
-# 方程式と厳密解をコードにする
+<!-- _class: decision -->
 
-```lua
-local function rhs(x, state)
-  local y, velocity = state[1], state[2]
+# 提案・意思決定
 
-  return {
-    velocity,
-    math.exp(x) - 3 * velocity - 2 * y,
-  }
-end
+> まずは1チームで試験運用を始めることを提案します。
 
-local function exact(x)
-  return -0.5 * math.exp(-x)
-    + (1 / 3) * math.exp(-2 * x)
-    + (1 / 6) * math.exp(x)
-end
-```
-
-Luaのテーブルで状態 $\{y,v\}$ を表します。外部ライブラリは使用しません。
-
----
-<!-- _class: dense -->
-
-# 4次のRunge–Kutta法を実装する
-
-```lua
-local function shifted(state, slope, scale)
-  return {
-    state[1] + scale * slope[1],
-    state[2] + scale * slope[2],
-  }
-end
-
-local function rk4_step(f, x, state, h)
-  local k1 = f(x, state)
-  local k2 = f(x + h/2, shifted(state, k1, h/2))
-  local k3 = f(x + h/2, shifted(state, k2, h/2))
-  local k4 = f(x + h, shifted(state, k3, h))
-
-  return {
-    state[1] + h * (k1[1] + 2*k2[1] + 2*k3[1] + k4[1]) / 6,
-    state[2] + h * (k1[2] + 2*k2[2] + 2*k3[2] + k4[2]) / 6,
-  }
-end
-```
-
-1ステップで傾きを4回評価し、その加重平均で状態を更新します。
+- **理由**：実際の作業で効果と課題を把握できる
+- **条件**：2週間で主要な操作を検証する
+- **判断**：完了率と所要時間をもとに展開を決める
 
 ---
 
-# 初期値から数値解を計算する
+<!-- _class: action -->
 
-```lua
-local function solve(x_end, h)
-  local x = 0.0
-  local state = { 0.0, 0.0 }
+# 次のアクション
 
-  while x < x_end - h/2 do
-    state = rk4_step(rhs, x, state, h)
-    x = x + h
-  end
+| やること | 担当 | 期限 |
+|---|---|---|
+| 対象チームの選定 | 企画担当 | 今週末 |
+| 試作品のレビュー | 設計担当 | 来週火曜 |
+| 検証の開始 | チーム全員 | 来週木曜 |
 
-  return state[1]
-end
-
-for _, x in ipairs({ 0.5, 1.0, 1.5, 2.0 }) do
-  local numerical = solve(x, 0.01)
-  print(x, numerical, exact(x))
-end
-```
-
-同じ初期値から各点まで計算し、厳密解との差を確認します。
-
----
-<!-- _class: table-center -->
-
-# 数値解を厳密解と照合する
-
-刻み幅を $h=0.01$ とした結果です。
-
-| $x$ | RK4による数値解 | 厳密解 | 絶対誤差 |
-|---:|---:|---:|---:|
-| $0.0$ | 0.000000000 | 0.000000000 | $0$ |
-| $0.5$ | 0.094148029 | 0.094148029 | $5.04\times10^{-11}$ |
-| $1.0$ | 0.314219012 | 0.314219012 | $9.11\times10^{-11}$ |
-| $1.5$ | 0.651978787 | 0.651978788 | $2.77\times10^{-10}$ |
-| $2.0$ | 1.169946921 | 1.169946921 | $5.21\times10^{-10}$ |
-
-数値解は、この範囲では厳密解と高い精度で一致しました。
+> 次回は検証結果と改善案を共有します。
 
 ---
 
-# 証明から実装までを振り返る
+<!-- _class: risk-action -->
 
-1. 線形性から、一般解が $y=y_0+y_1$ と分解できることを証明した。
-2. 定数変化法により、特殊解を構成する手順を導いた。
-3. 具体例を解析的に解き、比較対象となる厳密解を得た。
-4. 方程式を1階化してRK4法で実装し、計算結果を検証した。
+# 課題・対応・判断条件を1枚にまとめる
 
-> 数式は「なぜ正しいか」を説明し、コードは「実際にどう振る舞うか」を確かめる。両方をつなぐことで、理解が検証可能になります。
+| 課題 | 対応 | 確認する時点 |
+|---|---|---|
+| 利用方法が伝わらない | 初回ガイドを追加し、操作を観察する | 試験導入の初週 |
+| 移行作業が集中する | 対象を分けて、順番に移行する | 各チームの開始前 |
+| 効果が見えにくい | 所要時間と完了率を記録する | 導入から2週間後 |
 
----
-<!-- _class: section -->
-
-# Appendix
-
-## テキスト記法と画像を使うレイアウト
+指定：`risk-action`。3〜4件を目安に、懸念だけでなく対応と確認時点までそろえます。
 
 ---
-<!-- _class: image-right -->
-![bg right:52% contain](assets/generated/score.svg)
 
-# LilyPondで楽譜を配置する
+<!-- _class: references -->
 
-```lilypond
-rightHand = \relative c'' {
-  \key a \minor
-  \time 4/4
-  a4\p( c e a) | g2( e) |
-  f4( a c b) | a2.( e4) |
-  d4( f a d) | c2( a) |
-  b4( gis e gis) | a2.( e4) |
-  % ... 全16小節
-}
-```
+# 参考資料・リンク
 
-`.ly` をSVGへ変換し、通常の画像として配置します。
+- [Marp](https://marp.app/) — スライド作成ツール
+- [表1：プラン比較](#表1プラン比較) — 提供条件を比較する表
+- [図1：横長画像の配置](#図1横長画像の配置) — 画像の配置例
+- [テーマと使い方](README.md) — このリポジトリのガイド
+- [図のソース](diagrams/solution-flow.mmd) — 編集可能なMermaidの例
+- [楽譜のソース](music/example.ly) — 編集可能なLilyPondの例
+
+図表名を `######` で付け、`[表1](#表1プラン比較)` で参照できます。番号は手動です。
 
 ---
-<!-- _class: image-right -->
-![bg right:50% 45%](assets/generated/mermaid.svg)
 
-# Mermaidで処理フローを描く
-
-```mermaid
-flowchart TD
-  A[微分方程式]
-    --> B[一般解を証明]
-  B --> C[厳密解]
-  C --> D[Luaで実装]
-  D --> E[誤差を検証]
-```
-
-`.mmd` からSVGを生成し、説明の流れを可視化します。
-
----
-<!-- _class: image-right -->
-![bg right:50% 78%](assets/generated/plantuml.svg)
-
-# PlantUMLで処理順を描く
-
-```plantuml
-@startuml
-User -> Solver: solve(x, h)
-loop x < x_end
-  Solver -> RK4: state, x, h
-  RK4 -> Equation: rhs(x, state)
-  Equation --> RK4: slope
-end
-Solver --> User: numerical_y
-@enduml
-```
-
-`.puml` からSVGを生成し、コードの呼び出し関係を示します。
-
----
-<!-- _class: image-right -->
-![bg right:50% cover](assets/placeholder-rail.svg)
-
-# 横半分に画像を配置する
-
-本文と画像を同じ比重で見せたい場合のレイアウトです。
-
-- 画像はスライドの右半分に配置
-- 左側には結論と短い説明を記載
-- `right` を `left` に変えると左右を反転
-
----
-<!-- _class: full-image -->
-![bg cover brightness:0.45](assets/placeholder-rail.svg)
-
-# 全画面に画像を配置する
-
-画像そのものを主役にし、文章は短いメッセージだけに絞ります。
-
----
 <!-- _class: closing -->
 
 # Thank you
 
-証明した構造を、動くコードへ。
+## 次のスライドを、Markdownから。
+
+水城アオ｜[GitHub](https://github.com/)

@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
-  <title id="title">Image placeholder 16:9</title>
-  <desc id="desc">Neutral gray image, 1280 by 720 pixels. The border and diagonals show crop boundaries.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="300" viewBox="400 210 480 300" role="img" aria-labelledby="title desc">
+  <title id="title">Detail of image placeholder</title>
+  <desc id="desc">Cropped central label from the whole image placeholder.</desc>
   <defs><pattern id="grid" width="90.0" height="90.0" patternUnits="userSpaceOnUse"><path d="M 90.0 0 H 0 V 90.0" fill="none" stroke="#dedede" stroke-width="1.44"/></pattern></defs>
   <rect width="1280" height="720" fill="#efefef"/>
   <rect width="1280" height="720" fill="url(#grid)"/>

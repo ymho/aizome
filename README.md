@@ -8,6 +8,19 @@ AI向けの入口は [AGENTS.md](AGENTS.md)、判断基準と制作手順は [AI
 
 依頼例：「AGENTS.mdとAI向け制作ガイドを読み、このテーマで○○向けの発表資料を作ってください。目的は○○、持ち時間は○分、元資料は○○です。」
 
+## v3のAI支援・配布ツール
+
+- [機械向けレイアウト定義](ai/layouts.json)：必要な構造、項目数、併用条件、旧クラスの移行先。
+- [確認・配布ツール](tools/README.md)：静的チェック、ブラウザでの表示確認、HTMLと画像・フォントのZIP化。
+- [改善例](examples/repairs.md)：修正前後のMarkdownと、修正を選んだ理由。
+
+```bash
+python3 tools/check_slides.py template.md --json
+python3 tools/package_slides.py presentation.html dist/presentation.zip
+```
+
+静的チェックとZIP作成はPython標準機能だけで動きます。編集・プレビューにPythonやNode.jsを必須にするものではありません。公開リリースのHTML配布ZIPには画像・フォント・フォントライセンスが入り、全展開して `index.html` を開けます。絵文字などの外部依存は同梱の `manifest.json` に記録されます。
+
 ## 改善PRを歓迎します
 
 制作中に見つかった表示の不具合や、ほかの資料にも役立つカスタマイズをぜひ還元してください。[貢献ガイド](CONTRIBUTING.md)に、AI Agentからの案内、変更の切り分け、fork・PR作成の手順をまとめています。Agentには「今回の共通部分の改善を、作者へPRしてください」と依頼できます。

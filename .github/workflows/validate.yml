@@ -1,0 +1,59 @@
+name: Validate slides and distribution
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Static checks and tool tests
+        run: |
+          python3 -m unittest discover -s tests -v
+          python3 tools/check_slides.py template.md --strict --json
+          python3 tools/check_slides.py examples/repairs-after.md --strict --json
+      - name: Prepare optional browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/aizome-tools" --no-package-lock --no-audit --no-fund puppeteer-core@24.43.1
+          command -v google-chrome
+      - name: Build HTML
+        run: |
+          mkdir -p "$RUNNER_TEMP/aizome-output"
+          npx --yes @marp-team/marp-cli@4.3.0 template.md --theme-set aizome.css --output "$RUNNER_TEMP/aizome-output/index.html"
+          npx --yes @marp-team/marp-cli@4.3.0 examples/repairs-after.md --theme-set aizome.css --output "$RUNNER_TEMP/aizome-output/repairs.html"
+      - name: Check rendered slides
+        run: |
+          node tools/check-browser.cjs "$RUNNER_TEMP/aizome-output/index.html" --root . --browser "$(command -v google-chrome)" --module "$RUNNER_TEMP/aizome-tools/node_modules/puppeteer-core" --no-sandbox --output "$RUNNER_TEMP/aizome-output/catalog-report.json"
+          node tools/check-browser.cjs "$RUNNER_TEMP/aizome-output/repairs.html" --root . --browser "$(command -v google-chrome)" --module "$RUNNER_TEMP/aizome-tools/node_modules/puppeteer-core" --no-sandbox --output "$RUNNER_TEMP/aizome-output/repairs-report.json" --screenshots "$RUNNER_TEMP/aizome-output/repairs-screenshots"
+      - name: Verify the checker detects rendering failures
+        run: |
+          python3 tests/render_defects.py "$RUNNER_TEMP/aizome-output/index.html" "$RUNNER_TEMP/aizome-output/broken.html"
+          check_status=0
+          node tools/check-browser.cjs "$RUNNER_TEMP/aizome-output/broken.html" --root . --browser "$(command -v google-chrome)" --module "$RUNNER_TEMP/aizome-tools/node_modules/puppeteer-core" --no-sandbox --output "$RUNNER_TEMP/aizome-output/expected-failures-report.json" || check_status=$?
+          test "$check_status" -eq 1
+          python3 tests/render_defects.py --verify "$RUNNER_TEMP/aizome-output/expected-failures-report.json"
+      - name: Package and verify relocation
+        run: |
+          python3 tools/package_slides.py "$RUNNER_TEMP/aizome-output/index.html" "$RUNNER_TEMP/aizome-output/aizome-html.zip" --root .
+          python3 -m zipfile -e "$RUNNER_TEMP/aizome-output/aizome-html.zip" "$RUNNER_TEMP/aizome-unpacked"
+          node tools/check-browser.cjs "$RUNNER_TEMP/aizome-unpacked/index.html" --browser "$(command -v google-chrome)" --module "$RUNNER_TEMP/aizome-tools/node_modules/puppeteer-core" --no-sandbox --output "$RUNNER_TEMP/aizome-output/package-report.json"
+      - name: Save reports and distribution
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aizome-distribution
+          path: |
+            ${{ runner.temp }}/aizome-output/*-report.json
+            ${{ runner.temp }}/aizome-output/aizome-html.zip
+            ${{ runner.temp }}/aizome-output/repairs-screenshots/
+          if-no-files-found: warn

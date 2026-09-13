@@ -2,7 +2,7 @@
   "$schema": "./layouts.schema.json",
   "schemaVersion": 1,
   "theme": "aizome",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "AI向けの共通レイアウト契約。上限は目安で、表示確認を代替しない。",
   "defaultLayout": {
     "purpose": "標準の本文",

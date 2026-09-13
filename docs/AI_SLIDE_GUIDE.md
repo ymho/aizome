@@ -258,3 +258,7 @@ marp presentation.md --theme-set aizome.css --output presentation.html
 棒は項目比較、折れ線は時系列、ドーナツは少数項目の構成比に使います。元データ・単位・期間・出典を確かめ、捏造や作例の転用を避けます。Markdownの数値は自動描画されません。既存のSVG/PNGを挿入するか、ユーザーのデータからSVG素材を作成し、通常の画像記法で参照します。作業のためだけにNode.jsや変換サービスを追加しません。
 
 [グラフ素材の説明](../assets/charts/README.md)に従い、`ai/colors.json` の色を使います。データを変えたら棒の長さ・点・扇形・目盛り・ラベルを同時に更新し、生成した画像と元データを照合します。スライドでは `figure` または `media ... diagram` を使い、図表名・単位・代替テキストを付けます。細かいグラフを3枚並べるカタログ構成は完成資料に安易に転用しません。
+
+## ビジネス設計の資料
+
+[ビジネス用テンプレートのガイド](BUSINESS_TEMPLATES.md)を参照してください。ジャーニーは `journey`、2種類のキャンバスは共通の `canvas`（9項目固定）を使います。SWOTは `cards card-top`、クロスSWOTは `matrix matrix-neutral`、競合分析は `comparison-table`、施策比較は `dense` を再利用します。架空の作例を事実として流用せず、顧客感情・外部要因・競合・数値の根拠を確認します。

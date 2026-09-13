@@ -705,6 +705,52 @@ section.matrix table { display: table; table-layout: fixed; font-size: 23px; }
 section.matrix td { height: 100px; text-align: center; }
 section.matrix tbody tr:first-child td:last-child { background: var(--accent-soft); }
 section.matrix th:first-child { width: 24%; }
+section.matrix.matrix-neutral tbody tr:first-child td:last-child { background: inherit; }
+section.matrix.matrix-neutral td { text-align: left; padding: 24px; }
+
+/* Journey stages share column widths; labels have their own narrow column. */
+section.journey { justify-content: center; }
+section.journey table { display: table; table-layout: fixed; width: 100%; font-size: 19px; }
+section.journey :is(th, td) { padding: 12px 14px; vertical-align: top; overflow-wrap: anywhere; }
+section.journey :is(th, td):first-child { width: 12%; font-weight: 700; }
+section.journey > p { font-size: 20px; }
+
+/* A shared nine-block canvas for business models and Lean Canvas. */
+section.canvas > ul {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  grid-template-rows: 1fr 1fr .65fr;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+section.canvas > ul > li {
+  min-width: 0;
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-soft);
+  font-size: 18px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+section.canvas > ul > li > p { margin: 0; }
+section.canvas > ul > li > p + p { margin-top: 12px; }
+section.canvas > ul > li > p:first-child { font-size: 20px; color: var(--heading); }
+section.canvas > ul > li:nth-child(1) { grid-area: 1 / 1 / 3 / 3; }
+section.canvas > ul > li:nth-child(2) { grid-area: 1 / 3 / 2 / 5; }
+section.canvas > ul > li:nth-child(3) { grid-area: 2 / 3 / 3 / 5; }
+section.canvas > ul > li:nth-child(4) { grid-area: 1 / 5 / 3 / 7; background: var(--bg-tint); border-color: var(--accent); }
+section.canvas > ul > li:nth-child(5) { grid-area: 1 / 7 / 2 / 9; }
+section.canvas > ul > li:nth-child(6) { grid-area: 2 / 7 / 3 / 9; }
+section.canvas > ul > li:nth-child(7) { grid-area: 1 / 9 / 3 / 11; }
+section.canvas > ul > li:nth-child(8) { grid-area: 3 / 1 / 4 / 6; }
+section.canvas > ul > li:nth-child(9) { grid-area: 3 / 6 / 4 / 11; }
+section.canvas > p { font-size: 18px; margin: 16px 0 0; }
 section.callout { justify-content: center; }
 section.callout blockquote { border-left-color: var(--warning); background: var(--warning-soft); padding: 32px; font-size: 30px; }
 section.callout blockquote p + p { margin-top: 12px; }

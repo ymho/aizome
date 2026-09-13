@@ -2,7 +2,7 @@
   "$schema": "./layouts.schema.json",
   "schemaVersion": 1,
   "theme": "aizome",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "AI向けの共通レイアウト契約。上限は目安で、表示確認を代替しない。",
   "defaultLayout": {
     "purpose": "標準の本文",
@@ -28,7 +28,7 @@
     "list": {
       "purpose": "目次・要点",
       "structure": "h1 + ol または ul",
-      "recommendedMaxItems": 7,
+      "recommendedMaxItems": 8,
       "listType": "either"
     },
     "cards": {
@@ -165,6 +165,17 @@
     "emoji-catalog": {
       "purpose": "絵文字一覧",
       "structure": "h1 + Markdown table"
+    },
+    "journey": {
+      "purpose": "顧客体験の段階別整理",
+      "structure": "h1 + p（対象・目的）+ Markdown table（段階が列、観点が行）+ p"
+    },
+    "canvas": {
+      "purpose": "9枠の事業仮説・ビジネスモデル",
+      "structure": "h1 + ul > li（見出しと本文、9項目）+ p",
+      "listType": "unordered",
+      "recommendedMinItems": 9,
+      "recommendedMaxItems": 9
     }
   },
   "modifiers": {
@@ -579,6 +590,11 @@
     },
     "nested-decimal": {
       "exclusiveGroup": "nested-numbering"
+    },
+    "matrix-neutral": {
+      "requiresAny": [
+        "matrix"
+      ]
     }
   },
   "deprecated": {
@@ -621,6 +637,7 @@
     "repairs": "examples/repairs.md",
     "colors": "ai/colors.json",
     "charts": "assets/charts/README.md",
-    "themes": "ai/themes.json"
+    "themes": "ai/themes.json",
+    "business": "docs/BUSINESS_TEMPLATES.md"
   }
 }

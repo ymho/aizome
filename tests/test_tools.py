@@ -26,6 +26,13 @@ class StaticChecks(unittest.TestCase):
     def codes(self, report):
         return {f['code'] for f in report['findings']}
 
+    def test_canvas_requires_nine_blocks(self):
+        for count in (8, 9, 10):
+            source = '<!-- _class: canvas -->\n# Canvas\n\n' + '\n'.join(
+                f'- **Block {i}**\n\n  Short content.\n' for i in range(count))
+            report = self.run_deck(source)
+            self.assertEqual('item-count' in self.codes(report), count != 9)
+
     def test_contract_references_are_consistent(self):
         import re
         catalog = json.loads((ROOT / 'ai/layouts.json').read_text())

@@ -262,3 +262,5 @@ marp presentation.md --theme-set aizome.css --output presentation.html
 ## ビジネス設計の資料
 
 [ビジネス用テンプレートのガイド](BUSINESS_TEMPLATES.md)を参照してください。ジャーニーは `journey`、2種類のキャンバスは共通の `canvas`（9項目固定）を使います。SWOTは `cards card-top`、クロスSWOTは `matrix matrix-neutral`、競合分析は `comparison-table`、施策比較は `dense` を再利用します。架空の作例を事実として流用せず、顧客感情・外部要因・競合・数値の根拠を確認します。
+
+写真・画面を1枚で大きく見せる場合は、27枚目の `figure no-title captioned` と `h:560` を基本にします。タイトルありは `figure captioned` と `h:440`。3:1はパノラマ専用の選択肢であり、一般的な画像に無理に適用しません。

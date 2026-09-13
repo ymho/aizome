@@ -466,17 +466,15 @@ Markdownでつくるプレゼンテーション｜水城アオ
 
 ---
 
-<!-- _class: figure ratio-3x1 captioned -->
+<!-- _class: figure no-title captioned -->
 
-# 3:1の画像を使う
+# 大きな画像：1枚を主役に
 
-![3:1のパノラマ画像](assets/placeholders/panorama.svg)
+![h:560 16:9の画像を大きく配置する例](assets/placeholders/landscape-16x9.svg)
 
-###### 図1：横長画像の配置
+###### 図1：大きな画像の配置
 
-**横に広い風景やバナーに。** 全幅を活かしながら、左右の余白を残します。
-
-**指定**：`figure ratio-3x1`。通常の画像1枚と、その下の説明文で配置します。
+<!-- 指定：figure no-title captioned。画像はh:560で縦横比を維持し、外周の余白と図表名の領域を確保。タイトルを出す場合はno-titleを外し、h:440にする。3:1のパノラマはREADMEの設定例を参照。 -->
 
 ---
 
@@ -977,7 +975,7 @@ $$
 
 - [Marp](https://marp.app/) — スライド作成ツール
 - [表1：プラン比較](#表1プラン比較) — 提供条件を比較する表
-- [図1：横長画像の配置](#図1横長画像の配置) — 画像の配置例
+- [図1：大きな画像の配置](#図1大きな画像の配置) — 画像の配置例
 - [テーマと使い方](README.md) — このリポジトリのガイド
 - [図のソース](diagrams/solution-flow.mmd) — 編集可能なMermaidの例
 - [楽譜のソース](music/example.ly) — 編集可能なLilyPondの例
